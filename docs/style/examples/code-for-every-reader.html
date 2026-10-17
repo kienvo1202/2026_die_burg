@@ -1,0 +1,970 @@
+<title>Code for Every Reader</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one reading column for prose; comparisons break out to a wider two-up grid that stacks on phones. */
+:root {
+  --bg: #f5f6f8;
+  --surface: #ffffff;
+  --code-bg: #eef1f5;
+  --ink: #1c2230;
+  --muted: #5a6376;
+  --line: #d9dee7;
+  --accent: #2c5a88;
+  --worse: #9a3b28;
+  --better: #2a6b47;
+  --worse-soft: #f7e9e5;
+  --better-soft: #e4f1e9;
+  --t-kw: #7a3e9d;
+  --t-str: #2a6b47;
+  --t-com: #7b8496;
+  --t-fn: #2c5a88;
+  --t-num: #a4501c;
+  --f-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --f-body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --f-code: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111419; --surface: #181c24; --code-bg: #0d1015; --ink: #e3e7ef; --muted: #98a2b5; --line: #2a303c;
+    --accent: #8fb6de; --worse: #e8907a; --better: #7fc89e; --worse-soft: #2a1a16; --better-soft: #15261c;
+    --t-kw: #c89be6; --t-str: #8fd3a8; --t-com: #6f798c; --t-fn: #8fb6de; --t-num: #e6a678;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111419; --surface: #181c24; --code-bg: #0d1015; --ink: #e3e7ef; --muted: #98a2b5; --line: #2a303c;
+  --accent: #8fb6de; --worse: #e8907a; --better: #7fc89e; --worse-soft: #2a1a16; --better-soft: #15261c;
+  --t-kw: #c89be6; --t-str: #8fd3a8; --t-com: #6f798c; --t-fn: #8fb6de; --t-num: #e6a678;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--f-body);
+  font-size: 17px;
+  line-height: 1.6;
+}
+.wrap { max-width: 1140px; margin: 0 auto; padding-inline: 20px; padding-block: 48px 96px; }
+.prose { max-width: 68ch; }
+h1, h2, h3 { font-family: var(--f-display); line-height: 1.15; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 700; letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.45rem, 3vw, 1.9rem); font-weight: 700; }
+h3 { font-size: 1.15rem; font-weight: 700; }
+p { margin: 0; }
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+code { font-family: var(--f-code); font-size: 0.88em; }
+:not(pre) > code { background: var(--code-bg); padding: 0.08em 0.35em; border-radius: 4px; }
+.eyebrow { font-family: var(--f-code); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+
+header { display: grid; gap: 20px; padding-bottom: 36px; border-bottom: 1px solid var(--line); }
+header .lede { font-size: 1.15rem; color: var(--ink); }
+header .sub { color: var(--muted); }
+
+/* the four counters */
+.counters { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 8px; }
+.counter { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; display: grid; gap: 4px; }
+.counter b { font-family: var(--f-display); font-size: 1.05rem; }
+.counter span { color: var(--muted); font-size: 0.93rem; line-height: 1.45; }
+.chip { display: inline-block; font-family: var(--f-code); font-size: 0.72rem; letter-spacing: 0.04em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); background: var(--surface); white-space: nowrap; }
+
+.readers { overflow-x: auto; margin-top: 4px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
+th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+th { font-family: var(--f-display); font-weight: 700; }
+tr.shared td { background: var(--better-soft); }
+
+nav.toc { padding-block: 32px; border-bottom: 1px solid var(--line); display: grid; gap: 12px; }
+nav.toc ol { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 4px 24px; counter-reset: toc; }
+nav.toc li { counter-increment: toc; }
+nav.toc a { text-decoration: none; color: var(--ink); display: flex; gap: 10px; padding: 4px 0; }
+nav.toc a::before { content: counter(toc, decimal-leading-zero); font-family: var(--f-code); color: var(--muted); font-size: 0.85rem; padding-top: 2px; }
+nav.toc a:hover { color: var(--accent); }
+
+section.case { padding-block: 56px 8px; display: grid; gap: 18px; }
+section.case + section.case { border-top: 1px solid var(--line); }
+.case-head { display: grid; gap: 10px; }
+.case-head .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.pair { display: grid; grid-template-columns: 1fr; gap: 14px; }
+@media (min-width: 900px) { .pair { grid-template-columns: 1fr 1fr; } }
+.side { margin: 0; min-width: 0; display: grid; grid-template-rows: auto 1fr; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--code-bg); }
+.side figcaption { font-family: var(--f-code); font-size: 0.78rem; padding: 8px 14px; display: flex; gap: 8px; align-items: baseline; border-bottom: 1px solid var(--line); }
+.side.a figcaption { background: var(--worse-soft); color: var(--worse); }
+.side.b figcaption { background: var(--better-soft); color: var(--better); }
+.side figcaption strong { font-weight: 600; }
+.side figcaption .file { color: var(--muted); margin-left: auto; }
+pre { margin: 0; overflow-x: auto; padding: 14px 16px; font-size: 0.82rem; line-height: 1.55; }
+pre code { font-size: inherit; background: none; color: var(--ink); }
+
+.verdict { display: grid; gap: 10px; }
+.rule { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: baseline; padding: 12px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); max-width: 80ch; }
+.rule .eyebrow { color: var(--accent); }
+ul.plain { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }
+.aside { color: var(--muted); font-size: 0.95rem; }
+
+section.howto { padding-block: 64px 0; border-top: 2px solid var(--ink); margin-top: 48px; display: grid; gap: 22px; }
+.steps { display: grid; gap: 26px; }
+.step { display: grid; gap: 8px; }
+.snippet { position: relative; border: 1px solid var(--line); border-radius: 8px; background: var(--code-bg); min-width: 0; }
+.snippet .bar { display: flex; justify-content: space-between; align-items: center; padding: 6px 8px 6px 14px; border-bottom: 1px solid var(--line); font-family: var(--f-code); font-size: 0.78rem; color: var(--muted); }
+button.copy { font: inherit; font-size: 0.78rem; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 4px 10px; cursor: pointer; }
+button.copy:hover { border-color: var(--accent); }
+.prompts { display: grid; gap: 10px; }
+.prompt { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px; font-family: var(--f-code); font-size: 0.85rem; }
+
+footer { margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.92rem; }
+.test { font-family: var(--f-display); font-size: clamp(1.2rem, 2.6vw, 1.5rem); font-weight: 500; line-height: 1.35; max-width: 40ch; text-wrap: balance; }
+
+/* syntax colours (highlight.js classes) */
+.hljs-keyword, .hljs-built_in, .hljs-literal, .hljs-meta { color: var(--t-kw); }
+.hljs-string, .hljs-template-string, .hljs-regexp { color: var(--t-str); }
+.hljs-comment, .hljs-doctag, .hljs-quote { color: var(--t-com); font-style: italic; }
+.hljs-title, .hljs-function .hljs-title, .hljs-title.function_, .hljs-title.class_ { color: var(--t-fn); }
+.hljs-number, .hljs-attr, .hljs-property { color: var(--t-num); }
+.hljs-section { color: var(--t-fn); font-weight: 600; }
+.hljs-bullet { color: var(--t-num); }
+.hljs-type { color: var(--t-kw); }
+
+@media (max-width: 520px) {
+  body { font-size: 16px; }
+  .rule { grid-template-columns: 1fr; gap: 4px; }
+}
+</style>
+
+<div class="wrap">
+
+<header>
+  <span class="eyebrow">Worked example · from Reading Companion, a JavaScript project · "this repo" below means that project</span>
+  <h1>Code for every reader</h1>
+  <p class="prose lede">Readers arrive with different habits. A Python analyst expects plain functions, dicts and for-loops. Someone from functional programming expects pure functions: data in, data out. Someone who learned basic OOP expects classes. Code is easiest for all three when it stays where those habits overlap.</p>
+
+  <div class="readers">
+    <table>
+      <thead><tr><th>Reader</th><th>Feels at home with</th><th>Gets lost in</th></tr></thead>
+      <tbody>
+        <tr><td>Python / data analyst</td><td>Functions, dicts, lists, <code>for</code> loops, list comprehensions</td><td>Chained one-liners, <code>this</code>, JS truthiness tricks</td></tr>
+        <tr><td>Functional style</td><td>Pure functions, <code>map</code>/<code>filter</code>, no hidden state</td><td>Objects that change underneath them, deep class trees</td></tr>
+        <tr><td>Basic OOP</td><td>Classes with a clear job, named methods</td><td>Point-free pipelines, <code>reduce</code> everywhere, currying</td></tr>
+        <tr class="shared"><td><strong>Shared ground</strong></td><td colspan="2">Plain functions · plain data · loops and early returns · names from the problem's own vocabulary · inputs you can see in the signature</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="prose sub">One question sits under every practice below: <em>how much does the reader have to hold in their head?</em> Each case reduces one or more of four things.</p>
+
+  <div class="counters">
+    <div class="counter"><b>Jumps</b><span>Times the reader leaves this spot to look up another function or file.</span></div>
+    <div class="counter"><b>Idioms</b><span>Language-specific tricks the reader has to already know.</span></div>
+    <div class="counter"><b>Hidden state</b><span>Things that affect the result but don't appear in the code in front of you.</span></div>
+    <div class="counter"><b>Nesting</b><span>How many open conditions the reader carries at once.</span></div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Practices">
+  <span class="eyebrow">Sixteen practices</span>
+  <ol>
+    <li><a href="#wrapper">The one-line wrapper</a></li>
+    <li><a href="#deep">When a wrapper earns its place</a></li>
+    <li><a href="#fragment">Splitting a recipe into crumbs</a></li>
+    <li><a href="#classes">Class trees for one case</a></li>
+    <li><a href="#data">Plain data over accessor classes</a></li>
+    <li><a href="#pure">Compute first, touch the world last</a></li>
+    <li><a href="#loops">Loops versus chains</a></li>
+    <li><a href="#guards">Guard clauses over nesting</a></li>
+    <li><a href="#idioms">A short list of allowed idioms</a></li>
+    <li><a href="#names">Names from the problem</a></li>
+    <li><a href="#comments">Comments that say why</a></li>
+    <li><a href="#inputs">Every input in the signature</a></li>
+    <li><a href="#errors">Errors caught where they mean something</a></li>
+    <li><a href="#async">async/await over callback pyramids</a></li>
+    <li><a href="#locality">Keep things next to their only user</a></li>
+    <li><a href="#mutation">Don't change what you were handed</a></li>
+    <li><a href="#howto">How to get an AI to write this way</a></li>
+  </ol>
+</nav>
+
+<!-- 1 -->
+<section class="case" id="wrapper">
+  <div class="case-head">
+    <span class="eyebrow">01 · your question</span>
+    <h2>The one-line wrapper</h2>
+    <div class="tags"><span class="chip">jumps</span><span class="chip">hidden state</span></div>
+  </div>
+  <p class="prose">Your instinct is right. A function whose whole body is one library call adds a name the reader must learn and hides nothing in exchange. Everyone knows <code>requests.get</code>. Nobody knows <code>get_text</code> until they open another file to find out it is <code>requests.get</code>.</p>
+  <div class="pair">
+    <figure class="side a">
+      <figcaption><strong>A · Wrapped</strong><span class="file">http_utils.py + report.py</span></figcaption>
+<pre><code class="language-python"># http_utils.py
+import requests
+
+def get_text(url):
+    return requests.get(url).text
+
+
+# report.py
+from http_utils import get_text
+
+html = get_text(page_url)
+# Does get_text set a timeout? Check status codes?
+# Retry? The reader has to go and look. (It does none.)</code></pre>
+    </figure>
+    <figure class="side b">
+      <figcaption><strong>B · Direct</strong><span class="file">report.py</span></figcaption>
+<pre><code class="language-python"># report.py
+import requests
+
+html = requests.get(page_url, timeout=10).text
+# Everything this line does is on this line.</code></pre>
+    </figure>
+  </div>
+  <div class="verdict prose">
+    <p>The wrapper also creates a false promise. A reader seeing a custom function assumes it handles something: timeouts, errors, encoding. This one handles nothing, so the guess is wrong in a way that only shows up in production.</p>
+    <h3>Why people write them anyway</h3>
+    <ul class="plain">
+      <li><strong>"We might switch HTTP libraries."</strong> This rarely happens, and when it does a search-and-replace is cheap. The principle that pushes back is YAGNI: <em>you aren't gonna need it</em>.</li>
+      <li><strong>"It's easier to mock in tests."</strong> Sometimes true, but Python's <code>unittest.mock.patch("requests.get")</code> patches the library call directly. Make the seam when you write the test that needs it, not before.</li>
+      <li><strong>Habit from enterprise Java,</strong> where every dependency sits behind an interface "for flexibility".</li>
+      <li><strong>Line-count rules</strong> ("no function over 20 lines") that push people to split things that belonged together.</li>
+      <li><strong>AI models do it too.</strong> They learned from codebases full of such wrappers, and splitting code into many small named pieces <em>looks</em> organised. Left unguided, an AI tends to add layers.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 2 -->
+<section class="case" id="deep">
+  <div class="case-head">
+    <span class="eyebrow">02 · the other side</span>
+    <h2>When a wrapper earns its place</h2>
+    <div class="tags"><span class="chip">jumps</span></div>
+  </div>
+  <p class="prose">The test is whether the function hides more than it costs. John Ousterhout calls this <em>deep versus shallow</em> (<cite>A Philosophy of Software Design</cite>): a deep function has a small interface and a lot of decisions behind it. A shallow one has an interface as large as its body.</p>
+  <div class="pair">
+    <figure class="side a">
+      <figcaption><strong>A · Same policy copied six times</strong><span class="file">six call sites</span></figcaption>
+<pre><code class="language-python">for attempt in range(3):
+    try:
+        r = requests.get(url, timeout=10)
+        r.raise_for_status()
+        html = r.text
+        break
+    except requests.ConnectionError:
+        if attempt == 2:
+            raise
+        time.sleep(2 ** attempt)
+
+# ...and the same nine lines in five other files,
+# one of which forgot raise_for_status().</code></pre>
+    </figure>
+    <figure class="side b">
+      <figcaption><strong>B · One deep function</strong><span class="file">fetch.py</span></figcaption>
+<pre><code class="language-python">def fetch_text(url, timeout_s=10, retries=3):
+    """GET a page as text.
+
+    Raises on 4xx/5xx. Retries only network blips,
+    waiting 1s, 2s, 4s between tries.
+    """
+    for attempt in range(retries):
+        try:
+            r = requests.get(url, timeout=timeout_s)
+            r.raise_for_status()
+            return r.text
+        except requests.ConnectionError:
+            if attempt == retries - 1:
+                raise
+            time.sleep(2 ** attempt)
+
+html = fetch_text(page_url)</code></pre>
+    </figure>
+  </div>
+  <div class="rule"><span class="eyebrow">Rule</span><p>Wrap a library call only when the wrapper adds a decision (a default, a retry, an error message, a domain name) <strong>and</strong> it has two or more callers. Otherwise call the library directly.</p></div>
+</section>
+
+<!-- 3 -->
+<section class="case" id="fragment">
+  <div class="case-head">
+    <span class="eyebrow">03</span>
+    <h2>Splitting a recipe into crumbs</h2>
+    <div class="tags"><span class="chip">jumps</span></div>
+  </div>
+  <p class="prose">The same problem at the scale of one file. A short, linear task gets cut into helpers that are each used once. Every helper is easy on its own; the task as a whole is now spread over seven places.</p>
+  <div class="pair">
+    <figure class="side a">
+      <figcaption><strong>A · Seven names, each used once</strong></figcaption>
+<pre><code class="language-javascript">export function buildSummary(book) {
+  const chunks = getChunks(book);
+  const sorted = sortChunks(chunks);
+  const lines = toLines(sorted);
+  return joinLines(lines);
+}
+
+function getChunks(book) { return Object.values(book.chunks); }
+function sortChunks(cs) { return [...cs].sort(byFromPage); }
+function byFromPage(a, b) { return a.fromPage - b.fromPage; }
+function toLines(cs) { return cs.map(toLine); }
+function toLine(c) { return `pp. ${c.fromPage}–${c.toPage}: ${c.recap}`; }
+function joinLines(lines) { return lines.join("\n"); }</code></pre>
+    </figure>
+    <figure class="side b">
+      <figcaption><strong>B · One function, read top to bottom</strong></figcaption>
+<pre><code class="language-javascript">/** One line per analysed section, in page order. */
+export function buildSummary(book) {
+  // Object.values returns a fresh array, so sorting it in place is safe.
+  const sections = Object.values(book.chunks);
+  sections.sort((a, b) =&gt; a.fromPage - b.fromPage);
+  const lines = sections.map((s) =&gt; `pp. ${s.fromPage}–${s.toPage}: ${s.recap}`);
+  return lines.join("\n");
+}</code></pre>
+    </figure>
+  </div>
+  <div class="verdict prose">
+    <p>Extract a piece into its own function when one of these is true:</p>
+    <ul class="plain">
+      <li>It is used in two or more places. (Many teams wait for the third: the <em>rule of three</em>.)</li>
+      <li>It is pure logic worth its own test, like this repo's <code>coverageCells</code>.</li>
+      <li>Its name tells the reader something the body can't say quickly, such as a tricky regular expression or a formula.</li>
+    </ul>
+    <p class="aside">"It made the function shorter" is not on the list. Length is a weak signal; how many things the reader must track is the real one.</p>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="case" id="classes">
+  <div class="case-head">
+    <span class="eyebrow">04</span>
+    <h2>Class trees for one case</h2>
+    <div class="tags"><span class="chip">jumps</span><span class="chip">hidden state</span></div>
+  </div>
+  <p class="prose">A base class, a subclass and a factory, built for export formats that might come one day. Today there is one.</p>
+  <div class="pair">
+    <figure class="side a">
+      <figcaption><strong>A · Built for the future</strong></figcaption>
+<pre><code class="language-javascript">class Exporter {
+  constructor(book) { this.book = book; }
+  export() { return this.serialize(this.prepare()); }
+  prepare() { return { ...this.book, exportedAt: Date.now() }; }
+  serialize() { throw new Error("abstract"); }
+}
+
+class JsonExporter extends Exporter {
+  serialize(data) { return JSON.stringify(data, null, 2); }
+}
+
+class ExporterFactory {
+  static create(format, book) {
+    if (format === "json") return new JsonExporter(book);
+    throw new Error(`Unknown format ${format}`);
+  }
+}
+
+const text = ExporterFactory.create("json", book).export();</code></pre>
+    </figure>
+    <figure class="side b">
+      <figcaption><strong>B · Built for today</strong></figcaption>
+<pre><code class="language-javascript">/** The book as pretty JSON, stamped with the export time. */
+export function exportBook(book) {
+  const stamped = { ...book, exportedAt: Date.now() };
+  return JSON.stringify(stamped, null, 2);
+}
+
+const text = exportBook(book);</code></pre>
+    </figure>
+  </div>
+  <div class="verdict prose">
+    <p>To follow A, the reader traces <code>export()</code> → <code>prepare()</code> in the parent → <code>serialize()</code> in the child, chosen by the factory. B is one function a Python, FP or OOP reader all read the same way. When a second format really arrives, an <code>if (format === "csv")</code> inside the function is usually enough; a class tree is worth it at perhaps the fourth.</p>
+  </div>
+  <div class="rule"><span class="eyebrow">Rule</span><p>Start with a function. Use a class for something with a lifecycle that owns state and behaviour together (open → render → close). Add inheritance only when two real variants exist, not imagined ones.</p></div>
+</section>
+
+<!-- 5 -->
+<section class="case" id="data">
+  <div class="case-head">
+    <span class="eyebrow">05</span>
+    <h2>Plain data over accessor classes</h2>
+    <div class="tags"><span class="chip">hidden state</span><span class="chip">idioms</span></div>
+  </div>
+  <div class="pair">
+    <figure class="side a">
+      <figcaption><strong>A · Getters with nothing behind them</strong></figcaption>
+<pre><code class="language-javascript">class Section {
+  #from; #to; #notes = [];
+  constructor(from, to) { this.#from = from; this.#to = to; }
+  getFrom() { return this.#from; }
+  getTo() { return this.#to; }
+  addNote(n) { this.#notes.push(n); }
+  getNotes() { return [...this.#notes]; }
+}
+
+const s = new Section(12, 30);
+JSON.stringify(s); // "{}"  — private fields don't serialise</code></pre>
+    </figure>
+    <figure class="side b">
+      <figcaption><strong>B · A plain object with a type</strong></figcaption>
+<pre><code class="language-javascript">/**
+ * @typedef {object} Section
+ * @property {number} fromPage
+ * @property {number} toPage
+ * @property {Note[]} notes
+ */
+
+/** @type {Section} */
+const section = { fromPage: 12, toPage: 30, notes: [] };
+JSON.stringify(section); // saves and exports as-is</code></pre>
+    </figure>
+  </div>
+  <div class="verdict prose">
+    <p>A Python reader sees a dict (or a dataclass). An FP reader sees a value. The JSDoc type gives you the safety a class would, checked by <code>tsc</code>, which this repo already runs. Plain objects also print readably in the console and go straight into storage, which is how <code>store.js</code> can import and export a book.</p>
+    <p class="aside">Keep a class (or a validating <code>makeSection()</code> function) when something must stay true on every change, such as <code>fromPage ≤ toPage</code>.</p>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="case" id="pure">
+  <div class="case-head">
+    <span class="eyebrow">06 · from this repo</span>
+    <h2>Compute first, touch the world last</h2>
+    <div class="tags"><span class="chip">hidden state</span><span class="chip">jumps</span></div>
+  </div>
+  <p class="prose">Keep the thinking in one function that takes data and returns data. Put the DOM, storage and network in a second, thin function. Gary Bernhardt's name for this is <em>functional core, imperative shell</em>. The coverage strip in <code>viewer/coverage.js</code> already does it.</p>
+  <div class="pair">
+    <figure class="side a">
+      <figcaption><strong>A · Logic tangled with the page</strong><span class="file">hypothetical</span></figcaption>
+<pre><code class="language-javascript">function updateCoverage(el) {
+  el.replaceChildren();
+  const book = window.currentBook;          // from where?
+  for (let p = 1; p &lt;= viewer.pageCount; p++) {
+    const chunk = Object.values(book.chunks)
+      .find((c) =&gt; c.fromPage &lt;= p &amp;&amp; p &lt;= c.toPage);
+    const d = document.createElement("div");
+    if (chunk &amp;&amp; chunk.promptVersion === PROMPT_VERSION) d.className = "cov cov-done";
+    else if (chunk) d.className = "cov cov-stale";
+    else d.className = "cov cov-none";
+    el.append(d);
+  }
+}
+// To test the rules you need a browser, a viewer and a global book.</code></pre>
+    </figure>
+    <figure class="side b">
+      <figcaption><strong>B · Split in two</strong><span class="file">viewer/coverage.js (trimmed)</span></figcaption>
+<pre><code class="language-javascript">// Pure: everything it needs is a parameter; it returns an array.
+export function coverageCells(book, detailVersion, pageCount, running) {
+  const cells = new Array(pageCount).fill("none");
+  for (const c of Object.values(book?.chunks ?? {})) {
+    const state = c.promptVersion === detailVersion ? "done" : "stale";
+    for (let p = c.fromPage; p &lt;= Math.min(c.toPage, pageCount); p++) cells[p - 1] = state;
+  }
+  // ...mark the running section
+  return cells;
+}
+
+// Thin: only draws what it was given.
+export function renderCoverage(el, cells, opts) {
+  el.replaceChildren();
+  cells.forEach((state, i) =&gt; {
+    const d = document.createElement("div");
+    d.className = `cov cov-${state}`;
+    el.append(d);
+  });
+}</code></pre>
+    </figure>
+  </div>
+  <div class="verdict prose">
+    <p><code>test/ui-logic.test.js</code> checks <code>coverageCells</code> with plain objects and no browser. Each reader recognises the shape: FP sees a pure function, Python sees a function returning a list, OOP loses nothing. This is the practice that pays most for the least effort.</p>
+  </div>
+</section>
+
+<!-- 7 -->
+<section class="case" id="loops">
+  <div class="case-head">
+    <span class="eyebrow">07</span>
+    <h2>Loops versus chains</h2>
+    <div class="tags"><span class="chip">idioms</span></div>
+  </div>
+  <p class="prose">Neither style always wins, so here are both directions.</p>
+  <h3>Case 1: the loop is clearer</h3>
+  <div class="pair">
+    <figure class="side a">
+      <figcaption><strong>A · reduce building an object</strong></figcaption>
+<pre><code class="language-javascript">const byType = notes.reduce(
+  (acc, n) =&gt; ({ ...acc, [n.type]: [...(acc[n.type] ?? []), n] }),
+  {},
+);
+// Also copies the whole object on every note: slow on big books.</code></pre>
+    </figure>
+    <figure class="side b">
+      <figcaption><strong>B · a for…of loop</strong></figcaption>
+<pre><code class="language-javascript">const byType = {};
+for (const note of notes) {
+  if (!byType[note.type]) byType[note.type] = [];
+  byType[note.type].push(note);
+}</code></pre>
+    </figure>
+  </div>
+  <p class="aside prose">Modern browsers also have <code>Object.groupBy(notes, (n) =&gt; n.type)</code>. A well-named built-in beats both, as long as your readers have met it.</p>
+  <h3>Case 2: the chain is clearer</h3>
+  <div class="pair">
+    <figure class="side a">
+      <figcaption><strong>A · index loop for a simple filter</strong></figcaption>
+<pre><code class="language-javascript">const keyNotes = [];
+for (let i = 0; i &lt; notes.length; i++) {
+  if (notes[i].weight === "key") {
+    keyNotes.push(notes[i].text);
+  }
+}</code></pre>
+    </figure>
+    <figure class="side b">
+      <figcaption><strong>B · filter, then map, one step per line</strong></figcaption>
+<pre><code class="language-javascript">const keyNotes = notes
+  .filter((n) =&gt; n.weight === "key")
+  .map((n) =&gt; n.text);
+
+// Python reader's equivalent:
+// key_notes = [n.text for n in notes if n.weight == "key"]</code></pre>
+    </figure>
+  </div>
+  <div class="rule"><span class="eyebrow">Rule</span><p><code>map</code>/<code>filter</code> for one-step transforms, one step per line. A <code>for…of</code> loop when building up a structure or doing several things per item. <code>reduce</code> only for sums. No nested ternaries.</p></div>
+</section>
+
+<!-- 8 -->
+<section class="case" id="guards">
+  <div class="case-head">
+    <span class="eyebrow">08</span>
+    <h2>Guard clauses over nesting</h2>
+    <div class="tags"><span class="chip">nesting</span></div>
+  </div>
+  <div class="pair">
+    <figure class="side a">
+      <figcaption><strong>A · Four open conditions</strong></figcaption>
+<pre><code class="language-javascript">function onPick(page, book) {
+  if (book) {
+    const chunk = findChunk(book, page);
+    if (chunk) {
+      if (!chunk.running) {
+        if (chunk.notes.length &gt; 0) {
+          scrollToPage(page);
+          showNotes(chunk);
+        }
+      }
+    }
+  }
+}</code></pre>
+    </figure>
+    <figure class="side b">
+      <figcaption><strong>B · Leave early, then do the work</strong></figcaption>
+<pre><code class="language-javascript">function onPick(page, book) {
+  if (!book) return;
+  const chunk = findChunk(book, page);
+  if (!chunk) return;                  // nothing analysed here yet
+  if (chunk.running) return;           // notes arrive when the call ends
+  if (chunk.notes.length === 0) return;
+
+  scrollToPage(page);
+  showNotes(chunk);
+}</code></pre>
+    </figure>
+  </div>
+  <p class="prose verdict">In B, each line closes a case and the reader can forget it. The real work sits at the bottom, not indented four levels deep. Python readers know this as "return early"; it is the same in every language.</p>
+</section>
+
+<!-- 9 -->
+<section class="case" id="idioms">
+  <div class="case-head">
+    <span class="eyebrow">09</span>
+    <h2>A short list of allowed idioms</h2>
+    <div class="tags"><span class="chip">idioms</span></div>
+  </div>
+  <p class="prose">Every language has shorthand that insiders read instantly and visitors misread. You don't need to ban all of it. Pick a few that earn their keep, write them down, and keep the rest out.</p>
+  <div class="readers">
+    <table>
+      <thead><tr><th>Idiom</th><th>Means</th><th>Trap for visitors</th><th>Verdict</th></tr></thead>
+      <tbody>
+        <tr><td><code>a ?? b</code></td><td>b if a is null/undefined</td><td>Easy to confuse with <code>||</code></td><td>Allow, very useful</td></tr>
+        <tr><td><code>a?.b</code></td><td>a.b, or undefined if a is missing</td><td>Long chains hide which part can be missing</td><td>Allow, one or two links</td></tr>
+        <tr><td><code>a || 20</code></td><td>20 if a is "falsy"</td><td>0 and "" are falsy: a typed 0 becomes 20</td><td>Prefer <code>??</code></td></tr>
+        <tr><td><code>!!x</code></td><td>x as true/false</td><td>Looks like a typo to a Python reader</td><td>Write the comparison</td></tr>
+        <tr><td><code>+str</code></td><td>Convert to number</td><td>Invisible; "" becomes 0</td><td>Use <code>Number(str)</code></td></tr>
+        <tr><td><code>ok &amp;&amp; doThing()</code></td><td>Run if ok</td><td>An expression used as a statement</td><td>Use <code>if</code></td></tr>
+        <tr><td><code>[...new Set(a)]</code></td><td>Remove duplicates</td><td>Three concepts in nine characters</td><td>Fine with a comment</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pair">
+    <figure class="side a">
+      <figcaption><strong>A · Dense</strong></figcaption>
+<pre><code class="language-javascript">const max = +input.value || 20;
+cfg.debug &amp;&amp; log(state);
+const show = !!book?.chunks?.[id]?.notes?.length;
+const label = n &gt; 1 ? "pages" : n === 1 ? "page" : "no pages";</code></pre>
+    </figure>
+    <figure class="side b">
+      <figcaption><strong>B · Spelled out</strong></figcaption>
+<pre><code class="language-javascript">const typed = Number(input.value);
+const max = typed &gt; 0 ? typed : 20;
+
+if (cfg.debug) log(state);
+
+const notes = book?.chunks[id]?.notes ?? [];
+const show = notes.length &gt; 0;
+
+let label = "no pages";
+if (n === 1) label = "page";
+if (n &gt; 1) label = "pages";</code></pre>
+    </figure>
+  </div>
+  <p class="prose aside">This repo uses <code>book?.chunks ?? {}</code> in <code>coverage.js</code>, and it reads fine once you know the two operators. That is the point of a list: two operators are learned once, a dozen are a barrier.</p>
+</section>
+
+<!-- 10 -->
+<section class="case" id="names">
+  <div class="case-head">
+    <span class="eyebrow">10</span>
+    <h2>Names from the problem</h2>
+    <div class="tags"><span class="chip">hidden state</span><span class="chip">jumps</span></div>
+  </div>
+  <div class="pair">
+    <figure class="side a">
+      <figcaption><strong>A · Letters and verbs</strong></figcaption>
+<pre><code class="language-javascript">function proc(d, f, t, x) {
+  const r = [];
+  for (const i of d)
+    if (i.p &gt;= f &amp;&amp; i.p &lt;= t &amp;&amp; (!x || i.w === "key")) r.push(i);
+  return r;
+}
+
+proc(notes, 12, 30, true);</code></pre>
+    </figure>
+    <figure class="side b">
+      <figcaption><strong>B · The book's own words</strong></figcaption>
+<pre><code class="language-javascript">/** @param {{keyOnly?: boolean}} [opts] */
+function notesInRange(notes, fromPage, toPage, opts = {}) {
+  return notes.filter((note) =&gt;
+    note.page &gt;= fromPage &amp;&amp;
+    note.page &lt;= toPage &amp;&amp;
+    (!opts.keyOnly || note.weight === "key"));
+}
+
+notesInRange(notes, 12, 30, { keyOnly: true });</code></pre>
+    </figure>
+  </div>
+  <div class="verdict prose">
+    <ul class="plain">
+      <li><strong>Use the domain's words:</strong> page, section, note, recap. A reader who knows the product can then guess what code does.</li>
+      <li><strong>One word per concept.</strong> Worth checking here: the store keys sections as <code>chunks</code> while the UI and docs say "section". A newcomer has to discover that they are the same thing. Either pick one word or say so where the type is defined.</li>
+      <li><strong>Units in the name:</strong> <code>timeoutMs</code>, <code>maxTokens</code>, <code>timeout_s</code>.</li>
+      <li><strong>Booleans as yes/no questions:</strong> <code>isStale</code>, <code>hasNotes</code>.</li>
+      <li><strong>Functions named for what they return</strong> (<code>coverageCells</code>) <strong>or what they do</strong> (<code>renderCoverage</code>), never <code>process</code>, <code>handle</code> or <code>doStuff</code>.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 11 -->
+<section class="case" id="comments">
+  <div class="case-head">
+    <span class="eyebrow">11 · from this repo</span>
+    <h2>Comments that say why</h2>
+    <div class="tags"><span class="chip">hidden state</span></div>
+  </div>
+  <div class="pair">
+    <figure class="side a">
+      <figcaption><strong>A · Repeats the code</strong></figcaption>
+<pre><code class="language-javascript">// set the click handler
+el.onclick = (e) =&gt; { /* ... */ };
+
+// loop over the cells
+cells.forEach((state, i) =&gt; { /* ... */ });
+
+// increment the counter
+count++;</code></pre>
+    </figure>
+    <figure class="side b">
+      <figcaption><strong>B · Says what the code can't</strong><span class="file">viewer/coverage.js</span></figcaption>
+<pre><code class="language-javascript">// Assigned rather than added: this runs on every render, and addEventListener
+// would stack one more handler each time.
+el.onclick = (e) =&gt; { /* ... */ };</code></pre>
+    </figure>
+  </div>
+  <p class="prose verdict">The code already says <em>what</em>. B records a decision that looks wrong at first glance and protects it: without the comment, a well-meaning "cleanup" to <code>addEventListener</code> brings back the bug. The traps list in this repo's CLAUDE.md (pdf.js URLs must be absolute; <code>render()</code> hangs in a hidden tab) is the same practice at project scale.</p>
+</section>
+
+<!-- 12 -->
+<section class="case" id="inputs">
+  <div class="case-head">
+    <span class="eyebrow">12</span>
+    <h2>Every input in the signature</h2>
+    <div class="tags"><span class="chip">hidden state</span></div>
+  </div>
+  <div class="pair">
+    <figure class="side a">
+      <figcaption><strong>A · Module state and mystery flags</strong></figcaption>
+<pre><code class="language-javascript">let currentBook = null;   // set from five different files
+let currentPage = 1;
+
+export function renderRail() {
+  const notes = currentBook.notes.filter((n) =&gt; n.page === currentPage);
+  // ...
+}
+
+render(el, cells, true, false, 3);   // true what? false what?</code></pre>
+    </figure>
+    <figure class="side b">
+      <figcaption><strong>B · Inputs you can see</strong></figcaption>
+<pre><code class="language-javascript">export function renderRail(el, book, page) {
+  const notes = book.notes.filter((n) =&gt; n.page === page);
+  // ...
+}
+
+renderCoverage(el, cells, { current: 3, onPick: openPage });</code></pre>
+    </figure>
+  </div>
+  <p class="prose verdict">In A, the result of <code>renderRail()</code> depends on whoever last wrote <code>currentBook</code>, and the reader can't tell from here. In B the signature lists every dependency. For three or more parameters, or any true/false flag, pass one options object so each value carries its name at the call site.</p>
+</section>
+
+<!-- 13 -->
+<section class="case" id="errors">
+  <div class="case-head">
+    <span class="eyebrow">13</span>
+    <h2>Errors caught where they mean something</h2>
+    <div class="tags"><span class="chip">hidden state</span><span class="chip">nesting</span></div>
+  </div>
+  <div class="pair">
+    <figure class="side a">
+      <figcaption><strong>A · Catch, log, return null</strong></figcaption>
+<pre><code class="language-javascript">async function loadBook(id) {
+  try {
+    const raw = await storage.get(id);
+    try {
+      return JSON.parse(raw);
+    } catch (e) {
+      console.log(e);
+      return null;
+    }
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
+}
+// Three files later: "Cannot read properties of null (reading 'chunks')"</code></pre>
+    </figure>
+    <figure class="side b">
+      <figcaption><strong>B · Let it throw; catch at the button</strong></figcaption>
+<pre><code class="language-javascript">async function loadBook(id) {
+  const raw = await storage.get(id);
+  return JSON.parse(raw);   // throws on corrupt data; the caller reports it
+}
+
+// The boundary: where we can tell the reader something useful.
+mapButton.onclick = async () =&gt; {
+  try {
+    showMap(await loadBook(id));
+  } catch (err) {
+    showStatus(`Couldn't open this book's notes: ${err.message}`);
+  }
+};</code></pre>
+    </figure>
+  </div>
+  <p class="prose verdict">Swallowing an error turns a clear message at the source into a confusing one far away. Catch only where you can do something: show the reader a message, retry, or fall back on purpose.</p>
+</section>
+
+<!-- 14 -->
+<section class="case" id="async">
+  <div class="case-head">
+    <span class="eyebrow">14</span>
+    <h2>async/await over callback pyramids</h2>
+    <div class="tags"><span class="chip">nesting</span><span class="chip">idioms</span></div>
+  </div>
+  <div class="pair">
+    <figure class="side a">
+      <figcaption><strong>A · Nested .then</strong></figcaption>
+<pre><code class="language-javascript">function analyse(pages) {
+  return buildPrompt(pages).then((prompt) =&gt; {
+    return callModel(prompt).then((reply) =&gt; {
+      return parseNotes(reply).then((notes) =&gt; {
+        return saveNotes(notes).then(() =&gt; notes);
+      });
+    });
+  });
+}</code></pre>
+    </figure>
+    <figure class="side b">
+      <figcaption><strong>B · Reads like a recipe</strong></figcaption>
+<pre><code class="language-javascript">async function analyse(pages) {
+  const prompt = await buildPrompt(pages);
+  const reply = await callModel(prompt);
+  const notes = await parseNotes(reply);
+  await saveNotes(notes);
+  return notes;
+}</code></pre>
+    </figure>
+  </div>
+  <p class="prose verdict">Python readers know <code>async</code>/<code>await</code> from <code>asyncio</code>; it is one of the few constructs that looks almost the same in both languages, so lean on it.</p>
+</section>
+
+<!-- 15 -->
+<section class="case" id="locality">
+  <div class="case-head">
+    <span class="eyebrow">15</span>
+    <h2>Keep things next to their only user</h2>
+    <div class="tags"><span class="chip">jumps</span></div>
+  </div>
+  <div class="pair">
+    <figure class="side a">
+      <figcaption><strong>A · Sorted by kind</strong></figcaption>
+<pre><code class="language-plaintext">src/
+  constants/limits.js    MAX_SECTION_PAGES = 99
+  utils/math.js          clamp()
+  utils/strings.js       pagesLabel()
+  features/sections.js   imports all three,
+                         uses each once</code></pre>
+    </figure>
+    <figure class="side b">
+      <figcaption><strong>B · Sorted by use</strong><span class="file">features/sections.js</span></figcaption>
+<pre><code class="language-javascript">// Longest section the Detail button accepts.
+const MAX_SECTION_PAGES = 99;
+
+function pagesLabel(n) {
+  return n === 1 ? "1 page" : `${n} pages`;
+}
+
+// ...the code that uses both, right below</code></pre>
+    </figure>
+  </div>
+  <p class="prose verdict">Folders called <code>utils/</code>, <code>helpers/</code> or <code>constants/</code> group things by what they are, not by what they're for, so reading one feature means opening four files. A value lives beside its only user and moves to a shared module when it gets a second one. This repo's flat <code>viewer/</code> folder, one file per feature, is already close to this.</p>
+</section>
+
+<!-- 16 -->
+<section class="case" id="mutation">
+  <div class="case-head">
+    <span class="eyebrow">16</span>
+    <h2>Don't change what you were handed</h2>
+    <div class="tags"><span class="chip">hidden state</span></div>
+  </div>
+  <div class="pair">
+    <figure class="side a">
+      <figcaption><strong>A · Edits the caller's object</strong></figcaption>
+<pre><code class="language-javascript">function withDefaults(settings) {
+  if (settings.maxTokens == null) settings.maxTokens = 8000;
+  if (settings.preset == null) settings.preset = "general";
+  return settings;
+}
+
+const s = withDefaults(saved);
+// Surprise: `saved` has changed too. It is the same object.</code></pre>
+    </figure>
+    <figure class="side b">
+      <figcaption><strong>B · Returns a new one</strong></figcaption>
+<pre><code class="language-javascript">const DEFAULTS = { maxTokens: 8000, preset: "general" };
+
+function withDefaults(settings) {
+  return { ...DEFAULTS, ...settings };
+}
+
+const s = withDefaults(saved);   // `saved` is untouched</code></pre>
+    </figure>
+  </div>
+  <p class="prose verdict">Python readers know this trap from functions that append to a list you passed in, or pandas' <code>inplace=True</code>. Don't overdo the cure: changing an array you just created inside the same function, as in practice 03, is fine. The rule is about other people's data.</p>
+</section>
+
+<!-- HOW TO -->
+<section class="howto" id="howto">
+  <div class="case-head">
+    <span class="eyebrow">Putting it to work</span>
+    <h2>How to get an AI to write this way</h2>
+  </div>
+  <p class="prose">An AI follows three things, roughly in this order of strength: the code around it, the written rules it is given, and what you ask it to check. Use all three.</p>
+
+  <div class="steps">
+    <div class="step prose">
+      <h3>1. The code nearby is the loudest instruction</h3>
+      <p>Models imitate the files they read. Claude Code's own instructions tell it to write code that reads like the surrounding code. Clean files breed clean copies, and one tangled file breeds tangled copies. So name an exemplar: <em>"write new modules like <code>viewer/coverage.js</code>: a pure function that computes, a thin one that draws."</em> A pointer to a real file carries more than a paragraph of adjectives.</p>
+    </div>
+
+    <div class="step">
+      <h3>2. Write rules a reviewer could check</h3>
+      <p class="prose">"Write clean, readable code" can't be checked, so the model fills it with its own idea of clean, and that idea leans toward more layers. A rule like "no function with one caller unless it is pure and tested" can be checked line by line. Give each rule its reason too, so the model can handle cases the rule didn't foresee. A section like this could go in CLAUDE.md:</p>
+      <div class="snippet">
+        <div class="bar"><span>CLAUDE.md · a draft section</span><button class="copy" type="button" id="copy-rules">Copy</button></div>
+<pre><code class="language-markdown" id="rules-text">## Code style: written for readers from any background
+
+Readers may know Python, functional style or basic OOP, and not modern JS
+idioms. Aim for the fewest concepts per screen. Model file: viewer/coverage.js.
+
+- Call libraries directly. Wrap one only when the wrapper adds a decision
+  (a default, a retry, an error message) AND has two or more callers.
+- Don't split a function into helpers used once. Extract on the second use,
+  or when the piece is pure logic that gets its own test.
+- Functions and plain objects first. A class only for something with a
+  lifecycle (open/close, start/stop). No inheritance without two real variants.
+- Pure computation in one function; DOM, storage and network in another.
+- for...of when building up a result; map/filter for one-step transforms,
+  one step per line; reduce only for sums; no nested ternaries.
+- Allowed idioms: ?. ?? spread. Not: !!x, +str, a || default, cond &amp;&amp; action().
+- Return early instead of nesting; at most three levels deep.
+- Every input in the signature; no module-level mutable state. Three or more
+  parameters, or any boolean flag: pass an options object.
+- Let errors throw; catch only where the reader can be told something.
+- Names from the book's vocabulary, one word per concept; units in names
+  (timeoutMs); booleans as questions (isStale).
+- Comments say why, never what.</code></pre>
+      </div>
+    </div>
+
+    <div class="step">
+      <h3>3. Ask for the review in a reader's terms</h3>
+      <p class="prose">After a change, ask the AI to read its own diff as one of your readers. Any idiom it has to explain is a candidate to simplify. Prompts that work:</p>
+      <div class="prompts">
+        <div class="prompt">Read your diff as a Python analyst who has never written JavaScript. List every line where they would need to look something up.</div>
+        <div class="prompt">For each new function, list its callers. Inline any with a single caller unless it's pure and tested.</div>
+        <div class="prompt">What would this change look like with no new files and no new classes? Show me that version first.</div>
+      </div>
+    </div>
+
+    <div class="step prose">
+      <h3>4. Ask for the plain version first</h3>
+      <p>Abstraction added early is shaped by guesses. Abstraction added when a second real use shows up is shaped by that use. Say so up front: <em>"Write the most direct version. I'll ask for structure when I need it."</em> This matches the line already in this repo's CLAUDE.md: prefer the simplest thing that genuinely works.</p>
+    </div>
+
+    <div class="step prose">
+      <h3>5. Mechanical checks, if you want them</h3>
+      <p>ESLint has rules for some of this (<code>complexity</code>, <code>max-depth</code>, <code>no-nested-ternary</code>, <code>no-param-reassign</code>). The cost is a dev dependency and a config file to look after, and this repo has so far chosen <code>tsc</code> only. The written rules plus a reader-terms review cover most of the same ground without installing anything.</p>
+    </div>
+
+    <div class="step prose">
+      <h3>6. Don't overcorrect</h3>
+      <p>"Fewer functions" is not the goal. A 300-line function that does five unrelated things is as hard to follow as forty tiny ones. The goal is that each function does one thing you could name out loud, and every name a reader meets is worth learning.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p class="eyebrow">The one-line test</p>
+  <p class="test">Could someone who knows only the basics of the language understand this file by reading it top to bottom, without opening another?</p>
+</footer>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>
+  try { if (window.hljs) hljs.highlightAll(); } catch (e) { /* plain text is fine */ }
+  document.getElementById("copy-rules").addEventListener("click", (e) => {
+    const btn = e.currentTarget;
+    const text = document.getElementById("rules-text").innerText;
+    const done = (label) => { btn.textContent = label; setTimeout(() => { btn.textContent = "Copy"; }, 1600); };
+    const selectFallback = () => {
+      const range = document.createRange();
+      range.selectNodeContents(document.getElementById("rules-text"));
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      done("Selected: press Ctrl+C");
+    };
+    try {
+      navigator.clipboard.writeText(text).then(() => done("Copied"), selectFallback);
+    } catch (err) {
+      selectFallback();
+    }
+  });
+</script>

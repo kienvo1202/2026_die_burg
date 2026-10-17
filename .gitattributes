@@ -1,0 +1,35 @@
+# Git guesses whether a file is binary by sniffing its first few KB for null bytes.
+# It can guess wrong: a PDF with none near the start was treated as text, and with
+# core.autocrlf=true (the Windows default) a fresh clone rewrote its line endings and
+# corrupted it. Be explicit rather than relying on the guess.
+
+# Default: normalise text, store LF in the repo.
+* text=auto eol=lf
+
+# Windows-only scripts need CRLF to run correctly.
+*.bat   text eol=crlf
+*.cmd   text eol=crlf
+*.ps1   text eol=crlf
+
+# Binary: never touch.
+*.pdf     binary
+*.png     binary
+*.jpg     binary
+*.jpeg    binary
+*.gif     binary
+*.ico     binary
+*.webp    binary
+*.zip     binary
+*.gz      binary
+*.wasm    binary
+*.ttf     binary
+*.otf     binary
+*.woff    binary
+*.woff2   binary
+*.dll     binary
+*.exe     binary
+*.ex4     binary
+*.ex5     binary
+*.sqlite  binary
+*.parquet binary
+*.xlsx    binary

@@ -1,0 +1,79 @@
+# ---------------------------------------------------------------------------
+# Universal: keep these whatever the stack
+# ---------------------------------------------------------------------------
+
+# Secrets. Ignored in the very first commit, before anyone creates the file:
+# a secret that reaches git history stays there even after it is deleted.
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+*.pfx
+secrets.json
+
+# Scratch space and logs
+tmp/
+*.log
+
+# OS and editor junk
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+
+# Personal Claude Code permissions. The shared .claude/settings.json is committed.
+.claude/settings.local.json
+
+# ---------------------------------------------------------------------------
+# Per stack: uncomment the one you use, delete the rest.
+# Left commented on purpose: an unused pattern can silently hide real files
+# (a Node project with a bin/ folder of scripts would lose it to the .NET rule).
+# ---------------------------------------------------------------------------
+
+# --- .NET / C# ---
+# bin/
+# obj/
+# .vs/
+# *.user
+# *.suo
+# TestResults/
+# *.nupkg
+
+# --- Xcode / iOS / Swift ---
+# DerivedData/
+# xcuserdata/
+# *.xcuserstate
+# build/
+# .build/
+# *.ipa
+# *.dSYM.zip
+# *.mobileprovision
+
+# --- Node / JavaScript ---
+# node_modules/
+# dist/
+# coverage/
+
+# --- Python ---
+# __pycache__/
+# *.pyc
+# .venv/
+# .pytest_cache/
+# .mypy_cache/
+# .ruff_cache/
+# *.egg-info/
+
+# --- MetaTrader / MQL ---
+# *.ex4
+# *.ex5
+
+# ---------------------------------------------------------------------------
+# Project data that must never be published
+# ---------------------------------------------------------------------------
+# TEMPLATE: list folders holding private or licensed data, with the reason.
+# runs/          # run logs containing third-party text
+# data/raw/      # customer data
+# backtests/     # broker tick data, licensed

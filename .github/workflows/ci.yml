@@ -1,0 +1,83 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# TEMPLATE: Replace the placeholder job with ONE of the stack jobs below, then delete
+# the rest. The placeholder fails on purpose: a template CI that shows green while
+# testing nothing is worse than no CI, because you would trust it.
+#
+# Whatever the stack, CI runs the same three kinds of check as your local commands in
+# CLAUDE.md: tests, types/warnings, and (optionally) formatting. Keep the versions here
+# matched to what you run locally, to remove a whole class of "works on my machine".
+
+jobs:
+  placeholder:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "CI not configured yet: pick a stack job in .github/workflows/ci.yml"
+          exit 1
+
+# --- .NET / C# --------------------------------------------------------------
+#  dotnet:
+#    runs-on: ubuntu-latest        # windows-latest if you target WPF/WinForms
+#    steps:
+#      - uses: actions/checkout@v4
+#      - uses: actions/setup-dotnet@v4
+#        with:
+#          dotnet-version: '9.0.x'
+#      - run: dotnet restore
+#      # Warnings as errors: nullable warnings are where null bugs hide.
+#      - run: dotnet build --no-restore -warnaserror
+#      - run: dotnet test --no-build
+#      - run: dotnet format --verify-no-changes
+
+# --- iOS / Swift -------------------------------------------------------------
+#  ios:
+#    # macOS runners count about 10x against free minutes on private repos.
+#    # Consider running only on pull requests, or testing logic in a Swift package
+#    # on ubuntu-latest with `swift test`.
+#    runs-on: macos-latest
+#    steps:
+#      - uses: actions/checkout@v4
+#      - run: >
+#          xcodebuild test
+#          -scheme {{SCHEME}}
+#          -destination 'platform=iOS Simulator,name=iPhone 16'
+#          CODE_SIGNING_ALLOWED=NO
+
+# --- Python ------------------------------------------------------------------
+#  python:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v4
+#      - uses: actions/setup-python@v5
+#        with:
+#          python-version: '3.13'
+#      - run: pip install -r requirements-dev.txt
+#      - run: ruff check .
+#      - run: ruff format --check .
+#      - run: pyright
+#      - run: pytest
+
+# --- Node / JavaScript / TypeScript -----------------------------------------
+#  node:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v4
+#      - uses: actions/setup-node@v4
+#        with:
+#          node-version: '24'
+#      # A glob, not a file name: naming one test file silently skips the rest.
+#      - run: npm test
+#      - run: npx -p typescript@5 tsc --noEmit
+
+# --- Trading: a frozen backtest as a regression test --------------------------
+# Add to whichever job above runs your strategy code. A fixed strategy over fixed
+# data must give the same trades and P&L every time. If it changes, either you meant
+# it (update the expected file in the same PR and say why) or you broke something.
+#      - run: {{BACKTEST_COMMAND}} --data test/fixtures/ticks.csv --out tmp/result.json
+#      - run: diff test/fixtures/expected-result.json tmp/result.json
