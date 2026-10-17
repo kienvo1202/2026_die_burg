@@ -8,7 +8,7 @@ system yet.** Why it is built this way: ADR 0005.
 ## The idea
 
 **An illuminated storybook, read comfortably.** Parchment pages, iron-gall ink, red
-rubrics, a little gold, Fraktur for the grand moments. The Brothers Grimm are the patron
+rubrics, a little gold, carved capitals for the grand moments. The Brothers Grimm are the patron
 saints: they collected the fairy tales *and* began the great German dictionary.
 
 Three principles, in order of priority:
@@ -53,7 +53,7 @@ in both themes, and that the two copies of Candlelight in `tokens.css` are ident
 | `--font-body` | EB Garamond (variable) | Body text and **all German the reader learns from** |
 | `--font-heading` | IM Fell English | Headings |
 | `--font-label` | IM Fell English SC | Labels, speaker names, buttons |
-| `--font-display` | UnifrakturMaguntia (Fraktur) | Brand, level titles, drop caps. **Display only** |
+| `--font-display` | Cinzel Decorative | Brand, level titles, drop caps. **Display only** |
 
 Fonts are self-hosted from `@fontsource` packages and imported once, in
 `src/layouts/Base.astro`. No font is ever loaded from a CDN (offline apps; the German
@@ -82,7 +82,7 @@ Inline SVG, coloured with `currentColor`, so they follow the theme:
 | `Fleuron` | Between sections (via `Divider`) |
 | `Corner` | The four corners of every `Card` |
 | `Tower` | The brand mark; pressed into the wax seal |
-| `Icons.ts` | Listen, candle (to dark), sun (to light) |
+| `Icons.ts` | Listen, moon (to dark), sun (to light) |
 
 The paper grain is an SVG noise filter in a token (`--paper-grain`), not an image.
 
@@ -92,7 +92,7 @@ The paper grain is an SVG noise filter in a token (`--paper-grain`), not an imag
 
 | Component | What it is |
 |---|---|
-| `Initial` | Opening paragraph with an illuminated Fraktur initial. English text only |
+| `Initial` | Opening paragraph with an illuminated initial in the display face |
 | `Divider` | Gilt fleuron between hairlines |
 | `Card` | Vellum card with gilt corners |
 | `Button` | `primary` (one per page: the main action) or `plain`; a link when given `href` |
@@ -120,8 +120,8 @@ The paper grain is an SVG noise filter in a token (`--paper-grain`), not an imag
 
 - **Tokens only.** No hex, `rgb()`, `hsl()` or font name outside `tokens.css`.
   `src/design/token-usage.test.ts` fails the build otherwise.
-- **Fraktur is display only.** Never for German the reader must read, never for body
-  text. Drop caps go on English opening paragraphs.
+- **The display face is for display only**: the brand, level titles and drop caps. Never
+  running text. (Fraktur was tried first and rejected for readability; see ADR 0005.)
 - **Touch targets ≥ `--tap-min`.** Nothing works only on hover.
 - **Every German string is marked `lang="de"`** (the lesson components do it for you).
 - **All audio goes through `speak()`** in `src/lib/speech.ts` (ADR 0006).

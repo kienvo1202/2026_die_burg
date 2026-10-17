@@ -7,9 +7,11 @@ export const ICON_LISTEN = {
   stroke: "M16.2 9 Q18.2 12 16.2 15 M18.8 6.5 Q22.4 12 18.8 17.5",
 };
 
-export const ICON_CANDLE = {
-  fill: "M12 2.5 C14.2 5.6 14.2 7.8 12 9 C9.8 7.8 9.8 5.6 12 2.5 Z M10 10.5 H14 V20 H10 Z",
-  stroke: "M6.5 20.5 H17.5",
+// A crescent moon: "switch to Candlelight (dark)". A candle was tried first, but at
+// icon size it read as the letter "i".
+export const ICON_MOON = {
+  fill: "M20.5 14.6 A8.6 8.6 0 1 1 9.4 3.5 A6.8 6.8 0 0 0 20.5 14.6 Z",
+  stroke: "",
 };
 
 export const ICON_SUN = {

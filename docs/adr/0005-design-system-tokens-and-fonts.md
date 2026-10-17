@@ -53,3 +53,17 @@ component in both themes.
 
 A native (non-WebView) app is started, so tokens need to be shared as data. Or the fonts
 measurably slow the first page on mobile.
+
+## Amendment 2026-10-17: Cinzel Decorative replaces Fraktur
+
+At the design checkpoint Kien judged UnifrakturMaguntia "the most fitting style, and the
+worst to read", even used only for the brand, level titles and drop caps. A drop cap is
+the first letter of the first word on the page; if it has to be deciphered, the page
+starts with a puzzle.
+
+`--font-display` is now **Cinzel Decorative** (self-hosted, weights 400 and 700): Roman
+inscription capitals with swashes, the look of an illuminated initial without the
+unfamiliar letterforms. Kien chose it over IM Fell French Canon (quieter) and Uncial
+Antiqua (more medieval, slower to read). The rest of this decision stands: tokens as the
+single source, self-hosted fonts, and a display face kept to display. Because the new
+face is readable, drop caps are no longer restricted to English text.

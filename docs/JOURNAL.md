@@ -31,3 +31,23 @@ What changed while planning:
 - **Creating the repo** with `gh repo create --template` failed: the template repo wasn't
   marked as a template. Created an empty repo and pushed a clone instead, switching
   `origin` first so nothing could reach the template. Added to the traps in `CLAUDE.md`.
+
+---
+
+## 2026-10-17 — Design checkpoint: Fraktur out
+
+The first design used Fraktur (UnifrakturMaguntia) for the brand, level titles and drop
+caps. In isolation, on the word "Märchen", it looked exactly right. Kien's verdict at the
+checkpoint: the most fitting style and the worst to read. Replaced with Cinzel Decorative
+(ADR 0005, amendment).
+
+**Judge type by reading a paragraph that starts with it, not by looking at one word.** The
+specimen showed the font at its best; the drop cap on a real paragraph showed the cost.
+
+Three smaller things the screenshots caught that no test would have:
+
+- Every SVG ornament rendered page-wide: Astro's default style scoping drops styles for a
+  class passed to a child component. Fixed with `scopedStyleStrategy: "class"`.
+- Astro's HTML compression removed the space between a word and an inline element on the
+  next line ("and <em>name</em>" became "andname"). Fixed with `compressHTML: false`.
+- The candle icon for the dark theme read as the letter "i" at icon size; it is a moon now.

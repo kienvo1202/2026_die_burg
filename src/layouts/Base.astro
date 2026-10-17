@@ -5,7 +5,8 @@ import "@fontsource-variable/eb-garamond/wght-italic.css";
 import "@fontsource/im-fell-english";
 import "@fontsource/im-fell-english/400-italic.css";
 import "@fontsource/im-fell-english-sc";
-import "@fontsource/unifrakturmaguntia";
+import "@fontsource/cinzel-decorative/400.css";
+import "@fontsource/cinzel-decorative/700.css";
 import "../design/tokens.css";
 import "../design/base.css";
 import Tower from "../design/ornaments/Tower.astro";
@@ -105,7 +106,9 @@ const pageTitle = title === SITE_NAME ? SITE_NAME : `${title} · ${SITE_NAME}`;
 
   .brand-name {
     font-family: var(--font-display);
-    font-size: var(--text-xl);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    letter-spacing: 0.04em;
     line-height: 1;
   }
 

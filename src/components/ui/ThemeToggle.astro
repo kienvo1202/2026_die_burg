@@ -3,11 +3,11 @@
 // localStorage; with no choice, the page follows the system setting. The inline
 // script in Base.astro applies a saved choice before the first paint.
 import Icon from "./Icon.astro";
-import { ICON_CANDLE, ICON_SUN } from "../../design/ornaments/Icons.ts";
+import { ICON_MOON, ICON_SUN } from "../../design/ornaments/Icons.ts";
 ---
 
 <button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch theme">
-  <Icon icon={ICON_CANDLE} class="to-dark" />
+  <Icon icon={ICON_MOON} class="to-dark" />
   <Icon icon={ICON_SUN} class="to-light" />
 </button>
 
