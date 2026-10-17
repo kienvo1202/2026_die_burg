@@ -1,0 +1,130 @@
+/*
+ * Die Burg design tokens: the ONLY place colours and fonts are defined.
+ * Components use these custom properties and nothing else (a test enforces it).
+ * See docs/DESIGN_SYSTEM.md for the rules and ADR 0005 for why.
+ *
+ * Two themes:
+ *   Vellum      (light) parchment, iron-gall ink, red rubrics, gold leaf
+ *   Candlelight (dark)  the same book read at night
+ * The dark values appear twice below (system preference, and the manual toggle).
+ * CSS cannot share a block between a media query and a selector; a test checks
+ * the two copies stay identical.
+ */
+
+:root {
+  color-scheme: light;
+
+  /* ---- Colour: Vellum ---------------------------------------------------- */
+  --color-page: #F3E9D2;        /* the parchment */
+  --color-card: #EADBB8;        /* a deeper vellum for cards and callouts */
+  --color-ink: #2A1E14;         /* body text: iron-gall ink */
+  --color-ink-soft: #5A4632;    /* secondary text, translations */
+  --color-rubric: #9B2C20;      /* the red of manuscript headings */
+  --color-lapis: #23466E;       /* lapis-lazuli blue */
+  --color-verdigris: #2F5D3A;   /* copper green */
+  --color-gold: #A67C2E;        /* gold leaf: ornament only, never text */
+  --color-gold-text: #7A5A1E;   /* gold that is dark enough to read */
+  --color-rule: #C9B48A;        /* hairlines and borders */
+  --color-on-rubric: #F3E9D2;   /* text on a rubric background */
+  --color-shadow: rgba(42, 30, 20, 0.22);
+  --color-vignette: rgba(90, 60, 30, 0.10);
+  --color-highlight: rgba(166, 124, 46, 0.28);
+
+  /* Paper grain: an SVG noise filter, tinted to warm brown. No image files. */
+  --paper-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.24 0 0 0 0 0.1 0 0 0 0.09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+
+  /* ---- Colour roles (use these in components) ----------------------------- */
+  --gender-der: var(--color-lapis);
+  --gender-die: var(--color-rubric);
+  --gender-das: var(--color-verdigris);
+  --color-link: var(--color-lapis);
+  --color-focus: var(--color-lapis);
+  --color-heading: var(--color-ink);
+  --color-accent: var(--color-rubric);
+
+  /* ---- Type ---------------------------------------------------------------- */
+  --font-body: "EB Garamond Variable", "EB Garamond", Garamond, Georgia, serif;
+  --font-heading: "IM Fell English", "EB Garamond Variable", Georgia, serif;
+  --font-label: "IM Fell English SC", "IM Fell English", Georgia, serif;
+  --font-display: "UnifrakturMaguntia", "IM Fell English", Georgia, serif;
+
+  /* Fluid sizes: small phone → wide desktop. Garamond has a small x-height,
+     so the body size is larger than a typical sans-serif site. */
+  --text-xs: clamp(0.875rem, 0.85rem + 0.1vw, 0.95rem);
+  --text-sm: clamp(1rem, 0.96rem + 0.15vw, 1.08rem);
+  --text-base: clamp(1.15rem, 1.08rem + 0.35vw, 1.32rem);
+  --text-lg: clamp(1.3rem, 1.2rem + 0.5vw, 1.55rem);
+  --text-xl: clamp(1.55rem, 1.35rem + 0.9vw, 2rem);
+  --text-2xl: clamp(1.95rem, 1.6rem + 1.6vw, 2.8rem);
+  --text-display: clamp(3rem, 2.2rem + 4vw, 5.5rem);
+
+  --leading-body: 1.6;
+  --leading-tight: 1.15;
+  --tracking-label: 0.06em;
+  --measure: 65ch;              /* comfortable reading width */
+
+  /* ---- Space (4px steps, then larger jumps) -------------------------------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+
+  /* ---- Shape --------------------------------------------------------------- */
+  --radius-sm: 2px;             /* manuscripts are mostly square */
+  --radius-md: 4px;
+  --border-hair: 1px solid var(--color-rule);
+  --border-gilt: 3px double var(--color-gold);
+  --shadow-card: 0 1px 0 var(--color-rule), 0 10px 28px -16px var(--color-shadow);
+
+  /* ---- Interaction --------------------------------------------------------- */
+  --tap-min: 44px;              /* smallest touch target */
+  --ease-page: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --duration-quick: 160ms;
+  --duration-page: 420ms;
+}
+
+/* ---- Candlelight: follows the system unless the reader chose Vellum -------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --color-page: #1B1510;
+    --color-card: #261E16;
+    --color-ink: #EADFC8;
+    --color-ink-soft: #B9A88A;
+    --color-rubric: #E0705E;
+    --color-lapis: #8FB0DA;
+    --color-verdigris: #8DBF8F;
+    --color-gold: #D4AF5A;
+    --color-gold-text: #D4AF5A;
+    --color-rule: #4A3B2A;
+    --color-on-rubric: #1B1510;
+    --color-shadow: rgba(0, 0, 0, 0.55);
+    --color-vignette: rgba(0, 0, 0, 0.35);
+    --color-highlight: rgba(212, 175, 90, 0.30);
+    --paper-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.9 0 0 0 0 0.75 0 0 0 0 0.5 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  }
+}
+
+/* ---- Candlelight: chosen with the theme toggle ----------------------------- */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-page: #1B1510;
+  --color-card: #261E16;
+  --color-ink: #EADFC8;
+  --color-ink-soft: #B9A88A;
+  --color-rubric: #E0705E;
+  --color-lapis: #8FB0DA;
+  --color-verdigris: #8DBF8F;
+  --color-gold: #D4AF5A;
+  --color-gold-text: #D4AF5A;
+  --color-rule: #4A3B2A;
+  --color-on-rubric: #1B1510;
+  --color-shadow: rgba(0, 0, 0, 0.55);
+  --color-vignette: rgba(0, 0, 0, 0.35);
+  --color-highlight: rgba(212, 175, 90, 0.30);
+  --paper-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.9 0 0 0 0 0.75 0 0 0 0 0.5 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+}

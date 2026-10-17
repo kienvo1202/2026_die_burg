@@ -1,0 +1,45 @@
+---
+// The closing page of a lesson: what the reader can now do, sealed.
+import Seal from "../ui/Seal.astro";
+
+interface Props {
+  canDo: string[];
+}
+const { canDo } = Astro.props;
+---
+
+<section class="recap" aria-labelledby="recap-title">
+  <Seal size="lg" label="Lesson sealed" />
+  <div>
+    <h2 id="recap-title" class="title">Now you can…</h2>
+    <ul>
+      {canDo.map((item) => <li set:html={item} />)}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .recap {
+    display: flex;
+    gap: var(--space-5);
+    align-items: flex-start;
+    margin: var(--space-7) 0 var(--space-5);
+    padding: var(--space-5);
+    border-top: var(--border-gilt);
+    border-bottom: var(--border-gilt);
+  }
+
+  .title {
+    margin-top: 0;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: var(--space-5);
+  }
+
+  li::marker {
+    content: "❧  ";
+    color: var(--color-rubric);
+  }
+</style>

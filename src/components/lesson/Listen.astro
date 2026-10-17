@@ -1,0 +1,53 @@
+---
+// A small "listen" button that reads the given German text aloud via speak().
+// One click handler serves every button on the page (event delegation), so the
+// script ships once however many buttons there are.
+import Icon from "../ui/Icon.astro";
+import { ICON_LISTEN } from "../../design/ornaments/Icons.ts";
+
+interface Props {
+  text: string;
+}
+const { text } = Astro.props;
+---
+
+<button type="button" class="listen" data-say={text}>
+  <Icon icon={ICON_LISTEN} />
+  <span class="visually-hidden">Listen: <span lang="de">{text}</span></span>
+</button>
+
+<script>
+  import { speak } from "../../lib/speech.ts";
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Element)) return;
+    const button = event.target.closest<HTMLElement>("[data-say]");
+    if (!button) return;
+
+    const result = speak(button.dataset.say ?? "");
+    if (result === "spoken") return;
+    const note = document.querySelector<HTMLElement>("[data-voice-note]");
+    if (note) note.hidden = false;
+  });
+</script>
+
+<style>
+  .listen {
+    display: inline-grid;
+    place-items: center;
+    vertical-align: middle;
+    width: var(--tap-min);
+    height: var(--tap-min);
+    margin: calc(var(--space-3) * -1) 0; /* keep the line height steady inside prose */
+    padding: 0;
+    color: var(--color-gold-text);
+    background: transparent;
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .listen:hover {
+    color: var(--color-rubric);
+  }
+</style>

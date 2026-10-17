@@ -13,7 +13,7 @@ estimates. When something is done it moves to `CHANGELOG.md` and is deleted from
 
 ## Phase 0 — The book
 
-- [ ] **Design system**: tokens (two themes), self-hosted fonts, ornaments, decorative
+- [x] **Design system**: tokens (two themes), self-hosted fonts, ornaments, decorative
       and lesson components, `/design` style guide, `docs/DESIGN_SYSTEM.md`
 - [ ] **Design checkpoint**: screenshots of `/design` at 390px and 1280px, both themes,
       to Kien; adjust until approved
@@ -21,7 +21,8 @@ estimates. When something is done it moves to `CHANGELOG.md` and is deleted from
       previous/next, `/words`, bottom tab bar on phones, theme toggle
 - [ ] **Content model**: levels A1.1–C2.2, briefs schema, lesson frontmatter schema
 - [ ] **Ledger and checker** with tests, including broken fixtures that must fail
-- [ ] **CI**: Node job (test, check, build); push a deliberate failure once
+- [x] **CI**: Node job (test, check, build)
+- [ ] **CI seen red once**: push a deliberate failure on a branch, see it fail, remove it
 - [ ] **Lesson guide** with rubric and No/Yes example pairs
 - [ ] **A1.1 and A1.2 briefs**: titles for all, full briefs for lessons 1–2
 - [ ] **Lessons 1–2**, with a documented German accuracy pass

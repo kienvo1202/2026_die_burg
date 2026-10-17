@@ -1,0 +1,54 @@
+---
+// One line of a Dialogue: who speaks, the German, a listen button, the English.
+import Listen from "./Listen.astro";
+
+interface Props {
+  who: string;
+  de: string;
+  en: string;
+}
+const { who, de, en } = Astro.props;
+---
+
+<li class="line">
+  <span class="who">{who}</span>
+  <span class="text">
+    <span class="line-de"><span lang="de">{de}</span><Listen text={de} /></span>
+    <span class="line-en">{en}</span>
+  </span>
+</li>
+
+<style>
+  .line {
+    display: grid;
+    grid-template-columns: minmax(4.5rem, 7.5rem) 1fr;
+    gap: var(--space-3);
+    padding: var(--space-2) 0;
+  }
+
+  .line + .line {
+    border-top: 1px dotted var(--color-rule);
+  }
+
+  .who {
+    font-family: var(--font-label);
+    font-size: var(--text-sm);
+    letter-spacing: var(--tracking-label);
+    color: var(--color-rubric);
+    padding-top: 0.2em;
+    overflow-wrap: anywhere;
+  }
+
+  .line-en {
+    color: var(--color-ink-soft);
+    font-style: italic;
+    font-size: var(--text-sm);
+  }
+
+  @media (max-width: 30rem) {
+    .line {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+  }
+</style>

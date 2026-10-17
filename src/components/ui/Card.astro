@@ -1,0 +1,64 @@
+---
+// A vellum card with gilt corner flourishes. The base for callouts and tiles.
+import Corner from "../../design/ornaments/Corner.astro";
+
+interface Props {
+  as?: "div" | "section" | "article" | "aside";
+  class?: string;
+}
+const { as: Tag = "div", class: className } = Astro.props;
+---
+
+<Tag class:list={["card", className]}>
+  <Corner class="corner top-left" />
+  <Corner class="corner top-right" />
+  <Corner class="corner bottom-left" />
+  <Corner class="corner bottom-right" />
+  <slot />
+</Tag>
+
+<style>
+  .card {
+    position: relative;
+    background: var(--color-card);
+    border: var(--border-hair);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+    padding: var(--space-6) var(--space-5);
+  }
+
+  .card > :global(:last-child) {
+    margin-bottom: 0;
+  }
+
+  .corner {
+    position: absolute;
+    width: 1.6rem;
+    height: 1.6rem;
+    color: var(--color-gold);
+    pointer-events: none;
+  }
+
+  .top-left {
+    top: var(--space-1);
+    left: var(--space-1);
+  }
+
+  .top-right {
+    top: var(--space-1);
+    right: var(--space-1);
+    transform: scaleX(-1);
+  }
+
+  .bottom-left {
+    bottom: var(--space-1);
+    left: var(--space-1);
+    transform: scaleY(-1);
+  }
+
+  .bottom-right {
+    bottom: var(--space-1);
+    right: var(--space-1);
+    transform: scale(-1, -1);
+  }
+</style>

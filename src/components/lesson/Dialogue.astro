@@ -1,0 +1,92 @@
+---
+// The lesson's scene: a short dialogue. German first; the English stays hidden
+// until the reader asks for it, so they try to understand on their own first.
+//   <Dialogue title="A hostel in Hamburg">
+//     <Line who="Jonas" de="Moin! Ich bin Jonas." en="Hi! I'm Jonas." />
+//   </Dialogue>
+interface Props {
+  title?: string;
+  setting?: string;
+}
+const { title, setting } = Astro.props;
+---
+
+<figure class="dialogue" data-dialogue>
+  {
+    (title || setting) && (
+      <figcaption>
+        {title && <span class="label">{title}</span>}
+        {setting && <span class="setting">{setting}</span>}
+      </figcaption>
+    )
+  }
+  <ol class="lines">
+    <slot />
+  </ol>
+  <button type="button" class="show-english" data-show-english aria-pressed="false">
+    Show the English
+  </button>
+</figure>
+
+<script>
+  for (const button of document.querySelectorAll<HTMLButtonElement>("[data-show-english]")) {
+    button.onclick = () => {
+      const dialogue = button.closest("[data-dialogue]");
+      if (!dialogue) return;
+      const showing = dialogue.classList.toggle("english-shown");
+      button.setAttribute("aria-pressed", String(showing));
+      button.textContent = showing ? "Hide the English" : "Show the English";
+    };
+  }
+</script>
+
+<style>
+  .dialogue {
+    margin: var(--space-6) 0;
+    padding: var(--space-5) var(--space-4) var(--space-4);
+    border-top: var(--border-gilt);
+    border-bottom: var(--border-gilt);
+  }
+
+  figcaption {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-1) var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+
+  .setting {
+    color: var(--color-ink-soft);
+    font-style: italic;
+    font-size: var(--text-sm);
+  }
+
+  .lines {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .show-english {
+    min-height: var(--tap-min);
+    margin-top: var(--space-3);
+    padding: 0 var(--space-4);
+    font-family: var(--font-label);
+    font-size: var(--text-sm);
+    letter-spacing: var(--tracking-label);
+    color: var(--color-ink);
+    background: transparent;
+    border: 1px solid var(--color-ink-soft);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+  }
+
+  .dialogue :global(.line-en) {
+    display: none;
+  }
+
+  .dialogue.english-shown :global(.line-en) {
+    display: block;
+  }
+</style>

@@ -1,0 +1,89 @@
+---
+// Switches between Vellum (light) and Candlelight (dark). The choice is kept in
+// localStorage; with no choice, the page follows the system setting. The inline
+// script in Base.astro applies a saved choice before the first paint.
+import Icon from "./Icon.astro";
+import { ICON_CANDLE, ICON_SUN } from "../../design/ornaments/Icons.ts";
+---
+
+<button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch theme">
+  <Icon icon={ICON_CANDLE} class="to-dark" />
+  <Icon icon={ICON_SUN} class="to-light" />
+</button>
+
+<script>
+  import { THEME_KEY } from "../../lib/theme.ts";
+
+  function currentTheme(): "light" | "dark" {
+    const chosen = document.documentElement.dataset.theme;
+    if (chosen === "light" || chosen === "dark") return chosen;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+
+  function label(button: HTMLElement) {
+    const next = currentTheme() === "dark" ? "Vellum (light)" : "Candlelight (dark)";
+    button.setAttribute("aria-label", `Switch to ${next}`);
+  }
+
+  for (const button of document.querySelectorAll<HTMLElement>("[data-theme-toggle]")) {
+    label(button);
+    button.onclick = () => {
+      const next = currentTheme() === "dark" ? "light" : "dark";
+      document.documentElement.dataset.theme = next;
+      try {
+        localStorage.setItem(THEME_KEY, next);
+      } catch {
+        // Storage blocked (private mode): the switch still works for this page.
+      }
+      label(button);
+    };
+  }
+</script>
+
+<style>
+  .theme-toggle {
+    display: inline-grid;
+    place-items: center;
+    width: var(--tap-min);
+    height: var(--tap-min);
+    padding: 0;
+    color: var(--color-ink);
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+  }
+
+  .theme-toggle:hover {
+    border-color: var(--color-rule);
+  }
+
+  .theme-toggle :global(.icon) {
+    grid-area: 1 / 1;
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+
+  /* Show the icon of the theme the button switches TO. */
+  .theme-toggle :global(.to-light) {
+    display: none;
+  }
+
+  :global(:root[data-theme="dark"]) .theme-toggle :global(.to-light) {
+    display: block;
+  }
+
+  :global(:root[data-theme="dark"]) .theme-toggle :global(.to-dark) {
+    display: none;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :global(:root:not([data-theme="light"])) .theme-toggle :global(.to-light) {
+      display: block;
+    }
+
+    :global(:root:not([data-theme="light"])) .theme-toggle :global(.to-dark) {
+      display: none;
+    }
+  }
+</style>

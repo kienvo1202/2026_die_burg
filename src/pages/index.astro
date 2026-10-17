@@ -1,0 +1,37 @@
+---
+// Placeholder title page until the app shell (Phase 0, PR 3) replaces it.
+import Base from "../layouts/Base.astro";
+import Button from "../components/ui/Button.astro";
+import { SITE_NAME, TAGLINE } from "../lib/site.ts";
+---
+
+<Base title={SITE_NAME}>
+  <section class="title-page">
+    <h1 class="name">{SITE_NAME}</h1>
+    <p class="tagline">{TAGLINE}</p>
+    <p>The book is being bound. In the meantime, see how it will look.</p>
+    <Button variant="primary" href="/design">See the design</Button>
+  </section>
+</Base>
+
+<style>
+  .title-page {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-3);
+    padding: var(--space-8) 0;
+    text-align: center;
+  }
+
+  .name {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: var(--text-display);
+  }
+
+  .tagline {
+    font-family: var(--font-heading);
+    font-style: italic;
+    color: var(--color-ink-soft);
+  }
+</style>

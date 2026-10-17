@@ -97,6 +97,10 @@ const section = { fromPage: 12, toPage: 30, notes: [] };
 ## Commands
 
 ```bash
-npm test                    # vitest run: discovers every *.test.ts, never one named file
+npm test                    # node --test with a glob: every *.test.ts, never one named file
 npm run check               # astro check (TypeScript strict, including .astro files) + lesson checker
 ```
+
+Tests use Node's built-in runner (`node:test`, `node:assert/strict`) and run the `.ts`
+files directly: Node strips the types. So imports between our own files say `.ts`
+(`import { speak } from "./speech.ts"`), which `tsconfig.json` allows.

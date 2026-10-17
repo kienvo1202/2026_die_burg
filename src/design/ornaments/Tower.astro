@@ -1,0 +1,18 @@
+---
+// The Burg's tower: the brand mark, and the impression in the wax seal.
+// Door and arrow-slit are cut out (evenodd), so whatever is behind shows through.
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<svg class={className} viewBox="16 14 16 19" aria-hidden="true" focusable="false">
+  <path
+    fill="currentColor"
+    fill-rule="evenodd"
+    d="M17 32 V15 H19.5 V17 H20.8 V15 H23.3 V17 H24.7 V15 H27.2 V17 H28.5 V15 H31 V32 Z
+       M22 32 V27.5 A2 2 0 0 1 26 27.5 V32 Z
+       M23.4 20.5 H24.6 V23.8 H23.4 Z"
+  ></path>
+</svg>

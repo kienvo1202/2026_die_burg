@@ -58,7 +58,7 @@ what new fact changes it. The ones most likely to be re-proposed:
 
 ```bash
 npm run dev              # dev server on http://127.0.0.1:4321
-npm test                 # every test (vitest discovers *.test.ts)
+npm test                 # every test: node --test over src/ and scripts/ (a glob)
 npm run check            # types (astro check) + lesson checker
 npm run build            # static site into dist/
 npm run preview          # serve dist/ on http://127.0.0.1:4321

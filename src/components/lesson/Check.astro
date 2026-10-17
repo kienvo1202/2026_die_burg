@@ -1,0 +1,62 @@
+---
+// A self-check: a question, with the answer behind a tap. Built on <details>, so it
+// works without JavaScript and screen readers announce it as expandable.
+//   <Check q="It's 9 a.m. What do you say?">Guten Morgen!</Check>
+interface Props {
+  q: string;
+}
+const { q } = Astro.props;
+---
+
+<details class="check">
+  <summary>
+    <span class="q"><Fragment set:html={q} /></span>
+    <span class="hint label" aria-hidden="true">Reveal</span>
+  </summary>
+  <div class="answer"><slot /></div>
+</details>
+
+<style>
+  .check {
+    margin: var(--space-3) 0;
+    background: var(--color-card);
+    border: var(--border-hair);
+    border-radius: var(--radius-md);
+  }
+
+  summary {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    min-height: var(--tap-min);
+    padding: var(--space-3) var(--space-4);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .q {
+    flex: 1;
+  }
+
+  .hint {
+    font-size: var(--text-xs);
+  }
+
+  .check[open] .hint {
+    visibility: hidden;
+  }
+
+  .answer {
+    padding: 0 var(--space-4) var(--space-3);
+    border-top: 1px dotted var(--color-rule);
+    padding-top: var(--space-3);
+  }
+
+  .answer > :global(:last-child) {
+    margin-bottom: 0;
+  }
+</style>

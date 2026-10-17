@@ -1,0 +1,43 @@
+---
+// "Go deeper": optional depth for the curious, closed by default so the main read
+// stays one sitting. Never put the lesson's core idea in here.
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+---
+
+<details class="deeper">
+  <summary>
+    <span class="label">Go deeper</span>
+    <span class="title">{title}</span>
+  </summary>
+  <div class="body"><slot /></div>
+</details>
+
+<style>
+  .deeper {
+    margin: var(--space-5) 0;
+    border-left: 1px solid var(--color-gold);
+    padding-left: var(--space-4);
+  }
+
+  summary {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-1) var(--space-3);
+    min-height: var(--tap-min);
+    padding: var(--space-2) 0;
+    cursor: pointer;
+  }
+
+  .title {
+    font-family: var(--font-heading);
+    font-style: italic;
+  }
+
+  .body {
+    padding-bottom: var(--space-2);
+  }
+</style>
