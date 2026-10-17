@@ -15,12 +15,11 @@ estimates. When something is done it moves to `CHANGELOG.md` and is deleted from
 
 - [x] **Design system**: tokens (two themes), self-hosted fonts, ornaments, decorative
       and lesson components, `/design` style guide, `docs/DESIGN_SYSTEM.md`
-- [ ] **Design checkpoint**: screenshots of `/design` at 390px and 1280px, both themes,
-      to Kien; adjust until approved
-- [ ] **App shell**: title page, course map, lesson page with section progress and
+- [x] **Design checkpoint**: approved with one change (Fraktur → Cinzel Decorative)
+- [x] **App shell**: title page, course map, lesson page with reading progress and
       previous/next, `/words`, bottom tab bar on phones, theme toggle
-- [ ] **Content model**: levels A1.1–C2.2, briefs schema, lesson frontmatter schema
-- [ ] **Ledger and checker** with tests, including broken fixtures that must fail
+- [x] **Content model**: levels A1.1–C2.2, briefs schema, lesson frontmatter schema
+- [x] **Ledger and checker** with tests, including broken fixtures that must fail
 - [x] **CI**: Node job (test, check, build)
 - [ ] **CI seen red once**: push a deliberate failure on a branch, see it fail, remove it
 - [ ] **Lesson guide** with rubric and No/Yes example pairs

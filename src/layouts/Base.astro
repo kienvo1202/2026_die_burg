@@ -1,5 +1,7 @@
 ---
-// The frame every page sits in: fonts, tokens, theme, and the brand header.
+// The frame every page sits in: fonts, tokens, theme, navigation and footer.
+// Phones get a bottom tab bar (the pattern the Capacitor app will keep);
+// wider screens get links in the header.
 import "@fontsource-variable/eb-garamond";
 import "@fontsource-variable/eb-garamond/wght-italic.css";
 import "@fontsource/im-fell-english";
@@ -10,7 +12,9 @@ import "@fontsource/cinzel-decorative/700.css";
 import "../design/tokens.css";
 import "../design/base.css";
 import Tower from "../design/ornaments/Tower.astro";
+import Icon from "../components/ui/Icon.astro";
 import ThemeToggle from "../components/ui/ThemeToggle.astro";
+import { ICON_BOOK, ICON_QUILL } from "../design/ornaments/Icons.ts";
 import { SITE_NAME } from "../lib/site.ts";
 import { THEME_KEY } from "../lib/theme.ts";
 
@@ -20,6 +24,11 @@ interface Props {
 }
 const { title, description = "A German course you read, one lesson at a time." } = Astro.props;
 const pageTitle = title === SITE_NAME ? SITE_NAME : `${title} · ${SITE_NAME}`;
+
+// Which section of the book we are in, for the "current page" marker.
+const path = Astro.url.pathname;
+const section = path === "/" ? "home" : path.startsWith("/words") ? "words" : path.startsWith("/course") || path.startsWith("/lessons") ? "course" : "";
+const current = (name: string) => (section === name ? "page" : undefined);
 ---
 
 <!doctype html>
@@ -46,12 +55,37 @@ const pageTitle = title === SITE_NAME ? SITE_NAME : `${title} · ${SITE_NAME}`;
         <Tower class="brand-mark" />
         <span class="brand-name">{SITE_NAME}</span>
       </a>
-      <slot name="nav" />
+      <nav class="top-nav" aria-label="Main">
+        <a href="/course" aria-current={current("course")}>Course</a>
+        <a href="/words" aria-current={current("words")}>Words</a>
+      </nav>
       <ThemeToggle />
     </header>
+
     <main id="main" class="page-turn">
       <slot />
     </main>
+
+    <footer class="colophon">
+      <p>Your progress is saved on this device only.</p>
+      <p><a href="/design">How this book is designed</a></p>
+    </footer>
+
+    <nav class="tab-bar" aria-label="Main">
+      <a href="/" aria-current={current("home")}>
+        <Tower class="tab-icon tower" />
+        <span>Home</span>
+      </a>
+      <a href="/course" aria-current={current("course")}>
+        <Icon icon={ICON_BOOK} class="tab-icon" />
+        <span>Course</span>
+      </a>
+      <a href="/words" aria-current={current("words")}>
+        <Icon icon={ICON_QUILL} class="tab-icon" />
+        <span>Words</span>
+      </a>
+    </nav>
+
     <p class="voice-note" role="status" hidden data-voice-note>
       Your device has no German voice installed, so listen buttons may sound wrong or stay
       silent. The text works the same.
@@ -61,8 +95,8 @@ const pageTitle = title === SITE_NAME ? SITE_NAME : `${title} · ${SITE_NAME}`;
 
 <style>
   body {
-    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom)
-      env(safe-area-inset-left);
+    --tab-bar-height: 3.75rem;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left);
   }
 
   .skip-link {
@@ -112,17 +146,110 @@ const pageTitle = title === SITE_NAME ? SITE_NAME : `${title} · ${SITE_NAME}`;
     line-height: 1;
   }
 
+  .top-nav {
+    display: none;
+    gap: var(--space-2);
+  }
+
+  .top-nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-min);
+    padding: 0 var(--space-3);
+    font-family: var(--font-label);
+    letter-spacing: var(--tracking-label);
+    color: var(--color-ink);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+  }
+
+  .top-nav a[aria-current="page"] {
+    color: var(--color-rubric);
+    border-bottom-color: var(--color-rubric);
+  }
+
   main {
     max-width: 72rem;
     margin: 0 auto;
-    padding: var(--space-5) var(--space-4) var(--space-8);
+    padding: var(--space-5) var(--space-4) var(--space-7);
+  }
+
+  .colophon {
+    max-width: 72rem;
+    margin: 0 auto;
+    /* leave room for the tab bar on phones */
+    padding: var(--space-5) var(--space-4)
+      calc(var(--tab-bar-height) + var(--space-5) + env(safe-area-inset-bottom));
+    border-top: var(--border-hair);
+    font-size: var(--text-sm);
+    color: var(--color-ink-soft);
+    text-align: center;
+  }
+
+  .colophon p {
+    margin: 0 0 var(--space-1);
+  }
+
+  .tab-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding-bottom: env(safe-area-inset-bottom);
+    background: var(--color-card);
+    border-top: var(--border-gilt);
+    box-shadow: var(--shadow-card);
+  }
+
+  .tab-bar a {
+    display: grid;
+    justify-items: center;
+    align-content: center;
+    gap: 2px;
+    min-height: var(--tab-bar-height);
+    font-family: var(--font-label);
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-label);
+    color: var(--color-ink-soft);
+    text-decoration: none;
+  }
+
+  .tab-bar a[aria-current="page"] {
+    color: var(--color-rubric);
+  }
+
+  .tab-bar :global(.tab-icon) {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .tab-bar :global(.tower) {
+    width: 1.25rem;
+  }
+
+  @media (min-width: 48rem) {
+    .top-nav {
+      display: flex;
+    }
+
+    .tab-bar {
+      display: none;
+    }
+
+    .colophon {
+      padding-bottom: var(--space-6);
+    }
   }
 
   .voice-note {
     position: fixed;
     left: var(--space-4);
     right: var(--space-4);
-    bottom: calc(var(--space-4) + env(safe-area-inset-bottom));
+    bottom: calc(var(--tab-bar-height) + var(--space-3) + env(safe-area-inset-bottom));
+    z-index: 6;
     max-width: 32rem;
     margin: 0 auto;
     padding: var(--space-3) var(--space-4);
@@ -131,5 +258,11 @@ const pageTitle = title === SITE_NAME ? SITE_NAME : `${title} · ${SITE_NAME}`;
     border: var(--border-hair);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-card);
+  }
+
+  @media (min-width: 48rem) {
+    .voice-note {
+      bottom: var(--space-4);
+    }
   }
 </style>

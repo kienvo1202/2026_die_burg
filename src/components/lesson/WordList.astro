@@ -17,7 +17,7 @@ const { words, title = "New words" } = Astro.props;
   <ul>
     {
       words.map((word) => (
-        <li class:list={["word", word.article]}>
+        <li class:list={["word", word.article]} data-kind={word.article ?? word.pos}>
           <span class="de" lang="de">
             {word.article && <span class="article">{word.article}</span>}
             <span class="lemma">{word.de}</span>
