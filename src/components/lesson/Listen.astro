@@ -30,13 +30,16 @@ const { text } = Astro.props;
 </script>
 
 <style>
+  /* The button is only as wide as its icon, so punctuation after it sits close, as
+     after a word. An invisible ::after extends the tap area to at least --tap-min. */
   .listen {
+    position: relative;
     display: inline-grid;
     place-items: center;
-    vertical-align: middle;
-    width: var(--tap-min);
-    height: var(--tap-min);
-    margin: calc(var(--space-3) * -1) 0; /* keep the line height steady inside prose */
+    vertical-align: -0.2em;
+    width: 1.5em;
+    height: 1.5em;
+    margin: 0 0.1em 0 0.25em;
     padding: 0;
     color: var(--color-gold-text);
     background: transparent;
@@ -45,14 +48,18 @@ const { text } = Astro.props;
     cursor: pointer;
   }
 
-  .listen:hover {
-    color: var(--color-rubric);
+  .listen::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: var(--tap-min);
+    height: var(--tap-min);
+    transform: translate(-50%, -50%);
   }
 
-  /* in table cells space is tight: a smaller target, still easy to tap */
-  :global(td) .listen {
-    width: 2.25rem;
-    height: 2.25rem;
+  .listen:hover {
+    color: var(--color-rubric);
   }
 </style>
 
