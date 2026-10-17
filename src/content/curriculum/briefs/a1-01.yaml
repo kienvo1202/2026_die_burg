@@ -1,0 +1,79 @@
+# Brief for lesson a1-01. What the lesson must teach, and must not teach yet.
+# Read with docs/LESSON_GUIDE.md.
+
+canDo: Greet someone at any time of day, say your name, and ask theirs.
+
+scene:
+  place: A hostel in Hamburg
+  situation: >
+    Check-in in the early evening, then breakfast the next morning at a shared table.
+    Two greetings, two registers: the hostel receptionist (du) and an older guest from
+    Munich (Sie), who greets with "Grüß Gott" in the far north.
+  characters:
+    - { name: Jonas, who: "hostel receptionist, mid-twenties, from Hamburg", register: du }
+    - { name: Aylin, who: "traveller, late twenties, the reader's stand-in", register: du }
+    - { name: Herr Huber, who: "guest from Munich, about sixty", register: Sie }
+
+coreInsight: >
+  German asks HOW you are called, not WHAT your name is: "Wie heißt du?". The verb
+  heißen ("to be called") is a word English once had and lost: "hight", as in Byron's
+  "Childe Harold was he hight". German is English's close cousin, and many words that
+  look strange are old English words German kept. Two ways to say your name: "Ich heiße
+  Aylin" and "Ich bin Aylin". Show the ich / du / Sie forms of sein and heißen in one
+  small table, and point out (without teaching it yet) that the endings change with the
+  person: lesson 2's idea.
+
+notYet:
+  - verb endings as a system (lesson 2)
+  - er / sie / es, wir, ihr, plural sie
+  - possessives (mein, dein, Ihr)
+  - articles and gender beyond der Herr / die Frau as titles (lesson 4)
+  - yes/no question word order
+  - the word aus, and where people come from (lesson 2)
+
+introducesGrammar:
+  - sein-ich-du-sie
+  - heissen-ich-du-sie
+  - w-question-wie
+
+chunks:
+  - { de: "Wie heißt du?", literal: "How are-called you?", means: "What's your name? (to a friend)" }
+  - { de: "Wie heißen Sie?", literal: "How are-called you (polite)?", means: "What's your name? (polite)" }
+  - { de: "Freut mich!", literal: "(It) pleases me!", means: "Nice to meet you!" }
+  - { de: "Und Sie?", literal: "And you (polite)?", means: "And you?" }
+
+newWordBudget: 24
+
+soundSpotlight: >
+  ei and ie: say the English name of the SECOND letter. ei = "eye" (heißen, Wiedersehen
+  has both), ie = "ee" (Sie, wie). Also ß = a sharp "ss", never a B.
+
+cultureNote: >
+  Greetings change by time of day and by region: Moin (north, any hour), Grüß Gott and
+  Servus (Bavaria, Austria), Grüezi (Switzerland). Germans greet the room when they walk
+  into a small shop or a doctor's waiting room. In formal settings people introduce
+  themselves with their full name ("Ich heiße Franz Huber.") and are addressed as Herr / Frau plus
+  surname. Hostels, students and young people use du at once.
+
+traps:
+  - '"Gute Nacht" is a goodbye (bedtime, or leaving late at night), never a hello; arriving at night is "Guten Abend".'
+  - 'ß is a sharp s, not B: heißen sounds like "HY-sen".'
+  - '"Was ist dein Name?" is understood but sounds translated from English. People ask "Wie heißt du?".'
+  - 'Sie (polite you) always has a capital S, even mid-sentence.'
+
+selfCheckIdeas:
+  - choose the right greeting for a time and place (bakery at 8 a.m., restaurant at 7 p.m., Munich)
+  - ask a flatmate's name, then an older stranger's
+  - say your name two ways
+  - reply to "Freut mich!"
+  - when "Gute Nacht" is right
+  - 'which word rhymes with "eye": Sie or heißen?'
+
+yourTurn:
+  prompt: >
+    You arrive at a hostel in Hamburg in the evening. Greet the receptionist, say your
+    name, ask theirs, and react when they tell you.
+  modelNotes: >
+    Moin! / Guten Abend! + Ich heiße … / Ich bin … + Wie heißt du? + Freut mich!
+    Checklist: greeting fits the time and place; heiße ends in -e; "wie", not "was";
+    du for hostel staff.

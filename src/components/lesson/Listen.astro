@@ -9,12 +9,10 @@ interface Props {
   text: string;
 }
 const { text } = Astro.props;
----
 
-<button type="button" class="listen" data-say={text}>
-  <Icon icon={ICON_LISTEN} />
-  <span class="visually-hidden">Listen: <span lang="de">{text}</span></span>
-</button>
+// The button comes last in this file, with no newline after it: anything after it would
+// render as a space before the punctuation that follows a listen button in prose.
+---
 
 <script>
   import { speak } from "../../lib/speech.ts";
@@ -50,4 +48,15 @@ const { text } = Astro.props;
   .listen:hover {
     color: var(--color-rubric);
   }
+
+  /* in table cells space is tight: a smaller target, still easy to tap */
+  :global(td) .listen {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
 </style>
+
+<button type="button" class="listen" data-say={text}>
+  <Icon icon={ICON_LISTEN} />
+  <span class="visually-hidden">Listen: <span lang="de">{text}</span></span>
+</button>

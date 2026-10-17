@@ -24,13 +24,10 @@ instead.
 
 ## Now
 
-**Phase 0: the book.** Four PRs, in order:
-
-1. `docs/project-setup`: these docs and the ADRs.
-2. `feat/design-system`: the look (tokens, fonts, ornaments, components, `/design`
-   style guide). Stops for Kien's approval before anything is built on it.
-3. `feat/app-shell`: pages, navigation, content model, ledger, checker, CI.
-4. `content/lessons-01-02`: lesson guide, A1 briefs, lessons 1–2, the write-lesson skill.
+**Phase 0: the book.** Built in four stacked PRs (docs, design system, app shell,
+lessons 1–2). Design approved (with Cinzel Decorative replacing Fraktur), CI seen red
+once. **What remains is Kien's read:** lessons 1–2 on a phone, in one sitting, scored
+against the rubric in `docs/LESSON_GUIDE.md`. That read closes exit criterion 2.
 
 ## Next
 

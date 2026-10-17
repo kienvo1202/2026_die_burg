@@ -12,6 +12,13 @@ Write each entry for the reader of the course, not for the person who built it.
 
 ## Unreleased
 
+### Added: the first two lessons
+- **Lesson 1, Hallo!** Greet anyone at any time of day, say your name and ask theirs, and
+  find out why Germans ask *how* you are called.
+- **Lesson 2, Where are you from?** Say where you are from, where you live and what you
+  speak, and discover the sentence English and German once said word for word.
+- Your dictionary now has their 46 words.
+
 ### Added: the book's structure
 - A title page with a **Begin / Continue** button that remembers where you were.
 - The **course map**: twelve levels from A1 to C2, every planned lesson, with a wax seal

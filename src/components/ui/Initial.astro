@@ -2,11 +2,19 @@
 // An opening paragraph with an illuminated initial: the first letter set large in the
 // display face (Cinzel Decorative), rubric red, in a gilt-framed box. The letter stays
 // part of the text, so screen readers and search read the word normally.
+//
+// A <div>, not a <p>: in MDX the slot arrives already wrapped in its own <p>, and a <p>
+// inside a <p> is invalid HTML (the browser splits it and the initial is lost).
+// ::first-letter on the div reaches the first letter of its first paragraph either way.
 ---
 
-<p class="initial"><slot /></p>
+<div class="initial"><slot /></div>
 
 <style>
+  .initial {
+    margin-bottom: var(--space-4);
+  }
+
   .initial::first-letter {
     float: left;
     font-family: var(--font-display);

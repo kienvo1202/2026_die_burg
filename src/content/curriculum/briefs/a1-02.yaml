@@ -1,0 +1,79 @@
+# Brief for lesson a1-02. What the lesson must teach, and must not teach yet.
+# Read with docs/LESSON_GUIDE.md.
+
+canDo: Say where you're from, where you live and which languages you speak, and ask others.
+
+scene:
+  place: A German language school in Leipzig
+  situation: >
+    First morning of a new course. The teacher introduces herself and asks a student
+    where he is from (Sie). In the coffee break two students talk (du) and discover they
+    both speak only a little German.
+  characters:
+    - { name: Frau Schneider, who: "the teacher, forties, from Leipzig", register: Sie }
+    - { name: Diego Ruiz, who: "student from Puebla, Mexico", register: Sie }
+    - { name: Hana, who: "student from Osaka, Japan", register: du }
+
+coreInsight: >
+  The verb's ending tells you who is doing it: ich komm-e, du komm-st, Sie komm-en.
+  English lost almost all of its endings, but it used to have this one: "thou comest" is
+  "du kommst". Because the ending carries the person, a reader can build the ich / du /
+  Sie forms of most verbs from the infinitive: wohnen → ich wohne, du wohnst, Sie wohnen.
+  Then du vs Sie as a decision the reader will face daily: who gets which, and that the
+  ending changes with it. Recycle sein and heißen from lesson 1 as the two irregulars
+  ("du heißt", not "heißst", because the stem already ends in ß).
+
+notYet:
+  - er / sie / es, wir, ihr, plural sie (and that Sie is grammatically "they")
+  - the vowel change in "du sprichst" as a rule (teach it as a chunk)
+  - articles and noun gender (lesson 4)
+  - yes/no question word order as a rule (lesson 13); "Sprechen Sie Englisch?" is a chunk
+  - 'countries with an article in the dative ("aus der Schweiz"): a chunk only'
+
+introducesGrammar:
+  - present-tense-endings
+  - w-question-wo-woher
+  - aus-in-places
+
+chunks:
+  - { de: "Woher kommst du?", literal: "Where-from come you?", means: "Where are you from?" }
+  - { de: "Sprechen Sie Englisch?", literal: "Speak you (polite) English?", means: "Do you speak English?", explainedIn: a1-13 }
+  - { de: "…, oder?", literal: "…, or?", means: "…, right?" }
+  - { de: "Ich spreche ein bisschen Deutsch.", literal: "I speak a little-bit German.", means: "I speak a little German." }
+
+newWordBudget: 26
+
+soundSpotlight: >
+  The two ch sounds. After a, o, u and au it is the throaty "ach" sound (auch, acht).
+  Everywhere else (after i, e, ü, ö, ä, consonants, and in -ich) it is the soft "ich"
+  sound, like a whispered "h" in "huge" (ich, sprechen, natürlich, Österreich).
+
+cultureNote: >
+  du vs Sie in practice: Sie with strangers, shop staff, officials, older people and at
+  work unless offered du; du with friends, family, children, fellow students, young
+  people, online, and in many modern workplaces. When unsure, use Sie; the older or more
+  senior person offers du. German is spoken in Germany, Austria, Switzerland (beside
+  French, Italian and Romansh), Liechtenstein, Luxembourg, and South Tyrol in Italy.
+
+traps:
+  - '"wo" is where, "woher" is where FROM. "Wo kommst du?" is wrong.'
+  - 'Learners copy the ending of the pronoun they last heard: "du kommen". The ending must match the person.'
+  - '"Mich auch!" answers "Freut mich!"; "Ich auch!" answers a sentence about "ich".'
+  - 'Most countries take no article (aus Mexiko), but a few do: "aus der Schweiz", "aus der Türkei", "aus den USA". Learn those as chunks.'
+
+selfCheckIdeas:
+  - fill in the ending (du wohn__, Sie komm__, ich sprech__)
+  - wo or woher
+  - ask a fellow student vs an older stranger where they are from
+  - Ich auch vs Mich auch
+  - ach-sound or ich-sound in auch / natürlich
+  - 'build a sentence: I come from Austria and live in Leipzig'
+
+yourTurn:
+  prompt: >
+    First morning of a German course. Introduce yourself to the class: your name, where
+    you are from, where you live now, and which languages you speak.
+  modelNotes: >
+    Hallo! Ich heiße … Ich komme aus … und ich wohne jetzt in … Ich spreche … und ein
+    bisschen Deutsch. Checklist: every ich-verb ends in -e; aus for where you're from,
+    in for where you live; ein bisschen.

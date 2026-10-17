@@ -51,3 +51,62 @@ Three smaller things the screenshots caught that no test would have:
 - Astro's HTML compression removed the space between a word and an inline element on the
   next line ("and <em>name</em>" became "andname"). Fixed with `compressHTML: false`.
 - The candle icon for the dark theme read as the letter "i" at icon size; it is a moon now.
+
+---
+
+## 2026-10-17 — Lessons 1–2, and the two accuracy passes
+
+Wrote lessons 1 (*Hallo!*) and 2 (*Where are you from?*) to the new lesson guide, then
+had an independent reviewer (a separate AI session that hadn't written them) check every
+German string, gloss and claim.
+
+**The reviewer found two outright errors my own pass missed.**
+
+1. Lesson 2 said "only the du-form changes its vowel" (*du sprichst*). True of ich/du/Sie,
+   false of German: *er spricht* changes too. A learner would have had to unlearn it.
+2. Lesson 1 pointed at "the second column" of a table whose second column was the other
+   verb.
+
+And fifteen doubtful points, all applied. The main ones:
+
+- *Gute Nacht* is also a late-night goodbye.
+- *Grüß Gott* is southern Germany, not just Bavaria.
+- "Huber. Franz Huber." was the James Bond formula, not normal usage.
+- *Wo kommst du her?* is good German, so it needed mentioning next to the
+  "Wo kommst du?" warning.
+- Belgium is German-speaking too.
+- "Almost every verb" became "most verbs".
+- ß is a sharp s, not a "double" one.
+
+**A claim that is true of the three forms on the page can still be false of the
+language.** Write rules that will survive the next lesson.
+
+Verified by both passes:
+- every article and plural (der Herr, die Frau, die Schweiz);
+- every verb form;
+- every dialogue line;
+- the Byron line ("Childe Harold was he hight", 1812);
+- Job 1:7 ("Whence comest thou?");
+- the Angles and Angeln;
+- the gh/ch and y/g correspondences;
+- the ich/ach rule.
+
+Not verified:
+- that Moin is said "even at midnight" (widely reported, anecdotal);
+- whether Old English asked names with "how" (the claim was removed instead).
+
+Rubric, my scores before Kien's read (1–5):
+
+| | Hook | Insight | Usability | Accuracy | Load | Recycling | Self-check |
+|---|---|---|---|---|---|---|---|
+| Lesson 1 | 4 | 5 | 5 | 4 | 4 | n/a | 5 |
+| Lesson 2 | 4 | 5 | 5 | 4 | 4 | 5 | 5 |
+
+Accuracy stays at 4 until a native speaker has read them. Load is 4 because both lessons
+are at the long end of a sitting: three scenes in lesson 1, twelve self-checks in
+lesson 2. **The verdict is Kien's read on a phone, not these numbers.**
+
+Also learned, the hard way: `git revert -q` isn't a valid option. The revert failed, and
+the `git commit --amend` chained after it reworded the *wrong* commit. Only the rejected
+push saved it from reaching GitHub. **Never chain `--amend` (or anything that rewrites)
+after a command that might have failed: run it, look, then amend.**

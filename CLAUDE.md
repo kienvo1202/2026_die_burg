@@ -62,16 +62,19 @@ npm test                 # every test: node --test over src/ and scripts/ (a glo
 npm run check            # types (astro check) + lesson checker
 npm run build            # static site into dist/
 npm run preview          # serve dist/ on http://127.0.0.1:4321
+node scripts/ledger-report.ts a1-03   # what the reader knows before lesson a1-03
 ```
 
 No formatter yet: match the surrounding code.
 
 ## Writing lessons
 
-Use the `write-lesson` skill (`/write-lesson a1-03`). It reads `docs/LESSON_GUIDE.md`,
-the lesson's brief and the ledgers of what the reader already knows. Never write a
-lesson without its brief: the brief is where the curriculum decides what the lesson
-teaches and, as importantly, what it must not teach yet.
+Use the `write-lesson` skill (`/write-lesson a1-03`, in `.claude/skills/write-lesson/`).
+It reads `docs/LESSON_GUIDE.md`, the lesson's brief and the ledger of what the reader
+already knows, then runs two German accuracy passes. Never write a lesson without its
+brief: the brief is where the curriculum decides what the lesson teaches and, as
+importantly, what it must not teach yet. Kien reviews new briefs before lessons are
+written from them.
 
 ## Talking with Kien
 
@@ -132,6 +135,15 @@ These came from real mistakes. Each one cost something once.
   app work offline
 - **Android's WebView has no reliable speech synthesis.** All audio goes through
   `speak()` in `src/lib/speech.ts`, so the app can swap in a native plugin in one place
+- **Astro styles and whitespace.** A class passed to a child component is only styled
+  because `scopedStyleStrategy: "class"`; whitespace survives because `compressHTML: false`
+  (compression ate the space in "and <em>name</em>"). And anything after the last element
+  of an inline component (even a newline) renders as a space: `Listen.astro` ends on its
+  `</button>`
+- **In MDX, a component's children arrive wrapped in `<p>`** when written on their own
+  lines. Never wrap a slot in `<p>` (`Initial.astro` uses a `<div>`)
+- **YAML list items containing `: ` or starting with a quote must be quoted whole**
+  (`- 'which rhymes with "eye": Sie or heißen?'`). The checker names the file if not
 
 ## Current state
 
