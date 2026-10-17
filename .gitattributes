@@ -33,3 +33,6 @@
 *.sqlite  binary
 *.parquet binary
 *.xlsx    binary
+
+# The original lesson plan is kept byte-for-byte as it arrived (CRLF, BOM and all).
+docs/source/** -text

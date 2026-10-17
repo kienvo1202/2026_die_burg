@@ -1,11 +1,8 @@
-# What the user gets, and how we know it's worth it
+# What the reader gets, and how we know it's worth it
 
-This is the reference that user-facing features are built against. When a new idea comes
-up ("a dashboard!", "alerts!"), it is placed and judged here **before** any code is
+This is the reference that features and lessons are built against. When a new idea comes
+up ("streaks!", "a placement test!"), it is placed and judged here **before** any code is
 written.
-
-<!-- TEMPLATE: Delete this file for a library or an internal script with no user beyond
-you. Keep it for anything someone uses. -->
 
 ## Why this file exists
 
@@ -19,59 +16,57 @@ file is where value is decided.
 
 ---
 
-## 1. User needs
+## 1. Reader needs
 
-The questions a user has while using the product. Anything the product shows should
-answer one of them. If it doesn't, it's decoration.
+The questions a reader has while using the course. Anything a page shows should answer
+one of them. If it doesn't, it's decoration (and the design system already supplies the
+decoration).
 
-| Need | The user's question | Examples |
+| Need | The reader's question | Served by |
 |---|---|---|
-| {{Orientation}} | {{Where am I? What's going on?}} | {{...}} |
-| {{Understanding}} | {{What does this mean?}} | {{...}} |
-| {{Decision}} | {{What should I do now?}} | {{...}} |
-| {{Confidence}} | {{Can I trust this?}} | {{...}} |
-| {{...}} | {{...}} | {{...}} |
+| **Orientation** | Where am I in the course? What's next? | Course map with seals and ribbon; "Continue reading" on the title page; lesson progress bar |
+| **Use** | What can I *say* after this? | The can-do line at the top; the scene; chunks; "Your turn"; the "I can…" recap |
+| **Understanding** | *Why* does German do this? | The insight section; "Go deeper" blocks |
+| **Sound** | How does it sound? | Listen buttons on every German line and word |
+| **Confidence** | Did I get it? | Self-check items with answers behind a tap; model answer and checklist in "Your turn" |
+| **Retention** | Will I remember it next week? | Warm-up recall from earlier lessons; recycled words; the `/words` dictionary |
+| **Culture** | What will happen when I actually go there? | Culture note: how people really say it |
 
-*(example, trading tool)* Orientation: "what is my exposure right now?" · Decision:
-"should I take this signal?" · Confidence: "how has this setup done historically, after
-costs?" · Control: "how do I stop everything, now?"
-
-After the first real use, mark which needs the product actually serves. The gap is the
-roadmap.
+After lessons 1–2 have been read for real, mark which needs they actually served. The
+gap is the roadmap.
 
 ## 2. Surfaces
 
-Where help appears, at what scale, and when.
-
 | Surface | Scale | When |
 |---|---|---|
-| {{...}} | {{...}} | {{...}} |
+| Title page | The whole course | First visit; returning to continue |
+| Course map | Levels and lessons | Choosing what to read; seeing progress |
+| Lesson | One idea, one scene | One sitting, 15–25 minutes |
+| "Go deeper" block | One sub-question | Only when the reader opens it |
+| Dictionary (`/words`) | Every word met so far | Looking something up; revising |
 
-## 3. Modes or presets (if users differ)
+## 3. Modes
 
-<!-- TEMPLATE: If different kinds of input or user need different behaviour (book types,
-asset classes, account sizes), list them here with what changes for each. -->
+None yet. Every reader follows the same path. Possible later: a "review only" mode, a
+placement test to skip ahead. Both go under Someday until a real reader asks.
 
 ## 4. The method: sample by hand, then build
 
 Building is the expensive way to find out whether something is worth having. In order:
 
-1. **Make samples by hand.** Write, mock or compute what the feature would produce, for
-   two or three real cases. No code.
-2. **Use them for real.** Read them in context, act on them, as a user would.
-3. **Score them** against criteria written before step 1. For example: "at least 2 of 3
-   items worth reading", "none wrong when checked", "under 30 words each".
-4. **Then build the logic** (the prompt, the model, the calculation) to match the samples
+1. **Make samples by hand.** Lessons 1–2 are the samples.
+2. **Use them for real.** Read them on a phone, in one sitting, as a reader would.
+3. **Score them** against the rubric in `docs/LESSON_GUIDE.md`, written before the lessons.
+4. **Then scale**: the write-lesson skill writes the next lessons to match the samples
    that scored well.
-5. **Then build the UI.** Last, because it's the most expensive to change.
 
-Write each score, and the verdict, in `JOURNAL.md`. A feature that fails here is a
-cheap failure.
+Write each score, and the verdict, in `JOURNAL.md`. A lesson that fails here is a cheap
+failure.
 
 ## 5. Judging a new idea
 
 Before an idea goes in the backlog, answer here in two lines:
-- Which need does it serve, and on which surface?
+- Which reader need does it serve, and on which surface?
 - How would we test it by hand first?
 
 If neither has an answer, it goes under Someday in the backlog, not into a phase.

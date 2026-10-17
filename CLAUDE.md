@@ -1,16 +1,14 @@
-# {{PROJECT_NAME}}
+# Die Burg
 
-<!-- TEMPLATE: Two or three sentences. What it does for the user, then what it is
-technically. Example: "Adds the scaffolding a textbook has and a paperback doesn't,
-generated as you read. A Chrome/Edge MV3 extension wrapping its own PDF.js viewer." -->
-{{ONE_PARAGRAPH_DESCRIPTION}}
+A guided German course you read, one lesson at a time, from A1 towards C2. Each lesson
+is a short scene plus one real insight into how German works, so readers pick up usable
+German (words, chunks, grammar) without wading through rule tables. It is a static
+website now, styled as an illuminated Grimm-era storybook, and will be packaged as iOS
+and Android apps later with Capacitor.
 
-<!-- TEMPLATE: Optional learning-mode paragraph. Keep it if the project is also a way to
-learn engineering practice; delete it otherwise. -->
-{{OWNER}} is {{BACKGROUND, e.g. "a data analyst, not a software engineer"}}, and is using
-this project to learn engineering practice. Explain the *why* behind conventions rather
-than just applying them, and prefer the simplest thing that genuinely works over the most
-idiomatic.
+Kien owns this project and is using it to learn engineering practice. Explain the *why*
+behind conventions rather than just applying them, and prefer the simplest thing that
+genuinely works over the most idiomatic.
 
 ## Where things are
 
@@ -19,56 +17,68 @@ idiomatic.
 | `docs/ROADMAP.md` | Where the project is. Phases, exit criteria, Now/Next/Later |
 | `docs/BACKLOG.md` | What's next, task level |
 | `docs/PLAN.md` | Full design: architecture, constraints, costs |
-| `docs/PRODUCT.md` | **What the user gets.** User needs and how value is tested |
+| `docs/PRODUCT.md` | **What the reader gets.** Reader needs and how value is tested |
+| `docs/LESSON_GUIDE.md` | **How a lesson is written.** Voice, layout, rubric |
+| `docs/DESIGN_SYSTEM.md` | **How it looks.** Tokens, fonts, components, rules |
 | `docs/WORKFLOW.md` | How changes get made here, and what we deliberately skip |
-| `docs/CODE_STYLE.md` | How code should read. Language rules in `docs/style/` |
+| `docs/CODE_STYLE.md` | How code should read. TypeScript rules in `docs/style/` |
 | `docs/adr/` | **Why.** Decision records |
 | `docs/JOURNAL.md` | What was tried and what broke, dead ends included |
+| `docs/source/` | The original 52-week lesson plan (CSV). Kept unchanged as the first brief |
+| `src/content/curriculum/` | Levels and per-lesson briefs: *what* each lesson teaches |
+| `src/content/lessons/` | The lessons themselves (MDX): *how* it is taught |
+| `src/design/` | Design tokens and ornaments. The only place colours and fonts are defined |
+
+Some of these arrive during Phase 0; see `docs/ROADMAP.md`.
 
 ## Read the ADRs before proposing architecture
 
-<!-- TEMPLATE: As decisions accumulate, list the ones an AI is most likely to propose
-again. Reversed decisions matter most. One line each, with the ADR number. Example:
-- A bundler or UI framework: rejected, ADR 0002
-- Batching the whole job up front: reversed, ADR 0011 -> 0016 -->
 Decisions recorded so far are indexed in `docs/adr/README.md`. Proposing a rejected one
 again wastes everyone's time; if you think one should be reopened, say which ADR and
-what new fact changes it.
+what new fact changes it. The ones most likely to be re-proposed:
+
+- **React Native / Expo for the apps**: rejected in ADR 0004. The apps wrap this site
+  with Capacitor.
+- **A running story across lessons**: rejected in ADR 0003. Each lesson has its own scene.
+- **Paid text-to-speech**: parked in ADR 0006. It costs money; ask first.
 
 ## Conventions
 
-<!-- TEMPLATE: Keep this short and checkable. Each line is something a reviewer could
-point at. Delete lines that don't apply. -->
 - Code reads for people from any background: see `docs/CODE_STYLE.md` and
-  `docs/style/{{LANGUAGE}}.md`. Model file to imitate: `{{PATH_TO_A_CLEAN_FILE}}`
-- {{TYPE_CHECKING_RULE, e.g. "Nullable reference types on; warnings are errors"}}
-- {{DEPENDENCY_RULE, e.g. "No new package without an ADR"}}
+  `docs/style/typescript-javascript.md`. Model file to imitate: `src/lib/ledger.ts`
+- TypeScript `strict`; `npm run check` (types + lesson checker) must pass
+- No new npm package without a line in the PR saying why the platform can't do it
+- **Colours, fonts, sizes and spacing only through the tokens** in
+  `src/design/tokens.css`. A test fails on hex colours or font names anywhere else
 - Conventional Commits, with the body saying **why**; the diff already shows what
 - Branch → PR → read your own diff → squash-merge. See `docs/WORKFLOW.md`
-- {{RUNTIME_VERSION_RULE, e.g. ".NET 9 locally and in CI"}}
+- Node 22 (≥ 22.22) locally and in CI; `.nvmrc` holds the version
 
 ## Commands
 
 ```bash
-{{RUN_COMMAND}}          # run the app / harness
-{{TEST_COMMAND}}         # every test
-{{TYPECHECK_OR_BUILD}}   # types / warnings as errors
-{{FORMAT_CHECK}}         # formatting, if any
+npm run dev              # dev server on http://127.0.0.1:4321
+npm test                 # every test (vitest discovers *.test.ts)
+npm run check            # types (astro check) + lesson checker
+npm run build            # static site into dist/
+npm run preview          # serve dist/ on http://127.0.0.1:4321
 ```
 
-<!-- TEMPLATE: Examples by stack.
-.NET:    dotnet run --project src/App | dotnet test | dotnet build -warnaserror | dotnet format --verify-no-changes
-iOS:     xcodebuild test -scheme App -destination 'platform=iOS Simulator,name=iPhone 16'
-Python:  python -m app | pytest | pyright | ruff check && ruff format --check
-Node:    node serve.js | npm test | npx tsc --noEmit
-MQL:     compile in MetaEditor; backtest in Strategy Tester with a saved .set file -->
+No formatter yet: match the surrounding code.
 
-## Talking with {{OWNER}}
+## Writing lessons
+
+Use the `write-lesson` skill (`/write-lesson a1-03`). It reads `docs/LESSON_GUIDE.md`,
+the lesson's brief and the ledgers of what the reader already knows. Never write a
+lesson without its brief: the brief is where the curriculum decides what the lesson
+teaches and, as importantly, what it must not teach yet.
+
+## Talking with Kien
 
 Be a thinking partner, not an order-taker, and a quiet one.
 
-- **Think before agreeing.** If you see a better approach, a missed user need, or a
-  conflict with an ADR, say so in a line before starting, then follow {{OWNER}}'s call.
+- **Think before agreeing.** If you see a better approach, a missed reader need, or a
+  conflict with an ADR, say so in a line before starting, then follow Kien's call.
   Ideas not taken go to `BACKLOG.md`.
 - **Ask only what would change the result** and the docs and code can't answer: all at
   once, each with a recommended option. Otherwise decide, and list your assumptions at
@@ -80,16 +90,20 @@ Be a thinking partner, not an order-taker, and a quiet one.
 These came from real mistakes. Each one cost something once.
 
 - **Never spend money without an explicit yes in this conversation.** Paid API calls,
-  cloud resources, live trading orders, anything billed. An approved plan that lists a
-  paid step is *not* approval to run it. Use dry runs, fakes and test accounts; when a
-  real call would help, say what it tests and what it costs, then wait.
-- **Never act on a live system without an explicit yes**: production databases, live
-  broker accounts, app store submissions, real users' data.
+  paid text-to-speech, hosting plans, developer accounts, anything billed. An approved
+  plan that lists a paid step is *not* approval to run it.
+- **Never act on a live system without an explicit yes**: deploying the site, app store
+  submissions, changing repository settings, real readers' data.
+- **Never modify `kienvo1202/2026_project_template`.** This repo was copied from it; the
+  template stays untouched, settings included.
+- **German accuracy: never invent an article, plural or verb form.** If unsure, say so
+  in the lesson PR and flag the word. A confident wrong article teaches a mistake that
+  takes months to unlearn.
 - **Don't start long-running processes detached** (`&`, `nohup`, `Start-Process`). They
   outlive the session, hold the port, and can't be stopped from the owner's terminal.
-  Use the preview tool, or ask {{OWNER}} to run it.
+  Use the preview tool, or ask Kien to run it.
 - **Ask before anything hard to undo**: force-push, deleting branches or files, rewriting
-  history, schema migrations against shared data.
+  history.
 - **Write the plain version first.** Add structure when a second real use appears.
 - **Verify with evidence**, not by reasoning: run the test, look at the screen, read the
   log. Say plainly what was and wasn't checked.
@@ -97,14 +111,9 @@ These came from real mistakes. Each one cost something once.
 
 ## Traps already paid for
 
-<!-- TEMPLATE: The most valuable section over time. Each trap: the symptom, the cause,
-and the rule. Starter set below came from earlier projects; keep the ones that apply to
-this stack and delete the rest. -->
-
 - **A local dev server can expose secrets to the whole network.** Many servers listen on
-  every interface by default, and the OS firewall often lets them through. If the server
-  sits next to `.env` or private data, anyone on the same Wi-Fi can read them. Bind
-  `127.0.0.1`, refuse dot-paths, check the `Host` header, and keep a test that holds it
+  every interface by default, and the OS firewall often lets them through. Astro's dev
+  and preview servers here are pinned to `127.0.0.1` in `astro.config.mjs`; keep it so
 - **Ignore secrets before they exist.** `.env` goes in `.gitignore` in the first commit,
   before anyone creates the file. A secret in git history stays there after you delete it
 - **A CI step that has never failed proves nothing.** When adding or changing CI, push a
@@ -116,11 +125,15 @@ this stack and delete the rest. -->
 - **Windows PowerShell 5.1 mangles quotes** when passing a here-string to a native
   program (`git commit -F -`). Write multi-line text to a file, then pass the path
 - **Git Bash cannot run Windows Store alias stubs** like `py`. Use PowerShell for those
-- {{PROJECT_SPECIFIC_TRAPS}}
+- **`gh repo create --template` needs the source repo marked as a template.** Otherwise
+  create an empty repo and push a clone, switching `origin` *before* pushing
+- **Loading Google Fonts from Google's servers got a German website fined** (LG München,
+  2022). Fonts here are self-hosted through `@fontsource` packages, which also makes the
+  app work offline
+- **Android's WebView has no reliable speech synthesis.** All audio goes through
+  `speak()` in `src/lib/speech.ts`, so the app can swap in a native plugin in one place
 
 ## Current state
 
-<!-- TEMPLATE: Short and dated. Which phase, what was last done, what is next, and
-anything that needs the owner's yes. Rewrite this section rather than appending to it;
-the history lives in CHANGELOG and JOURNAL. -->
-Phase {{N}}: {{STATUS}}. **Next:** {{NEXT_STEP}}.
+Phase 0: building the book (design system, app shell, lessons 1–2). **Next:** see
+`docs/ROADMAP.md` → Now.

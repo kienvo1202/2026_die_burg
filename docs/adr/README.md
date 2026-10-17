@@ -47,3 +47,8 @@ dated, rather than a new ADR. A new ADR is for when the decision itself flips.
 | # | Decision | Status |
 |---|---|---|
 | [0001](0001-record-architecture-decisions.md) | Record architecture decisions | Accepted |
+| [0002](0002-one-sitting-lessons-open-ended-levels.md) | One-sitting lessons, in levels that run to C2 | Accepted |
+| [0003](0003-standalone-scenes-derived-ledgers.md) | Standalone scenes; what the reader knows is derived from the lesson files | Accepted |
+| [0004](0004-astro-now-capacitor-later.md) | A static Astro site now; Capacitor for the stores later | Accepted |
+| [0005](0005-design-system-tokens-and-fonts.md) | Design system in CSS tokens; self-hosted fonts; Fraktur display-only | Accepted |
+| [0006](0006-browser-speech-for-audio.md) | Audio via the device's speech synthesis; paid text-to-speech parked | Accepted |

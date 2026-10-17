@@ -1,7 +1,7 @@
 # 0001 — Record architecture decisions
 
 **Status:** Accepted
-**Date:** {{YYYY-MM-DD}}
+**Date:** 2026-10-17
 
 ## Context
 
