@@ -4,9 +4,11 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, readdirSync } from "node:fs";
-import { join, relative } from "node:path";
+import { join, relative, sep } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const SRC = new URL("../", import.meta.url).pathname;
+// fileURLToPath, not URL.pathname: on Windows .pathname gives "/D:/..." and breaks every path.
+const SRC = fileURLToPath(new URL("../", import.meta.url));
 const ALLOWED = new Set(["design/tokens.css"]);
 const CHECKED_EXTENSIONS = [".astro", ".css", ".mdx", ".ts"];
 
@@ -32,14 +34,19 @@ function stylingText(path: string, text: string): string {
 const RAW_COLOUR = /#[0-9a-fA-F]{3,8}\b|\b(?:rgba?|hsla?|oklch|lab|lch)\(/;
 const RAW_FONT = /font-family:(?!\s*(?:var\(|inherit))/;
 
-const files = sourceFiles(SRC).filter((path) => !ALLOWED.has(relative(SRC, path)));
+/** "design/tokens.css", with forward slashes on every OS, so it matches ALLOWED on Windows too. */
+function nameInSrc(path: string): string {
+  return relative(SRC, path).split(sep).join("/");
+}
+
+const files = sourceFiles(SRC).filter((path) => !ALLOWED.has(nameInSrc(path)));
 
 test("found source files to check", () => {
   assert.ok(files.length > 10, `only ${files.length} files found under ${SRC}`);
 });
 
 for (const path of files) {
-  const name = relative(SRC, path);
+  const name = nameInSrc(path);
   if (name.endsWith(".test.ts")) continue;
   test(`${name} uses tokens for colours and fonts`, () => {
     const styling = stylingText(path, readFileSync(path, "utf8"));
