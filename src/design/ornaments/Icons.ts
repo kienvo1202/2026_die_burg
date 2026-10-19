@@ -27,6 +27,12 @@ export const ICON_QUILL = {
   stroke: "M4.5 20.5 L9.6 12.4",
 };
 
+// A folded map: the German map of grammar and words.
+export const ICON_MAP = {
+  fill: "",
+  stroke: "M3 6.2 L9 4 L15 6.2 L21 4 V17.8 L15 20 L9 17.8 L3 20 Z M9 4 V17.8 M15 6.2 V20",
+};
+
 export const ICON_SUN = {
   fill: "M12 7.5 A4.5 4.5 0 1 1 11.99 7.5 Z",
   stroke:

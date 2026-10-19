@@ -1,0 +1,325 @@
+# The German map (ADR 0008, proposed): the whole language in one structure, ordered by
+# how German works rather than by when a lesson teaches it.
+#
+# Regions → topics → points. Each point:
+#   id       stable, kebab-case; a card in src/content/map/<id>.mdx explains it in full
+#   title    what a reader would look for
+#   level    the CEFR level where it is usually first needed
+#   summary  one line, true of the whole language (not only of what lessons teach first)
+#   tags     the lesson grammar tags (lesson frontmatter `grammar`) that teach part of it.
+#            A point lights up on the map once a lesson with one of its tags is finished.
+#
+# Regions are places in the castle, so the overview reads as a map of Die Burg. `order`
+# is the walk through it, from the Gate in; the site shows regions in that order.
+
+- id: sounds
+  order: 1
+  name: Sounds & spelling
+  german: Laute und Buchstaben
+  place: The Gate
+  motto: Where everyone comes in. Say it right, write it right.
+  topics:
+    - title: Letters
+      points:
+        - { id: alphabet, title: The alphabet, level: A1, summary: "Spelling aloud: a few letters have German names that trip English speakers (e = 'ay', i = 'ee', j = 'yot', v = 'fow', w = 'vay').", tags: [] }
+        - { id: umlauts, title: "ä, ö, ü", level: A1, summary: "Two dots change the vowel and often the meaning (schon / schön). Without the keys, write ae, oe, ue.", tags: [] }
+        - { id: eszett, title: "ß", level: A1, summary: "ß is a sharp s after a long vowel or ei/au/eu that stays sharp in every form (heißen, Straße, Fuß, Füße); after a short vowel it is ss (Fluss). Small words like das, was, es keep one s. Switzerland writes ss everywhere.", tags: [] }
+        - { id: capital-nouns, title: Capital letters on nouns, level: A1, summary: "Every noun starts with a capital, wherever it stands; so does polite Sie.", tags: [] }
+    - title: Sounds
+      points:
+        - { id: ei-ie, title: "ei and ie", level: A1, summary: "Say the English name of the second letter: ei sounds like 'eye', ie like 'ee'.", tags: [] }
+        - { id: ch-sounds, title: The two ch sounds, level: A1, summary: "Throaty after a, o, u, au (auch); a soft hiss after other vowels and consonants (ich, natürlich). The diminutive -chen is always soft, chs is usually ks (sechs, Fuchs), and borrowed words vary (Chef, Chor).", tags: [] }
+        - { id: w-v-s, title: "w, v and s", level: A1, summary: "w sounds like English v, v usually like f, and s before a vowel like z in most of Germany.", tags: [] }
+        - { id: diphthongs, title: "ei, eu, au", level: A1, summary: "ei sounds like 'eye', eu and äu like 'oy' (Deutsch, Häuser), au like 'ow' (Haus).", tags: [] }
+        - { id: z-j, title: "z and j", level: A1, summary: "z sounds like 'ts' (Zeit), j like English y (ja).", tags: [] }
+        - { id: r-sounds, title: "The German r", level: A1, summary: "Made at the back of the throat in most of Germany; at the end of a word, -er sounds like a short 'a' (aber, Lehrer).", tags: [] }
+        - { id: sp-st, title: "sp and st", level: A1, summary: "At the start of a word or word part, s before p or t sounds like 'sh': Sport, Stadt, verstehen.", tags: [] }
+        - { id: final-devoicing, title: Hard endings, level: A1, summary: "b, d, g at the end of a syllable sound like p, t, k: Tag sounds like 'tahk'. Final -ig is said like ich in standard German (König, zwanzig).", tags: [] }
+        - { id: vowel-length, title: Long and short vowels, level: A1, summary: "A double consonant after a vowel makes it short (Bett); h or a doubled vowel makes it long (Sohn, Boot).", tags: [] }
+        - { id: word-stress, title: Word stress, level: A1, summary: "Stress usually falls on the first syllable of the stem. be-, ver-, ent- and the other inseparable prefixes are unstressed (miss- sometimes is stressed: missverstehen).", tags: [] }
+
+- id: questions
+  order: 2
+  name: Asking
+  german: Fragen
+  place: The Gatehouse
+  motto: Every conversation passes through here.
+  topics:
+    - title: Question words
+      points:
+        - { id: w-questions, title: Question word first, level: A1, summary: "wer, was, wie, wann, warum… The question word comes first, the verb second: Wie heißt du?", tags: [w-question-wie] }
+        - { id: wer-wen-wem, title: "wer, wen, wem, wessen", level: A2, summary: "The question word for people changes with the case: Wen siehst du? Wem hilfst du?", tags: [] }
+        - { id: wo-woher-wohin, title: "wo, woher, wohin", level: A1, summary: "German splits 'where' in three: where at (wo), where from (woher), where to (wohin).", tags: [w-question-wo-woher] }
+        - { id: welcher-was-fuer, title: "welcher and was für ein", level: A2, summary: "Which one of these (welcher), and what kind of (was für ein).", tags: [] }
+    - title: Yes or no
+      points:
+        - { id: yes-no-questions, title: Verb first, level: A1, summary: "Put the verb first to ask a yes-or-no question: Kommst du?", tags: [] }
+        - { id: tag-questions, title: "…, oder?", level: A1, summary: "Turn a statement into a question by adding oder? or nicht? at the end: Du bist Diego, oder?", tags: [] }
+        - { id: doch, title: "ja, nein, doch", level: A1, summary: "doch is the yes that contradicts a negative: Kommst du nicht? Doch!", tags: [] }
+
+- id: sentences
+  order: 3
+  name: Building sentences
+  german: Satzbau
+  place: The Walls
+  motto: The structure that holds everything up. Learn this and German stops looking scrambled.
+  topics:
+    - title: Where the verb goes
+      points:
+        - { id: verb-second, title: The verb comes second, level: A1, summary: "In a statement the conjugated verb is always the second element. Start with anything else and the subject moves behind the verb: Heute komme ich.", tags: [] }
+        - { id: verb-bracket, title: The verb bracket, level: A1, summary: "When a verb has two parts, they frame the sentence: Ich kann … schwimmen, Ich rufe … an, Ich habe … gemacht. One structure for modals, separable verbs and the past.", tags: [] }
+        - { id: verb-final, title: "Verb at the end: weil, dass, wenn, ob", level: A2, summary: "After these words the conjugated verb goes to the end of its clause: …, weil ich müde bin.", tags: [] }
+        - { id: clause-first, title: Starting with a clause, level: A2, summary: "A whole clause can take first place, so the main verb follows straight after the comma: Wenn es regnet, bleibe ich zu Hause.", tags: [] }
+    - title: Order in the middle
+      points:
+        - { id: time-manner-place, title: "Time, manner, place", level: A2, summary: "When, how, where, usually in that order: Ich fahre morgen mit dem Zug nach Berlin.", tags: [] }
+        - { id: nicht-position, title: Where nicht goes, level: A2, summary: "Before the word it denies; to deny the whole sentence, near the end, before any second verb part.", tags: [] }
+        - { id: object-order, title: Order of objects, level: B1, summary: "Two nouns: dative before accusative (Ich gebe dem Kind das Buch). Two pronouns: accusative first (Ich gebe es ihm).", tags: [] }
+    - title: Joining sentences
+      points:
+        - { id: coordinating, title: "und, aber, oder, denn, sondern", level: A1, summary: "These join two sentences without changing either; they stand outside the word count.", tags: [] }
+        - { id: connective-adverbs, title: "deshalb, trotzdem, dann", level: A2, summary: "When they come first, they take the first place, so the verb follows: Es regnet, deshalb bleibe ich zu Hause.", tags: [] }
+        - { id: subordinators, title: "als, während, bevor, nachdem, obwohl, damit", level: B1, summary: "More verb-final connectors for time, contrast and purpose.", tags: [] }
+        - { id: als-wenn, title: "als or wenn", level: B1, summary: "als for a single occasion or period in the past (als ich Kind war); wenn for repeated events, or for the present and future.", tags: [] }
+        - { id: two-part-connectors, title: "entweder … oder, weder … noch, je … desto", level: B1, summary: "Connectors in two pieces, each with its own word order.", tags: [] }
+        - { id: relative-clauses, title: Relative clauses, level: B1, summary: "der Mann, der dort steht: the relative pronoun mostly looks like the article, and the verb goes to the end.", tags: [] }
+        - { id: relative-advanced, title: "Relative clauses with prepositions, was and wo", level: B2, summary: "die Stadt, in der ich wohne · alles, was du willst · dort, wo ich wohne.", tags: [] }
+        - { id: indirect-questions, title: Indirect questions, level: A2, summary: "A question inside a sentence keeps its question word but sends the verb to the end: Weißt du, wo er wohnt?", tags: [] }
+
+- id: verbs
+  order: 4
+  name: Verbs
+  german: Verben
+  place: The Keep
+  motto: The heart of the castle. Every sentence is built around a verb.
+  topics:
+    - title: The present tense
+      points:
+        - { id: present-endings, title: The ending tells you who, level: A1, summary: "Stem plus an ending for each person: ich wohn-e, du wohn-st, er wohn-t, wir wohn-en, ihr wohn-t, sie/Sie wohn-en. Stems in -t or -d add an e: du arbeitest, er findet.", tags: [present-tense-endings] }
+        - { id: sein, title: "sein", level: A1, summary: "to be, irregular as in English: ich bin, du bist, er ist, wir sind, ihr seid, sie/Sie sind.", tags: [sein-ich-du-sie] }
+        - { id: haben, title: "haben", level: A1, summary: "to have: ich habe, du hast, er hat; the other verb behind the past tense.", tags: [] }
+        - { id: s-stems, title: "du heißt, not heißst", level: A1, summary: "When the stem already ends in an s-sound (s, ß, z, x), the du-ending is just -t: du heißt, du tanzt.", tags: [heissen-ich-du-sie] }
+        - { id: vowel-change, title: Verbs that change their vowel, level: A1, summary: "Some strong verbs change e → i/ie or a → ä for du and er/sie/es: du sprichst, er sieht, du fährst.", tags: [] }
+        - { id: wissen-kennen, title: "wissen or kennen", level: A1, summary: "Two verbs for 'know': wissen for facts (ich weiß), kennen for people and places.", tags: [] }
+    - title: Modal verbs
+      points:
+        - { id: modals, title: "können, müssen, wollen, dürfen, sollen, mögen", level: A1, summary: "The modal stands second, the other verb waits at the end. ich and er/sie/es share one form, with no ending: ich kann, er kann.", tags: [] }
+        - { id: moechte, title: "möchte", level: A1, summary: "'would like', the polite way to ask for things: Ich möchte einen Kaffee.", tags: [] }
+    - title: Verbs with prefixes
+      points:
+        - { id: separable, title: Separable verbs, level: A1, summary: "The prefix breaks off and goes to the end: anrufen → Ich rufe dich an.", tags: [] }
+        - { id: inseparable, title: Inseparable prefixes, level: A2, summary: "be-, emp-, ent-, er-, ge-, miss-, ver-, zer- stay attached, are unstressed (except, sometimes, miss-), and take no ge- in the past participle.", tags: [] }
+        - { id: either-prefixes, title: Prefixes that can go both ways, level: B2, summary: "durch-, über-, um-, unter-, wieder- can be separable or not, often with different meanings.", tags: [] }
+    - title: Talking about the past
+      points:
+        - { id: perfekt, title: The Perfekt, level: A1, summary: "haben or sein plus a participle at the end: the everyday spoken past. Ich habe Brot gekauft.", tags: [] }
+        - { id: participle, title: Building the participle, level: A1, summary: "ge-…-t for regular verbs (gemacht), ge-…-en for strong ones (gesehen), no ge- for -ieren and inseparable verbs.", tags: [] }
+        - { id: haben-or-sein, title: "haben or sein?", level: A1, summary: "sein for moving from A to B and for changes of state (plus sein, bleiben, werden, passieren, begegnen); haben for almost everything else. With an object, haben: Ich habe das Auto gefahren. In the south: ich bin gesessen.", tags: [] }
+        - { id: war-hatte, title: "war, hatte, konnte", level: A2, summary: "Even in speech, sein, haben and the modals prefer the simple past: Ich war müde.", tags: [] }
+        - { id: praeteritum, title: The Präteritum, level: B1, summary: "The written past of stories, books and news: Er ging nach Hause.", tags: [] }
+        - { id: plusquamperfekt, title: The past before the past, level: B1, summary: "hatte or war plus participle: Ich hatte schon gegessen.", tags: [] }
+    - title: The future and werden
+      points:
+        - { id: future-present, title: The future in the present tense, level: A1, summary: "With a time word, the present tense is the normal future: Morgen fahre ich nach Berlin.", tags: [] }
+        - { id: futur-1, title: "werden + infinitive", level: A2, summary: "For plans, promises and guesses: Ich werde dich anrufen. Er wird krank sein.", tags: [] }
+        - { id: werden, title: "werden: to become, and its three jobs", level: A2, summary: "On its own werden means 'to become' (Er wird Arzt); it also builds the future and the passive.", tags: [] }
+        - { id: futur-2, title: Futur II, level: C1, summary: "'will have done', mostly a guess about the past: Er wird es vergessen haben.", tags: [] }
+    - title: Commands
+      points:
+        - { id: imperative, title: Commands and requests, level: A1, summary: "Komm! Kommt! Kommen Sie! Softened with bitte and mal.", tags: [] }
+    - title: Reflexive verbs
+      points:
+        - { id: reflexive, title: Reflexive verbs, level: A2, summary: "Verbs that come with a self: sich freuen, sich setzen. Ich freue mich.", tags: [] }
+        - { id: reflexive-dative, title: "mir or mich", level: B1, summary: "When there is also an accusative object, the reflexive moves to the dative: Ich wasche mir die Hände.", tags: [] }
+    - title: Verbs and their partners
+      points:
+        - { id: dative-verbs, title: Verbs that take the dative, level: A2, summary: "helfen, danken, gefallen, gehören and a few more: Ich helfe dir.", tags: [] }
+        - { id: verb-prepositions, title: Verbs with fixed prepositions, level: B1, summary: "warten auf, denken an, sich interessieren für: learn the preposition with the verb.", tags: [] }
+        - { id: da-wo-words, title: "darauf, worauf", level: B1, summary: "da- or wo- plus a preposition stands in for a thing: Ich warte darauf. Worauf wartest du?", tags: [] }
+        - { id: lassen, title: "lassen", level: B1, summary: "to let, or to have something done: Ich lasse mein Auto reparieren.", tags: [] }
+    - title: Would, could, if only
+      points:
+        - { id: wuerde, title: "würde + infinitive", level: A2, summary: "'would' for wishes and polite requests: Ich würde gern reisen.", tags: [] }
+        - { id: polite-requests, title: "Könnten Sie…? Hätten Sie…?", level: A2, summary: "The polite way to ask for things uses the 'would' forms: Könnten Sie mir helfen?", tags: [] }
+        - { id: konjunktiv-2, title: "wäre, hätte, könnte", level: B1, summary: "The common verbs have their own 'would' forms: Wenn ich Zeit hätte…", tags: [] }
+        - { id: konjunktiv-2-past, title: What would have happened, level: B2, summary: "hätte or wäre plus participle: Ich wäre gekommen.", tags: [] }
+        - { id: konjunktiv-1, title: Reported speech, level: B2, summary: "News and formal writing report what others said with Konjunktiv I: Er sagt, er sei krank.", tags: [] }
+        - { id: als-ob, title: "als ob", level: B2, summary: "'as if', with the 'would' forms: Er tut so, als ob er nichts wüsste.", tags: [] }
+        - { id: modal-guesses, title: Modals for guesses and hearsay, level: B2, summary: "Sie muss krank sein (she must be ill). Er soll reich sein (he is said to be rich).", tags: [] }
+    - title: The passive
+      points:
+        - { id: passive, title: "The passive with werden", level: B1, summary: "The action, not the doer: Das Haus wird gebaut.", tags: [] }
+        - { id: state-passive, title: "The passive with sein", level: B2, summary: "The result rather than the action: Die Tür ist geschlossen.", tags: [] }
+        - { id: passive-modals, title: Passive with modals, level: B2, summary: "Das muss gemacht werden.", tags: [] }
+        - { id: passive-alternatives, title: Other ways to say it, level: C1, summary: "man, sich lassen, sein + zu: Das lässt sich machen. Die Aufgabe ist bis Montag zu erledigen.", tags: [] }
+    - title: Infinitives and participles
+      points:
+        - { id: zu-infinitive, title: "Infinitive with zu", level: B1, summary: "Es ist schwer, Deutsch zu lernen. With separable verbs, zu goes inside: anzurufen.", tags: [] }
+        - { id: um-zu, title: "um … zu, ohne … zu, statt … zu", level: B1, summary: "in order to, without, instead of: Ich lerne Deutsch, um in Wien zu arbeiten.", tags: [] }
+        - { id: double-infinitive, title: The double infinitive, level: B2, summary: "A modal in the Perfekt, with another verb, uses its infinitive, not a participle: Ich habe arbeiten müssen (but: Ich habe es gemusst).", tags: [] }
+        - { id: participle-adjectives, title: Participles as adjectives, level: B2, summary: "der lachende Mann, das gekochte Ei.", tags: [] }
+        - { id: extended-attributes, title: Long attributes before a noun, level: C1, summary: "Written German packs a whole clause before the noun: die von der Regierung geplante Reform.", tags: [] }
+
+- id: nouns
+  order: 5
+  name: Nouns & articles
+  german: Nomen und Artikel
+  place: The Great Hall
+  motto: Everything has a name here, and every name has a gender.
+  topics:
+    - title: Gender
+      points:
+        - { id: gender, title: "der, die, das", level: A1, summary: "Every noun is masculine, feminine or neuter. Learn each one with its article.", tags: [] }
+        - { id: gender-clues, title: Endings that give the gender away, level: A1, summary: "-ung, -heit, -keit, -schaft, -tion, -sion → die; the diminutive -chen and -lein → das; -ling, -ismus → der. Clues, not laws: der Kuchen is no diminutive.", tags: [] }
+        - { id: compounds, title: Compound nouns, level: A1, summary: "Nouns join into one word, and the last part decides the gender: das Haus + die Tür = die Haustür.", tags: [] }
+    - title: Plural
+      points:
+        - { id: plural, title: Plural forms, level: A1, summary: "Five patterns (-e, -er, -(e)n, -s, no change), often with an umlaut. In the nominative every plural takes die.", tags: [] }
+    - title: Articles
+      points:
+        - { id: definite-indefinite, title: "der or ein", level: A1, summary: "the and a. ein has no plural: ein Buch, Bücher.", tags: [] }
+        - { id: kein, title: "kein", level: A1, summary: "'no' or 'not a' before a noun: Ich habe kein Auto. nicht denies everything else.", tags: [] }
+        - { id: no-article, title: No article, level: A2, summary: "Jobs, nationalities and uncountable things often go without: Ich bin Lehrerin. Ich trinke Kaffee.", tags: [] }
+        - { id: possessives, title: "mein, dein, sein, ihr, unser, euer, Ihr", level: A1, summary: "my, your, his, her… They take the same endings as ein, but unlike ein they have a plural: meine Bücher.", tags: [] }
+    - title: Special nouns
+      points:
+        - { id: name-s, title: "Annas Buch", level: A1, summary: "A name owns something with a plain -s, normally without an apostrophe (Annas Buch). Names ending in an s-sound take only an apostrophe: Hans' Buch.", tags: [] }
+        - { id: weak-nouns, title: Weak nouns, level: B1, summary: "Some masculine nouns add -n in every case but the nominative: der Herr, den Herrn; der Kollege, dem Kollegen.", tags: [] }
+        - { id: nominalisation, title: Verbs and adjectives as nouns, level: B1, summary: "Any verb can become a neuter noun (das Essen); adjectives become people (der Deutsche, die Deutsche).", tags: [] }
+        - { id: word-building, title: Building new words, level: B1, summary: "Suffixes and prefixes make families: lesen, lesbar, der Leser, unlesbar.", tags: [] }
+
+- id: cases
+  order: 6
+  name: Cases
+  german: Die Fälle
+  place: The Armoury
+  motto: Each noun puts on the armour of its role in the sentence.
+  topics:
+    - title: The four cases
+      points:
+        - { id: why-cases, title: Why German has cases, level: A1, summary: "The article's ending often shows who does what to whom, so German can move words around without losing the meaning. Where the forms look alike, word order decides.", tags: [] }
+        - { id: nominative, title: Nominative, level: A1, summary: "The subject, and the noun that completes sein, werden or bleiben: Das ist mein Bruder.", tags: [] }
+        - { id: accusative, title: Accusative, level: A1, summary: "The direct object. Of the articles, only the masculine changes: der → den, ein → einen.", tags: [] }
+        - { id: dative, title: Dative, level: A2, summary: "The receiver, and after many prepositions: dem, der, dem; plural den, with -n on the noun.", tags: [] }
+        - { id: genitive, title: Genitive, level: B1, summary: "Whose: des Mannes, der Frau. Common in writing; speech often uses von instead.", tags: [] }
+        - { id: article-table, title: All the articles at a glance, level: B1, summary: "The whole table of der, ein and kein in four cases, and the pattern that makes it learnable.", tags: [] }
+
+- id: pronouns
+  order: 7
+  name: Pronouns
+  german: Pronomen
+  place: The Messengers' Hall
+  motto: Small words that stand in for others.
+  topics:
+    - title: Personal pronouns
+      points:
+        - { id: personal-pronouns, title: "ich, du, er, sie, es, wir, ihr, sie, Sie", level: A1, summary: "Nine pronouns; er, sie and es follow the noun's gender, so a table can be er.", tags: [] }
+        - { id: du-sie, title: "du or Sie", level: A1, summary: "du for friends, family, children and people your age; Sie for strangers and at work, until du is offered.", tags: [sein-ich-du-sie, present-tense-endings] }
+        - { id: pronoun-cases, title: "mich, mir, ihn, ihm", level: A2, summary: "Pronouns change with case: Ich sehe ihn. Ich helfe ihm.", tags: [] }
+    - title: Other pronouns
+      points:
+        - { id: man, title: "man", level: A2, summary: "'one', 'you', 'people': Hier spricht man Deutsch.", tags: [] }
+        - { id: es, title: "es as a placeholder", level: A1, summary: "es fills a slot no one occupies: Es regnet. Es gibt keine Milch (there is no milk).", tags: [] }
+        - { id: indefinites, title: "jemand, niemand, etwas, nichts", level: A2, summary: "someone, no one, something, nothing.", tags: [] }
+        - { id: demonstratives, title: "dieser, and der as a pronoun", level: B1, summary: "this one (dieser); and in speech, der, die, das stand in for he, she, it: Der ist nett.", tags: [] }
+        - { id: einer-keiner, title: "einer, keiner, welche", level: A2, summary: "Stand-ins for a noun already mentioned: Hast du einen Stift? Ich habe keinen.", tags: [] }
+
+- id: adjectives
+  order: 8
+  name: Adjectives & comparing
+  german: Adjektive
+  place: The Painted Chamber
+  motto: Where things get their colours.
+  topics:
+    - title: Adjectives
+      points:
+        - { id: predicative, title: After sein, no ending, level: A1, summary: "Das Haus ist alt. After the noun, an adjective never changes.", tags: [] }
+        - { id: adverbs, title: Adjectives as adverbs, level: A1, summary: "German has no -ly: Er singt gut.", tags: [] }
+        - { id: adjective-endings, title: Endings before a noun, level: A2, summary: "If the article already shows case and gender, the adjective takes a plain -e or -en; if not, the adjective shows it itself.", tags: [] }
+        - { id: adjective-tables, title: The three adjective tables, level: B1, summary: "After der, after ein, and with no article: the full tables and the shortcut that covers most of them.", tags: [] }
+    - title: Comparing
+      points:
+        - { id: comparison, title: "alt, älter, am ältesten", level: A2, summary: "-er and am -sten, often with an umlaut; als for 'than', so … wie for 'as … as'.", tags: [] }
+        - { id: gern, title: "gern, lieber, am liebsten", level: A1, summary: "Add gern to any verb to say you like doing it: Ich lese gern.", tags: [] }
+
+- id: prepositions
+  order: 9
+  name: Prepositions
+  german: Präpositionen
+  place: The Bridges
+  motto: How things connect, in space and time.
+  topics:
+    - title: Places
+      points:
+        - { id: aus-in, title: "aus and in", level: A1, summary: "You come aus a place and live in it: Ich komme aus Mexiko. Ich wohne in Leipzig.", tags: [aus-in-places] }
+        - { id: going-places, title: "nach, zu, in: going somewhere", level: A1, summary: "nach for towns and most countries, zu for people and buildings, in for countries with an article: in die Schweiz.", tags: [] }
+        - { id: two-way, title: "Two-way prepositions", level: A2, summary: "in, an, auf, über, unter, vor, hinter, neben, zwischen: dative for where (wo?), accusative for where to (wohin?).", tags: [] }
+    - title: Cases after prepositions
+      points:
+        - { id: accusative-prepositions, title: "durch, für, gegen, ohne, um", level: A2, summary: "Always followed by the accusative.", tags: [] }
+        - { id: dative-prepositions, title: "aus, bei, mit, nach, seit, von, zu", level: A2, summary: "Always followed by the dative.", tags: [] }
+        - { id: genitive-prepositions, title: "wegen, trotz, während, statt", level: B1, summary: "Followed by the genitive in writing; in speech, often the dative.", tags: [] }
+        - { id: contractions, title: "im, am, zum, zur, ins", level: A1, summary: "Preposition and article melt together: in dem → im, zu der → zur.", tags: [] }
+        - { id: formal-prepositions, title: Formal prepositions, level: C1, summary: "aufgrund, bezüglich, infolge, mithilfe: the prepositions of official German.", tags: [] }
+    - title: Time
+      points:
+        - { id: time-prepositions, title: "am, um, im", level: A1, summary: "am Montag, um acht Uhr, im Mai.", tags: [] }
+        - { id: seit, title: "seit with the present tense", level: A2, summary: "Something still going on takes the present: Ich wohne seit drei Jahren hier (I have lived here for three years).", tags: [] }
+        - { id: vor-ago, title: "vor for 'ago'", level: A2, summary: "vor comes first and takes the dative: vor drei Jahren (three years ago).", tags: [] }
+        - { id: time-accusative, title: Time without a preposition, level: A2, summary: "Many time phrases use the accusative alone: nächste Woche, jeden Tag.", tags: [] }
+
+- id: small-words
+  order: 10
+  name: Small words
+  german: Kleine Wörter
+  place: The Kitchens
+  motto: Unglamorous, and nothing works without them.
+  topics:
+    - title: Saying no
+      points:
+        - { id: nicht-kein, title: "nicht or kein", level: A1, summary: "kein before a noun with ein or no article; nicht for everything else.", tags: [] }
+    - title: Numbers and time
+      points:
+        - { id: numbers, title: Numbers, level: A1, summary: "Units before tens, as in 'four-and-twenty blackbirds': 21 is einundzwanzig.", tags: [] }
+        - { id: clock, title: Telling the time, level: A1, summary: "halb drei is 2:30: half (on the way) to three.", tags: [] }
+        - { id: dates, title: Dates and ordinals, level: A2, summary: "am dritten Mai; written der 3. Mai, with a full stop.", tags: [] }
+    - title: Tone
+      points:
+        - { id: modal-particles, title: "doch, mal, ja, eben, halt", level: B1, summary: "Untranslatable little words that set the tone: Komm doch mal vorbei!", tags: [] }
+        - { id: commas, title: Commas, level: B1, summary: "A comma always comes before dass, weil, ob and the other verb-final clauses, and around relative clauses.", tags: [] }
+
+- id: style
+  order: 11
+  name: Style & register
+  german: Stil
+  place: The High Tower
+  motto: The view from the top, B2 and beyond.
+  topics:
+    - title: Registers
+      points:
+        - { id: spoken-written, title: Spoken and written German, level: B2, summary: "Perfekt in speech, Präteritum in writing; von in speech, the genitive in writing.", tags: [] }
+        - { id: varieties, title: "Germany, Austria, Switzerland", level: B2, summary: "Three standard varieties with their own words: Jänner in Austria, Velo in Switzerland.", tags: [] }
+        - { id: inclusive-forms, title: Gender-inclusive forms, level: B2, summary: "Current written usage names everyone: Lehrerinnen und Lehrer, Lehrer*innen, Studierende.", tags: [] }
+    - title: Written style
+      points:
+        - { id: nominal-style, title: Nominal style, level: C1, summary: "Formal German turns verbs into nouns: die Durchführung der Prüfung rather than die Prüfung durchführen.", tags: [] }
+        - { id: verb-noun-phrases, title: Verb-noun phrases, level: B2, summary: "zur Verfügung stellen, in Frage kommen: a noun carries the meaning, the verb just works.", tags: [] }
+        - { id: written-connectors, title: Connectors for writing, level: C1, summary: "einerseits … andererseits, zumal, sofern: how arguments are joined on paper.", tags: [] }
+
+- id: words
+  order: 12
+  name: The word hoard
+  german: Wortschatz
+  place: The Treasury
+  motto: The backbone vocabulary, grouped by the parts of life it opens.
+  topics:
+    - title: Words by theme
+      points:
+        - { id: words-people, title: People and greetings, level: A1, summary: "Greetings, names, family, where people come from.", tags: [] }
+        - { id: words-food, title: Food and drink, level: A1, summary: "The bakery, the café, the market, the restaurant.", tags: [] }
+        - { id: words-home, title: Home, level: A1, summary: "Rooms, furniture, the things in a flat.", tags: [] }
+        - { id: words-time, title: Time and the day, level: A1, summary: "Days, months, the clock, daily routines.", tags: [] }
+        - { id: words-town, title: Town and travel, level: A1, summary: "Directions, transport, tickets, shops.", tags: [] }
+        - { id: words-body, title: Body and health, level: A1, summary: "How you feel, the doctor's, the chemist's.", tags: [] }
+        - { id: words-work, title: Work and study, level: A2, summary: "Jobs, the office, school and university.", tags: [] }
+        - { id: words-feelings, title: Feelings and opinions, level: A2, summary: "Saying what you think, and why.", tags: [] }

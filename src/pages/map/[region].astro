@@ -1,0 +1,299 @@
+---
+// One room of the German map: its points, topic by topic. A point a written lesson
+// teaches links to that lesson and may open a full card; the rest stay in the fog,
+// title and summary only. A small script lights up the points this reader has read.
+import { render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import Say from "../../components/lesson/Say.astro";
+import Seal from "../../components/ui/Seal.astro";
+import { loadMap, type PlacedRegion } from "../../lib/grammar-map.ts";
+
+export async function getStaticPaths() {
+  const regions = await loadMap();
+  return regions.map((region, index) => ({
+    params: { region: region.id },
+    props: { region, previous: regions[index - 1], next: regions[index + 1] },
+  }));
+}
+
+interface Props {
+  region: PlacedRegion;
+  previous?: PlacedRegion;
+  next?: PlacedRegion;
+}
+const { region, previous, next } = Astro.props;
+
+// Render each card up front, so the template below stays a plain loop.
+const cardContent = new Map<string, Awaited<ReturnType<typeof render>>["Content"]>();
+for (const topic of region.topics) {
+  for (const point of topic.points) {
+    if (point.card) cardContent.set(point.id, (await render(point.card)).Content);
+  }
+}
+const components = { Say };
+---
+
+<Base title={`${region.name} · Map`} description={`${region.name} (${region.german}): ${region.motto}`}>
+  <article class="room">
+    <header class="room-head">
+      <p class="label"><a href="/map">The German map</a> · {region.place}</p>
+      <h1>{region.name}</h1>
+      <p class="german"><Say de={region.german} /></p>
+      <p class="motto">{region.motto}</p>
+      {
+        region.id === "words" && (
+          <p class="note">
+            The backbone word list is still being chosen. Until then, every word you have met is in{" "}
+            <a href="/words">your dictionary</a>.
+          </p>
+        )
+      }
+    </header>
+
+    {
+      region.topics.map((topic) => (
+        <section class="topic">
+          <h2>{topic.title}</h2>
+          <ol class="points">
+            {topic.points.map((point) => {
+              const Content = cardContent.get(point.id);
+              return (
+                <li
+                  id={point.id}
+                  class:list={["point", { taught: point.taughtIn.length > 0 }]}
+                  data-lessons={point.taughtIn.map((lesson) => lesson.id).join(" ")}
+                >
+                  <div class="point-head">
+                    <span class="level">{point.level}</span>
+                    <h3 class="title">{point.title}</h3>
+                    <span class="seal">
+                      <Seal size="sm" label="Read" />
+                    </span>
+                  </div>
+                  <p class="summary">{point.summary}</p>
+                  {point.taughtIn.length > 0 && (
+                    <p class="taught-in">
+                      <span class="label">Taught in</span>{" "}
+                      {point.taughtIn.map((lesson, index) => (
+                        <>
+                          {index > 0 && " · "}
+                          <a href={`/lessons/${lesson.id}`}>
+                            Lesson {lesson.number}, {lesson.title}
+                          </a>
+                        </>
+                      ))}
+                    </p>
+                  )}
+                  {Content && (
+                    <details class="card">
+                      <summary>
+                        <span class="label">Open the card</span>
+                      </summary>
+                      <div class="card-body">
+                        <Content components={components} />
+                      </div>
+                    </details>
+                  )}
+                </li>
+              );
+            })}
+          </ol>
+        </section>
+      ))
+    }
+  </article>
+
+  <nav class="turn-page" aria-label="Rooms">
+    {
+      previous ? (
+        <a class="turn previous" href={`/map/${previous.id}`}>
+          <span class="label">← {previous.place}</span>
+          <span class="turn-title">{previous.name}</span>
+        </a>
+      ) : (
+        <span />
+      )
+    }
+    {
+      next && (
+        <a class="turn next" href={`/map/${next.id}`}>
+          <span class="label">{next.place} →</span>
+          <span class="turn-title">{next.name}</span>
+        </a>
+      )
+    }
+  </nav>
+</Base>
+
+<script>
+  import { loadProgress } from "../../lib/progress.ts";
+
+  const finished = new Set(loadProgress().finished);
+  for (const point of document.querySelectorAll<HTMLElement>("[data-lessons]")) {
+    const lessons = (point.dataset.lessons ?? "").split(" ").filter(Boolean);
+    if (lessons.some((id) => finished.has(id))) point.classList.add("is-lit");
+  }
+</script>
+
+<style>
+  .room {
+    max-width: var(--measure);
+    margin: 0 auto;
+  }
+
+  .room-head {
+    margin-bottom: var(--space-5);
+    padding-bottom: var(--space-4);
+    border-bottom: var(--border-gilt);
+  }
+
+  .room-head .label a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .room-head h1 {
+    margin: var(--space-2) 0 0;
+  }
+
+  .german {
+    margin: 0;
+  }
+
+  .motto {
+    margin: var(--space-2) 0 0;
+    color: var(--color-ink-soft);
+    font-style: italic;
+  }
+
+  .note {
+    margin: var(--space-3) 0 0;
+    font-size: var(--text-sm);
+  }
+
+  .topic h2 {
+    margin-top: var(--space-6);
+  }
+
+  .points {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  /* A point in the fog: no lesson has taught it yet. */
+  .point {
+    margin: var(--space-3) 0;
+    padding: var(--space-3) var(--space-4);
+    border: 1px dashed var(--color-rule);
+    border-radius: var(--radius-md);
+    color: var(--color-ink-soft);
+    scroll-margin-top: var(--space-6);
+  }
+
+  /* Taught by a written lesson: out of the fog. */
+  .point.taught {
+    color: var(--color-ink);
+    background: var(--color-card);
+    border-style: solid;
+  }
+
+  /* Read by this reader: sealed. */
+  .point.is-lit {
+    border-left: 4px solid var(--color-gold);
+  }
+
+  .point-head {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-3);
+  }
+
+  .level {
+    flex: none;
+    font-family: var(--font-label);
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-label);
+    color: var(--color-ink-soft);
+  }
+
+  .title {
+    flex: 1;
+    margin: 0;
+    font-size: var(--text-lg);
+  }
+
+  .point:not(.taught) .title {
+    color: var(--color-ink-soft);
+  }
+
+  .seal {
+    display: none;
+    align-self: center;
+  }
+
+  .is-lit .seal {
+    display: block;
+  }
+
+  .summary {
+    margin: var(--space-1) 0 0;
+    font-size: var(--text-sm);
+  }
+
+  .taught-in {
+    margin: var(--space-2) 0 0;
+    font-size: var(--text-sm);
+  }
+
+  .card {
+    margin-top: var(--space-2);
+    border-top: 1px dotted var(--color-rule);
+  }
+
+  .card summary {
+    display: flex;
+    align-items: center;
+    min-height: var(--tap-min);
+    cursor: pointer;
+    color: var(--color-rubric);
+  }
+
+  .card-body > :global(:last-child) {
+    margin-bottom: 0;
+  }
+
+  .turn-page {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+    max-width: var(--measure);
+    margin: var(--space-7) auto 0;
+  }
+
+  .turn {
+    display: grid;
+    gap: var(--space-1);
+    min-height: var(--tap-min);
+    padding: var(--space-3) var(--space-4);
+    color: var(--color-ink);
+    text-decoration: none;
+    border: var(--border-hair);
+    border-radius: var(--radius-md);
+  }
+
+  a.turn:hover {
+    background: var(--color-card);
+  }
+
+  .next {
+    grid-column: 2;
+    text-align: right;
+  }
+
+  .turn-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    line-height: var(--leading-tight);
+  }
+</style>

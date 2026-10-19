@@ -52,3 +52,5 @@ dated, rather than a new ADR. A new ADR is for when the decision itself flips.
 | [0004](0004-astro-now-capacitor-later.md) | A static Astro site now; Capacitor for the stores later | Accepted |
 | [0005](0005-design-system-tokens-and-fonts.md) | Design system in CSS tokens; self-hosted fonts; a display-only face (amended: Fraktur → Cinzel Decorative) | Accepted |
 | [0006](0006-browser-speech-for-audio.md) | Audio via the device's speech synthesis; paid text-to-speech parked | Accepted |
+| [0007](0007-tales-between-lessons.md) | Tales between lessons: fresh stories made of words the reader already knows | Proposed |
+| [0008](0008-german-map.md) | The German map: the whole language in one structure, lit up by the lessons | Proposed |
