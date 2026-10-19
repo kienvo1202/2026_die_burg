@@ -38,7 +38,7 @@ estimates. When something is done it moves to `CHANGELOG.md` and is deleted from
       the sample out of `src/drafts/`
 - [ ] **Ledger counts tales** in `timesSeen`; a tale budget (≤ 6 new words, no new grammar)
       in `findProblems`, with tests and broken fixtures
-- [ ] **Tales on the course map**, between lessons
+- [x] **Tales on the course map**, between lessons; a lesson's last link leads to its tale
 - [ ] **Map integrity**: `check-lessons.ts` fails on a lesson grammar tag no map point
       holds, and reports coverage ("N of M points taught"); briefs choose tags from the map
 - [x] **Sound spotlights get tags**, so the map's Sounds region can light up (ei/ie and ch

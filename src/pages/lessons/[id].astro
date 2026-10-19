@@ -17,10 +17,12 @@ import Say from "../../components/lesson/Say.astro";
 import WordList from "../../components/lesson/WordList.astro";
 import YourTurn from "../../components/lesson/YourTurn.astro";
 import { loadCourse, type CourseLesson } from "../../lib/course.ts";
+import { loadTales, taleAfter, type Tale } from "../../lib/tales.ts";
 
 export async function getStaticPaths() {
   const { lessons } = await loadCourse();
   const written = lessons.filter((lesson) => lesson.entry);
+  const tales = loadTales();
   return written.map((lesson) => {
     const index = lessons.indexOf(lesson);
     return {
@@ -29,6 +31,7 @@ export async function getStaticPaths() {
         lesson,
         previous: written[written.indexOf(lesson) - 1],
         next: lessons[index + 1], // may be planned but not written yet
+        tale: taleAfter(tales, lesson.id), // read before the next lesson, when there is one
       },
     };
   });
@@ -38,8 +41,9 @@ interface Props {
   lesson: CourseLesson;
   previous?: CourseLesson;
   next?: CourseLesson;
+  tale?: Tale;
 }
-const { lesson, previous, next } = Astro.props;
+const { lesson, previous, next, tale } = Astro.props;
 const entry = lesson.entry!;
 const { Content } = await render(entry);
 
@@ -77,7 +81,12 @@ const components = { Check, Chunk, Deeper, Dialogue, Divider, Initial, Insight, 
       )
     }
     {
-      next?.entry ? (
+      tale ? (
+        <a class="turn next" href={`/tales/${tale.slug}`}>
+          <span class="label">Turn the page: a tale →</span>
+          <span class="turn-title">{tale.frontmatter.title}</span>
+        </a>
+      ) : next?.entry ? (
         <a class="turn next" href={`/lessons/${next.id}`}>
           <span class="label">Turn the page →</span>
           <span class="turn-title">{next.title}</span>

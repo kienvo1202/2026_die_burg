@@ -1,8 +1,7 @@
 ---
 // A tale (ADR 0007, proposed): a short story made of words the reader already knows,
-// read between lessons. The tales are still hand-made drafts in src/drafts/tales/, so they
-// have no collection or course-map entry yet; each one's words are checked by hand
-// against the ledger report for the lesson after it.
+// read between lessons. The tales are still hand-made drafts (see src/lib/tales.ts), so
+// each one's words are checked by hand against the ledger report for the lesson after it.
 import Base from "../../layouts/Base.astro";
 import Initial from "../../components/ui/Initial.astro";
 import Check from "../../components/lesson/Check.astro";
@@ -12,31 +11,24 @@ import Line from "../../components/lesson/Line.astro";
 import Say from "../../components/lesson/Say.astro";
 import WordList from "../../components/lesson/WordList.astro";
 import { loadCourse, type CourseLesson } from "../../lib/course.ts";
-
-interface TaleFile {
-  default: (props: { components: Record<string, unknown> }) => unknown;
-  frontmatter: { title: string; readAfter: string; minutes: number };
-}
+import { loadTales, type Tale } from "../../lib/tales.ts";
 
 export async function getStaticPaths() {
-  const files = import.meta.glob<TaleFile>("../../drafts/tales/*.mdx", { eager: true });
   const { lessons } = await loadCourse();
-  return Object.entries(files).map(([path, file]) => {
-    const slug = path.split("/").pop()!.replace(/\.mdx$/, "");
-    const after = lessons.find((lesson) => lesson.id === file.frontmatter.readAfter);
+  return loadTales().map((tale) => {
+    const after = lessons.find((lesson) => lesson.id === tale.frontmatter.readAfter);
     const next = after && lessons[lessons.indexOf(after) + 1];
-    return { params: { tale: slug }, props: { file, after, next } };
+    return { params: { tale: tale.slug }, props: { tale, after, next } };
   });
 }
 
 interface Props {
-  file: TaleFile;
+  tale: Tale;
   after?: CourseLesson;
   next?: CourseLesson;
 }
-const { file, after, next } = Astro.props;
-const { frontmatter } = file;
-const Tale = file.default;
+const { tale, after, next } = Astro.props;
+const { frontmatter, Content } = tale;
 const components = { Check, Chunk, Dialogue, Initial, Line, Say, WordList };
 ---
 
@@ -51,7 +43,7 @@ const components = { Check, Chunk, Dialogue, Initial, Line, Say, WordList };
       <p class="minutes">About {frontmatter.minutes} minutes · for enjoying, not studying</p>
     </header>
 
-    <Tale components={components} />
+    <Content components={components} />
   </article>
 
   <nav class="turn-page" aria-label="Lessons">
