@@ -41,7 +41,7 @@ estimates. When something is done it moves to `CHANGELOG.md` and is deleted from
 - [ ] **Tales on the course map**, between lessons
 - [ ] **Map integrity**: `check-lessons.ts` fails on a lesson grammar tag no map point
       holds, and reports coverage ("N of M points taught"); briefs choose tags from the map
-- [ ] **Sound spotlights get tags**, so the map's Sounds region can light up (ei/ie and ch
+- [x] **Sound spotlights get tags**, so the map's Sounds region can light up (ei/ie and ch
       are taught in lessons 1–2 but stay fogged)
 - [ ] **Repetition warning**: the checker flags a word that hasn't returned within N
       readings, with spacing that grows over time

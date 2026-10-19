@@ -21,15 +21,15 @@
   topics:
     - title: Letters
       points:
-        - { id: alphabet, title: The alphabet, level: A1, summary: "Spelling aloud: a few letters have German names that trip English speakers (e = 'ay', i = 'ee', j = 'yot', v = 'fow', w = 'vay').", tags: [] }
-        - { id: umlauts, title: "ä, ö, ü", level: A1, summary: "Two dots change the vowel and often the meaning (schon / schön). Without the keys, write ae, oe, ue.", tags: [] }
-        - { id: eszett, title: "ß", level: A1, summary: "ß is a sharp s after a long vowel or ei/au/eu that stays sharp in every form (heißen, Straße, Fuß, Füße); after a short vowel it is ss (Fluss). Small words like das, was, es keep one s. Switzerland writes ss everywhere.", tags: [] }
-        - { id: capital-nouns, title: Capital letters on nouns, level: A1, summary: "Every noun starts with a capital, wherever it stands; so does polite Sie.", tags: [] }
+        - { id: alphabet, title: The alphabet, level: A1, summary: "Spelling aloud: a few letters have German names that trip English speakers (e = 'ay', i = 'ee', j = 'yot', v = 'fow', w = 'vay').", tags: [spelling-alphabet] }
+        - { id: umlauts, title: "ä, ö, ü", level: A1, summary: "Two dots change the vowel and often the meaning (schon / schön). Without the keys, write ae, oe, ue.", tags: [sound-umlauts] }
+        - { id: eszett, title: "ß", level: A1, summary: "ß is a sharp s after a long vowel or ei/au/eu that stays sharp in every form (heißen, Straße, Fuß, Füße); after a short vowel it is ss (Fluss). Small words like das, was, es keep one s. Switzerland writes ss everywhere.", tags: [sound-eszett] }
+        - { id: capital-nouns, title: Capital letters on nouns, level: A1, summary: "Every noun starts with a capital, wherever it stands; so does polite Sie.", tags: [noun-gender] }
     - title: Sounds
       points:
-        - { id: ei-ie, title: "ei and ie", level: A1, summary: "Say the English name of the second letter: ei sounds like 'eye', ie like 'ee'.", tags: [] }
-        - { id: ch-sounds, title: The two ch sounds, level: A1, summary: "Throaty after a, o, u, au (auch); a soft hiss after other vowels and consonants (ich, natürlich). The diminutive -chen is always soft, chs is usually ks (sechs, Fuchs), and borrowed words vary (Chef, Chor).", tags: [] }
-        - { id: w-v-s, title: "w, v and s", level: A1, summary: "w sounds like English v, v usually like f, and s before a vowel like z in most of Germany.", tags: [] }
+        - { id: ei-ie, title: "ei and ie", level: A1, summary: "Say the English name of the second letter: ei sounds like 'eye', ie like 'ee'.", tags: [sound-ei-ie] }
+        - { id: ch-sounds, title: The two ch sounds, level: A1, summary: "Throaty after a, o, u, au (auch); a soft hiss after other vowels and consonants (ich, natürlich). The diminutive -chen is always soft, chs is usually ks (sechs, Fuchs), and borrowed words vary (Chef, Chor).", tags: [sound-ch] }
+        - { id: w-v-s, title: "w, v and s", level: A1, summary: "w sounds like English v, v usually like f, and s before a vowel like z in most of Germany.", tags: [sound-w-s] }
         - { id: diphthongs, title: "ei, eu, au", level: A1, summary: "ei sounds like 'eye', eu and äu like 'oy' (Deutsch, Häuser), au like 'ow' (Haus).", tags: [] }
         - { id: z-j, title: "z and j", level: A1, summary: "z sounds like 'ts' (Zeit), j like English y (ja).", tags: [] }
         - { id: r-sounds, title: "The German r", level: A1, summary: "Made at the back of the throat in most of Germany; at the end of a word, -er sounds like a short 'a' (aber, Lehrer).", tags: [] }
@@ -169,7 +169,7 @@
   topics:
     - title: Gender
       points:
-        - { id: gender, title: "der, die, das", level: A1, summary: "Every noun is masculine, feminine or neuter. Learn each one with its article.", tags: [] }
+        - { id: gender, title: "der, die, das", level: A1, summary: "Every noun is masculine, feminine or neuter. Learn each one with its article.", tags: [noun-gender] }
         - { id: gender-clues, title: Endings that give the gender away, level: A1, summary: "-ung, -heit, -keit, -schaft, -tion, -sion → die; the diminutive -chen and -lein → das; -ling, -ismus → der. Clues, not laws: der Kuchen is no diminutive.", tags: [] }
         - { id: compounds, title: Compound nouns, level: A1, summary: "Nouns join into one word, and the last part decides the gender: das Haus + die Tür = die Haustür.", tags: [] }
     - title: Plural
@@ -177,7 +177,7 @@
         - { id: plural, title: Plural forms, level: A1, summary: "Five patterns (-e, -er, -(e)n, -s, no change), often with an umlaut. In the nominative every plural takes die.", tags: [] }
     - title: Articles
       points:
-        - { id: definite-indefinite, title: "der or ein", level: A1, summary: "the and a. ein has no plural: ein Buch, Bücher.", tags: [] }
+        - { id: definite-indefinite, title: "der or ein", level: A1, summary: "the and a. ein has no plural: ein Buch, Bücher.", tags: [articles-der-ein] }
         - { id: kein, title: "kein", level: A1, summary: "'no' or 'not a' before a noun: Ich habe kein Auto. nicht denies everything else.", tags: [] }
         - { id: no-article, title: No article, level: A2, summary: "Jobs, nationalities and uncountable things often go without: Ich bin Lehrerin. Ich trinke Kaffee.", tags: [] }
         - { id: possessives, title: "mein, dein, sein, ihr, unser, euer, Ihr", level: A1, summary: "my, your, his, her… They take the same endings as ein, but unlike ein they have a plural: meine Bücher.", tags: [] }
@@ -280,7 +280,7 @@
         - { id: nicht-kein, title: "nicht or kein", level: A1, summary: "kein before a noun with ein or no article; nicht for everything else.", tags: [] }
     - title: Numbers and time
       points:
-        - { id: numbers, title: Numbers, level: A1, summary: "Units before tens, as in 'four-and-twenty blackbirds': 21 is einundzwanzig.", tags: [] }
+        - { id: numbers, title: Numbers, level: A1, summary: "Units before tens, as in 'four-and-twenty blackbirds': 21 is einundzwanzig.", tags: [numbers-0-100] }
         - { id: clock, title: Telling the time, level: A1, summary: "halb drei is 2:30: half (on the way) to three.", tags: [] }
         - { id: dates, title: Dates and ordinals, level: A2, summary: "am dritten Mai; written der 3. Mai, with a full stop.", tags: [] }
     - title: Tone

@@ -1,0 +1,326 @@
+---
+title: "At the bakery"
+canDo: "Order at a bakery, ask what something costs, and pay"
+minutes: 20
+newWords:
+  - { de: "der", en: "the (for der words)", pos: other }
+  - { de: "die", en: "the (for die words)", pos: other }
+  - { de: "das", en: "the (for das words); that", pos: other }
+  - { de: "ein", en: "a, an (for der and das words)", pos: other }
+  - { de: "eine", en: "a, an (for die words)", pos: other }
+  - { de: "Bäckerei", en: "bakery", pos: noun, article: die, plural: "-en" }
+  - { de: "Brot", en: "bread; a loaf", pos: noun, article: das, plural: "-e" }
+  - { de: "Brötchen", en: "bread roll", pos: noun, article: das, plural: "-" }
+  - { de: "Brezel", en: "pretzel", pos: noun, article: die, plural: "-n" }
+  - { de: "Kuchen", en: "cake", pos: noun, article: der, plural: "-" }
+  - { de: "Kaffee", en: "coffee", pos: noun, article: der, plural: "-s" }
+  - { de: "Stück", en: "piece (ein Stück Kuchen: a piece of cake)", pos: noun, article: das, plural: "-e" }
+  - { de: "Mädchen", en: "girl", pos: noun, article: das, plural: "-" }
+  - { de: "Euro", en: "euro (zwei Euro: no -s after a number)", pos: noun, article: der, plural: "-s" }
+  - { de: "Cent", en: "cent (zwei Cent: no -s after a number)", pos: noun, article: der, plural: "-s" }
+  - { de: "Karte", en: "card (to pay with)", pos: noun, article: die, plural: "-n" }
+  - { de: "kosten", en: "to cost", pos: verb, forms: "das kostet (it costs)" }
+  - { de: "bar", en: "in cash", pos: adverb }
+  - { de: "oder", en: "or", pos: other }
+  - { de: "hier", en: "here", pos: adverb }
+  - { de: "lecker", en: "tasty, delicious", pos: adjective }
+  - { de: "Bitte schön!", en: "Here you are! / What can I get you? / You're welcome!", pos: phrase }
+  - { de: "Danke schön!", en: "Thank you very much!", pos: phrase }
+  - { de: "Schönen Tag noch!", en: "Have a nice day!", pos: phrase }
+recycles:
+  - "zwei"
+  - "vier"
+  - "zehn"
+  - "bitte"
+  - "danke"
+  - "natürlich"
+  - "guten morgen!"
+  - "auf wiedersehen!"
+  - "hallo!"
+  - "ja"
+  - "und"
+grammar:
+  - noun-gender
+  - articles-der-ein
+  - sound-umlauts
+  - numbers-0-100
+---
+
+<Initial>
+
+Every German day starts at the bakery. Before work, before school, before anyone has said
+a word to you, someone behind a counter will look up and wait for your order. This lesson
+gets you through that moment, and through the thing that makes German nouns look so
+hard: der, die and das. They turn out to be something English had too.
+
+</Initial>
+
+## Warm-up
+
+<Check q="Say 21 in German.">
+
+<Say de="einundzwanzig" />: one-and-twenty.
+
+</Check>
+
+<Check q="A receptionist is filling in a form for you. How might she ask your age?">
+
+<Say de="Wie alt sind Sie?" />
+
+</Check>
+
+<Check q="Spelling your name, which German letter sounds like an English E?">
+
+The I. (And the German E sounds like an English A.)
+
+</Check>
+
+<Check q="It is half past seven in the morning and you walk into a bakery. What do you say?">
+
+<Say de="Guten Morgen!" />, or in the north, <Say de="Moin!" />
+
+</Check>
+
+## The scene
+
+<Dialogue title="The morning queue" setting="A neighbourhood bakery in Berlin, half past seven">
+  <Line who="Frau Kaya" de="Guten Morgen! Bitte schön?" en="Good morning! What can I get you?" />
+  <Line who="Ben" de="Guten Morgen! Ich hätte gern zwei Brötchen und eine Brezel." en="Good morning! I'd like two rolls and a pretzel, please." />
+  <Line who="Frau Kaya" de="Sonst noch etwas?" en="Anything else?" />
+  <Line who="Ben" de="Ja … was kostet der Kuchen?" en="Yes… how much is the cake?" />
+  <Line who="Frau Kaya" de="Ein Stück? Zwei Euro vierzig." en="A piece? Two euros forty." />
+  <Line who="Ben" de="Ein Stück, bitte." en="A piece, please." />
+  <Line who="Frau Kaya" de="Zum Mitnehmen?" en="To take away?" />
+  <Line who="Ben" de="Ja, bitte. Das ist alles." en="Yes, please. That's everything." />
+  <Line who="Frau Kaya" de="Vier Euro zehn, bitte. Bar oder Karte?" en="Four euros ten, please. Cash or card?" />
+  <Line who="Ben" de="Bar. Hier, bitte." en="Cash. Here you are." />
+  <Line who="Frau Kaya" de="Danke schön! Schönen Tag noch!" en="Thank you very much! Have a nice day!" />
+  <Line who="Ben" de="Danke! Auf Wiedersehen!" en="Thanks! Goodbye!" />
+</Dialogue>
+
+<Dialogue title="Afternoon" setting="The same bakery, that afternoon, at its little café table">
+  <Line who="Mia" de="Hallo, Ben!" en="Hi, Ben!" />
+  <Line who="Ben" de="Hallo, Mia! Brezel oder Kuchen?" en="Hi, Mia! Pretzel or cake?" />
+  <Line who="Mia" de="Kuchen natürlich!" en="Cake, of course!" />
+  <Line who="Ben" de="Und zwei Kaffee?" en="And two coffees?" />
+  <Line who="Mia" de="Ja! Frau Kaya, ich hätte gern zwei Kaffee, bitte." en="Yes! Frau Kaya, two coffees, please." />
+  <Line who="Frau Kaya" de="Bitte schön!" en="Here you are!" />
+  <Line who="Mia" de="Danke! Mmm, lecker!" en="Thanks! Mmm, delicious!" />
+</Dialogue>
+
+Ben ordered <span lang="de">*eine* Brezel</span> but <span lang="de">*ein* Stück</span>,
+and asked about <span lang="de">*der* Kuchen</span>. Three little words, three different
+choices. That is today's idea.
+
+## Phrases to keep
+
+<Chunk de="Ich hätte gern …" literal="I would-have gladly …" means="I'd like …, please. The standard, polite way to order." />
+
+<Chunk de="Was kostet das?" literal="What costs that?" means="How much is that?" />
+
+<Chunk de="Sonst noch etwas?" literal="Otherwise still something?" means="Anything else?" />
+
+<Chunk de="Das ist alles." literal="That is all." means="That's everything." />
+
+<Chunk de="Zum Mitnehmen?" literal="For the taking-along?" means="To take away?" />
+
+## The insight
+
+<Insight title="English had der, die and das too">
+
+Every German noun belongs to one of three groups, and the word for *the* tells you which:
+
+| <span lang="de">*der*</span> words | <span lang="de">*die*</span> words | <span lang="de">*das*</span> words |
+|---|---|---|
+| <Say de="der Kuchen" /> | <Say de="die Brezel" /> | <Say de="das Brötchen" /> |
+| <Say de="der Kaffee" /> | <Say de="die Bäckerei" /> | <Say de="das Brot" /> |
+
+Grammar books call these masculine, feminine and neuter (*gender*), but the group belongs
+to the **word**, not to the thing. A cake is not male. And <Say de="das Mädchen" />, the
+girl, is a *das* word.
+
+That sounds like a German eccentricity until you look at Old English. A thousand years
+ago, English had three basic words for *the* as well: *se* for masculine words, *sēo* for
+feminine ones and *þæt* for neuter ones (*þ* is an old letter for *th*). Over the next few
+centuries English merged them into a single *the*. One of them survived on its own:
+*þæt* became **that**.
+
+So when you ask <Say de="Was kostet das?" />, you are saying "What costs *that*?" with
+the very same word. English didn't avoid der, die and das. It had them and wore them
+down.
+
+**What this means for you:** a German noun without its article is only half a word.
+Learn <Say de="die Brezel" />, never just *Brezel*. In the word lists the article comes
+in colour: blue for *der*, red for *die*, green for *das*. Picture the colour, say the
+article, and it sticks.
+
+*A* follows the same groups, with one shape for two of them:
+
+| | *the* | *a* |
+|---|---|---|
+| <span lang="de">*der*</span> words | <Say de="der Kuchen" /> | <Say de="ein Kuchen" /> |
+| <span lang="de">*die*</span> words | <Say de="die Brezel" /> | <Say de="eine Brezel" /> |
+| <span lang="de">*das*</span> words | <Say de="das Stück" /> | <Say de="ein Stück" /> |
+
+And one more thing you may have noticed: every German noun starts with a capital letter,
+wherever it is in the sentence. <span lang="de">*Brot*</span>,
+<span lang="de">*Kaffee*</span>, <span lang="de">*Mädchen*</span>. It makes nouns easy to
+spot on a page.
+
+</Insight>
+
+<Deeper title="Why Brötchen and Mädchen are das">
+
+The ending *-chen* means "little": <span lang="de">*Brötchen*</span> is a little bread,
+<span lang="de">*Mädchen*</span> a little maid. And every noun made small with *-chen* is a
+*das* word, whatever it names: this rule has no exceptions. (Careful: <span lang="de">*der Kuchen*</span>
+only happens to end in *-chen*; it isn't a little *Ku*.)
+
+English has a distant cousin of this ending in *-kin*: a *napkin* was once a little cloth,
+a *lambkin* a little lamb. English kept the ending in a few words; German uses it every
+day.
+
+</Deeper>
+
+## Sound: ö and ü
+
+<span lang="de">*Brötchen*</span>, <span lang="de">*fünf*</span>,
+<span lang="de">*Grüß Gott*</span>: two sounds English doesn't have. The trick is in the
+lips.
+
+- **ü**: say "ee", then round your lips as if to whistle, without moving your tongue:
+  <Say de="Grüß Gott!" />. In <Say de="fünf" /> it is the same sound, just shorter.
+- **ö**: say "ay" (without the English glide), then round your lips the same way: <Say de="Brötchen" />,
+  <Say de="Österreich" />.
+
+If it feels like your mouth is saying two things at once, you are doing it right.
+
+## New words
+
+<WordList words={frontmatter.newWords} />
+
+## How people really say it
+
+**Bitte schön?** Behind a counter it means "What can I get you?". Handing something over
+it means "Here you are", and after a thank-you it means "You're welcome".
+<span lang="de">*Bitte*</span> does almost every polite job there is.
+
+**The roll has many names.** <Say de="das Brötchen" /> is understood everywhere, but in
+Berlin you will hear *Schrippe*, in Bavaria and Austria *Semmel*, in the south-west
+*Weckle* or *Weck*, and Switzerland has its own names again. Order with the local word and you will
+get a smile.
+
+**Bread is serious.** Germany records thousands of bread varieties, and many bakeries
+open by six. Some open on Sunday mornings too, which is why the bakery queue is part of a
+German weekend.
+
+**Cash or card?** Cards are widely accepted now, but small bakeries may still prefer cash,
+or have a minimum for cards. A few coins in your pocket never hurt.
+
+## Watch out
+
+**Learn the article with the noun.** <span lang="de">*die* Brezel</span>,
+<span lang="de">*das* Brötchen</span>: guessing from the thing, or from English, will
+fail you.
+
+**Order with Ich hätte gern.** "Ich will…" (I want) sounds blunt at a counter.
+
+**Ordering a der word changes ein.** You will hear
+<span lang="de">*Ich hätte gern einen Kaffee*</span>: when you order something, *ein*
+becomes *einen* for *der* words (only for them). A later lesson shows why. Until then,
+order *die* and *das* words, or a number: <Say de="zwei Kaffee, bitte" />.
+
+**Prices:** 2,40 € is said <Say de="zwei Euro vierzig" />. Germans write a comma where
+English writes a point, and say *Euro*, not *Euros*, after a number.
+
+**Two coffees is usually zwei Kaffee.** When you order, *Kaffee* normally stays singular
+after a number: <Say de="zwei Kaffee, bitte" />.
+
+## Check yourself
+
+<Check q="der, die or das: <span lang='de'>Brötchen</span>?">
+
+<Say de="das Brötchen" />: a noun made small with *-chen* is always *das*.
+
+</Check>
+
+<Check q="der, die or das: <span lang='de'>Brezel</span>?">
+
+<Say de="die Brezel" />
+
+</Check>
+
+<Check q="der, die or das: <span lang='de'>Kuchen</span>?">
+
+<Say de="der Kuchen" />
+
+</Check>
+
+<Check q="ein or eine: ___ Brezel, ___ Stück, ___ Kaffee?">
+
+<Say de="eine Brezel" />, <Say de="ein Stück" />, <Say de="ein Kaffee" />
+
+</Check>
+
+<Check q="Order two rolls and a pretzel, politely.">
+
+<Say de="Ich hätte gern zwei Brötchen und eine Brezel." />
+
+</Check>
+
+<Check q="Ask how much the cake is.">
+
+<Say de="Was kostet der Kuchen?" />
+
+</Check>
+
+<Check q="The baker asks <span lang='de'>Sonst noch etwas?</span> You have everything. What do you say?">
+
+<Say de="Das ist alles." />, or <Say de="Nein, danke." />
+
+</Check>
+
+<Check q="Say the price 3,50 €.">
+
+<Say de="drei Euro fünfzig" />
+
+</Check>
+
+<Check q="Which English word is the same word as German <span lang='de'>das</span>?">
+
+*That*. Old English *þæt* was the *the* for neuter words.
+
+</Check>
+
+<Check q="Is <span lang='de'>das Mädchen</span> a mistake?">
+
+No. Adding *-chen* (little) makes every noun *das*, even the word for a girl.
+
+</Check>
+
+## Your turn
+
+<YourTurn
+  model="Guten Morgen! Ich hätte gern zwei Brötchen und eine Brezel. Was kostet der Kuchen? … Ein Stück, bitte. Das ist alles. … Danke! Auf Wiedersehen!"
+  checklist={[
+    "Did your greeting fit the time? (<span lang='de'>Guten Morgen!</span>)",
+    "Did you order with <span lang='de'>Ich hätte gern</span>?",
+    "<span lang='de'>eine Brezel</span>, but <span lang='de'>ein Stück</span>?",
+    "Did you finish with <span lang='de'>Das ist alles</span> and a goodbye?",
+  ]}
+>
+
+It's eight in the morning. Walk into a bakery, greet the room, order two rolls and a
+pretzel, ask what the cake costs and take a piece, say that's everything, and say
+goodbye. Out loud, before you look at the model answer.
+
+</YourTurn>
+
+<Recap
+  canDo={[
+    "order at a bakery with <span lang='de'>Ich hätte gern …</span> and answer <span lang='de'>Sonst noch etwas?</span>",
+    "ask <span lang='de'>Was kostet das?</span> and understand the price",
+    "pay, in cash or by card, and say goodbye",
+    "learn every noun with <span lang='de'>der</span>, <span lang='de'>die</span> or <span lang='de'>das</span>, and choose <span lang='de'>ein</span> or <span lang='de'>eine</span>",
+  ]}
+/>

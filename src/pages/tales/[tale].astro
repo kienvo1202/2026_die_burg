@@ -1,0 +1,144 @@
+---
+// A tale (ADR 0007, proposed): a short story made of words the reader already knows,
+// read between lessons. The tales are still hand-made drafts in src/drafts/tales/, so they
+// have no collection or course-map entry yet; each one's words are checked by hand
+// against the ledger report for the lesson after it.
+import Base from "../../layouts/Base.astro";
+import Initial from "../../components/ui/Initial.astro";
+import Check from "../../components/lesson/Check.astro";
+import Chunk from "../../components/lesson/Chunk.astro";
+import Dialogue from "../../components/lesson/Dialogue.astro";
+import Line from "../../components/lesson/Line.astro";
+import Say from "../../components/lesson/Say.astro";
+import WordList from "../../components/lesson/WordList.astro";
+import { loadCourse, type CourseLesson } from "../../lib/course.ts";
+
+interface TaleFile {
+  default: (props: { components: Record<string, unknown> }) => unknown;
+  frontmatter: { title: string; readAfter: string; minutes: number };
+}
+
+export async function getStaticPaths() {
+  const files = import.meta.glob<TaleFile>("../../drafts/tales/*.mdx", { eager: true });
+  const { lessons } = await loadCourse();
+  return Object.entries(files).map(([path, file]) => {
+    const slug = path.split("/").pop()!.replace(/\.mdx$/, "");
+    const after = lessons.find((lesson) => lesson.id === file.frontmatter.readAfter);
+    const next = after && lessons[lessons.indexOf(after) + 1];
+    return { params: { tale: slug }, props: { file, after, next } };
+  });
+}
+
+interface Props {
+  file: TaleFile;
+  after?: CourseLesson;
+  next?: CourseLesson;
+}
+const { file, after, next } = Astro.props;
+const { frontmatter } = file;
+const Tale = file.default;
+const components = { Check, Chunk, Dialogue, Initial, Line, Say, WordList };
+---
+
+<Base title={frontmatter.title} description={`A tale, told with the German of the lessons so far.`}>
+  <article class="tale">
+    <header class="tale-head">
+      <p class="label">
+        {after && <a href={`/course#${after.level.id}`}>{after.level.name} · {after.level.title}</a>}
+        {after && ` · A tale, after lesson ${after.number}`}
+      </p>
+      <h1>{frontmatter.title}</h1>
+      <p class="minutes">About {frontmatter.minutes} minutes · for enjoying, not studying</p>
+    </header>
+
+    <Tale components={components} />
+  </article>
+
+  <nav class="turn-page" aria-label="Lessons">
+    {
+      after ? (
+        <a class="turn" href={`/lessons/${after.id}`}>
+          <span class="label">← Back to</span>
+          <span class="turn-title">{after.title}</span>
+        </a>
+      ) : (
+        <span />
+      )
+    }
+    {
+      next?.entry && (
+        <a class="turn next" href={`/lessons/${next.id}`}>
+          <span class="label">Turn the page →</span>
+          <span class="turn-title">{next.title}</span>
+        </a>
+      )
+    }
+  </nav>
+</Base>
+
+<style>
+  .tale {
+    max-width: var(--measure);
+    margin: 0 auto;
+  }
+
+  .tale-head {
+    margin-bottom: var(--space-6);
+    padding-bottom: var(--space-4);
+    border-bottom: var(--border-gilt);
+  }
+
+  .tale-head .label a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .tale-head h1 {
+    margin-top: var(--space-2);
+  }
+
+  .minutes {
+    margin: 0;
+    font-size: var(--text-sm);
+    color: var(--color-ink-soft);
+    font-style: italic;
+  }
+
+  .tale :global(h2) {
+    margin-top: var(--space-7);
+  }
+
+  .turn-page {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+    max-width: var(--measure);
+    margin: var(--space-7) auto 0;
+  }
+
+  .turn {
+    display: grid;
+    gap: var(--space-1);
+    min-height: var(--tap-min);
+    padding: var(--space-3) var(--space-4);
+    color: var(--color-ink);
+    text-decoration: none;
+    border: var(--border-hair);
+    border-radius: var(--radius-md);
+  }
+
+  a.turn:hover {
+    background: var(--color-card);
+  }
+
+  .next {
+    grid-column: 2;
+    text-align: right;
+  }
+
+  .turn-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    line-height: var(--leading-tight);
+  }
+</style>

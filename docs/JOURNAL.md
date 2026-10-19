@@ -144,3 +144,80 @@ Honest limits, written down before anyone builds on them:
 
 Both are hand-made samples first, as PRODUCT.md §4 says. Rewriting the guide, schema and
 skill before anyone has read a tale would be guessing.
+
+---
+
+## 2026-10-19 — Lessons 3 and 4, a second tale, and the Sounds room lit
+
+Briefs first (Kien approved both unchanged), then the lessons through `/write-lesson`.
+
+- **Lesson 3, Spell it out.** Insight: German counts like a nursery rhyme
+  (*einundzwanzig*, "four-and-twenty blackbirds").
+- **Lesson 4, At the bakery.** Insight: Old English had three words for *the* (*se*,
+  *sēo*, *þæt*), and *þæt* survives as *that*, the same word as German *das*.
+
+Also this round:
+- A second tale, the Bremen Town Musicians. Its animals are old (*Ich bin alt*, lesson 3)
+  and three *der* plus one *die* (lesson 4).
+- Ten more map cards.
+- Sound tags, so the map's Sounds room lights up.
+
+**The independent passes earned their keep again.** Errors my own pass missed:
+
+- Lesson 3's rule "number + *zig* for 20–90" doesn't make *zwanzig*. The table now
+  starts at 40, and 20 and 30 are taught as words.
+- Two of three phone numbers were two digits short for a 015x mobile number.
+- Lesson 4 said "every *-chen* word is *das*" with *der Kuchen* in the same word list.
+  It is the **diminutive** *-chen* that is always *das*.
+- Ben ordered "zum Mitnehmen" (to take away), then sat down at the bakery's café table.
+  The second scene is now a later visit.
+- The brief said "A wie Augsburg". DIN 5009:2022 has "A wie Aachen". The lesson never
+  used it.
+
+**A rule that was true of the page and false of the language, again** (see lessons
+1–2): "every *-chen* word is *das*". Tested against the very next word in the list, it
+broke.
+
+Softened on review:
+- *zwo* "in shops" became "on the radio";
+- the crossed 7 is no longer a causal story;
+- the finger-counting claim now matches the film scene: three shown the English way;
+- *Weggli* is no longer "the" Swiss word for a roll;
+- "zwei Kaffee" is now "usually".
+
+**A design trade-off, written down:** the lesson 4 brief keeps the accusative out, so
+*ein Kaffee* in the article table invites "Ich hätte gern ein Kaffee". The lesson warns
+about it ("ein becomes einen for der words when you order") and steers orders towards
+*die* and *das* words. That is why Usability scores 4: a reader can't yet order a *der*
+word correctly.
+
+Rubric, my scores before Kien's read (1–5):
+
+| | Hook | Insight | Usability | Accuracy | Load | Recycling | Self-check |
+|---|---|---|---|---|---|---|---|
+| Lesson 3 | 4 | 5 | 5 | 4 | 4 | 5 | 5 |
+| Lesson 4 | 4 | 5 | 4 | 4 | 4 | 5 | 5 |
+
+Accuracy stays at 4 until a native speaker has read them. Load is 4 for both:
+- Lesson 3 carries numbers *and* the alphabet.
+- Lesson 4 carries 24 words.
+
+Not verified:
+- the exact Bundesnetzagentur ranges for fictional phone numbers (ours could be real);
+- how common *zwo* is outside the phone;
+- the Swiss word for a roll.
+
+Guide change: numbers built by lesson 3's rules count as known words (rule 5), since
+no word list can hold all ninety of them.
+
+The Bremen tale and the ten cards had their own independent pass:
+
+- **The tale had its plot slightly wrong.** The animals weren't "thrown out"; each was
+  about to be killed and ran away. The dog was to be beaten to death, not shot. The
+  rooster crowed from the rafters, not the roof.
+- **Three cards taught things no lesson had:**
+  - *v* sounds like *f*;
+  - *ä*, and typing *ae/oe/ue*;
+  - the soft *-chen*.
+
+  These moved to "still in the fog". A card says what lessons taught, nothing more.

@@ -1,0 +1,85 @@
+# Brief for lesson a1-04. What the lesson must teach, and must not teach yet.
+# Read with docs/LESSON_GUIDE.md.
+
+canDo: Order at a bakery, ask what something costs, and pay.
+
+scene:
+  place: A bakery in Berlin
+  situation: >
+    Early morning, a queue at a neighbourhood bakery. A customer (Sie) orders bread rolls
+    and a pretzel, asks what a cake costs, and pays. Then two friends (du) at the
+    bakery's little café table decide what to share.
+  characters:
+    - { name: Frau Kaya, who: "baker behind the counter, forties, from Berlin", register: Sie }
+    - { name: Ben Okafor, who: "customer, thirties, new in the neighbourhood", register: Sie }
+    - { name: Mia, who: "Ben's friend, late twenties", register: du }
+
+coreInsight: >
+  Every German noun is der, die or das, and the gender belongs to the word, not to the
+  thing: das Brötchen, die Brezel, der Kuchen. English had exactly this. Old English had
+  three words for "the": se (masculine), sēo (feminine) and þæt (neuter). English merged
+  them into one "the", and kept the neuter one as "that". So English "that" and German
+  "das" are the same word. Practical consequence: learn every noun with its article, as
+  one unit, never the bare noun; the colours in the word list (blue der, red die, green
+  das) help. Second, smaller point: ein for der and das words, eine for die words.
+  Every noun is written with a capital letter.
+
+notYet:
+  - the accusative (einen); orders use das and die words, numbers, or a chunk
+  - gender rules by ending (-ung, -chen…) beyond a first glimpse that -chen is always das
+  - plural patterns as a system; plurals appear in the word list only
+  - kein vs nicht (lesson 8)
+  - er / sie / es, wir, ihr, plural sie, except "es kostet" inside the chunk
+  - prices with cents written out in full beyond the pattern "zwei Euro vierzig"
+
+introducesGrammar:
+  - noun-gender
+  - articles-der-ein
+  - sound-umlauts
+
+chunks:
+  - { de: "Ich hätte gern …", literal: "I would-have gladly …", means: "I'd like …, please (the standard way to order)" }
+  - { de: "Was kostet das?", literal: "What costs that?", means: "How much is that?" }
+  - { de: "Sonst noch etwas?", literal: "Otherwise still something?", means: "Anything else?" }
+  - { de: "Das ist alles.", literal: "That is all.", means: "That's everything." }
+  - { de: "Zum Mitnehmen?", literal: "For-the taking-along?", means: "To take away?" }
+
+newWordBudget: 26
+
+soundSpotlight: >
+  ö and ü: round your lips as for "o" or "oo", then say "e" or "ee" without moving them
+  (Brötchen, Grüß Gott, fünf). No English sound matches; the lips do the work.
+
+cultureNote: >
+  Bread is a big deal: Germany has thousands of registered bread varieties, and a
+  bakery is where the day starts. The bread roll changes its name with the region:
+  Brötchen (standard, north), Schrippe (Berlin), Semmel (Bavaria, Austria), Weckle or
+  Weck (south-west), Weggli (Switzerland). Many bakeries open early and some on Sunday
+  mornings. Greet the room as you enter (lesson 1). Cash is still common, especially in
+  small bakeries; ask "Kann ich mit Karte zahlen?" only as an optional chunk if it fits.
+
+traps:
+  - 'The article belongs to the word: die Brezel, das Brötchen. Guessing from the thing (or from English) fails.'
+  - 'das Mädchen (the girl) is neuter: -chen makes every noun das.'
+  - '"Ich will…" sounds blunt when ordering. "Ich hätte gern…" or "Ich möchte…" is polite.'
+  - '"Bitte" does many jobs: please, here you are, you''re welcome. "Danke" is thank you.'
+  - 'Prices: 2,40 € is said "zwei Euro vierzig", and written with a comma, not a point.'
+
+selfCheckIdeas:
+  - der, die or das for words from the scene
+  - ein or eine
+  - order two rolls and a pretzel politely
+  - ask the price of the cake
+  - what "Sonst noch etwas?" means and an answer
+  - say a price aloud (3,50 €)
+  - which English word is the same as "das"
+
+yourTurn:
+  prompt: >
+    You walk into a bakery at eight in the morning. Greet, order two rolls and a pretzel,
+    ask what a piece of cake costs, say that's everything, and say goodbye.
+  modelNotes: >
+    Guten Morgen! Ich hätte gern zwei Brötchen und eine Brezel. Was kostet der Kuchen?
+    Das ist alles, danke. Tschüss! / Auf Wiedersehen! Checklist: greeting fits the
+    time; eine Brezel (die); Ich hätte gern, not Ich will; the price in the right
+    order.

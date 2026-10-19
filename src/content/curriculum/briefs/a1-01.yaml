@@ -35,6 +35,9 @@ introducesGrammar:
   - sein-ich-du-sie
   - heissen-ich-du-sie
   - w-question-wie
+  - sound-ei-ie
+  - sound-eszett
+  - sound-w-s
 
 chunks:
   - { de: "Wie heißt du?", literal: "How are-called you?", means: "What's your name? (to a friend)" }

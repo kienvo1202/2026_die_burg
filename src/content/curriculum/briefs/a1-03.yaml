@@ -1,0 +1,88 @@
+# Brief for lesson a1-03. What the lesson must teach, and must not teach yet.
+# Read with docs/LESSON_GUIDE.md.
+
+canDo: Spell your name, give your phone number and your age, and ask for them.
+
+scene:
+  place: The city library in Cologne
+  situation: >
+    Signing up for a library card at the desk. The librarian (Sie) asks for name,
+    spelling, age and phone number; the reader's stand-in has an Irish name nobody can
+    spell, so spelling matters. Afterwards, in the library café, a student she met in the
+    queue (du) asks for her mobile number.
+  characters:
+    - { name: Frau Becker, who: "librarian, fifties, from Cologne", register: Sie }
+    - { name: Siobhan Kelly, who: "new in Cologne, from Dublin, early thirties", register: Sie }
+    - { name: Lukas, who: "student, early twenties, in the queue behind her", register: du }
+
+coreInsight: >
+  German says numbers the way nursery rhymes do: units first. 21 is einundzwanzig,
+  "one-and-twenty", exactly as in "four-and-twenty blackbirds" and Housman's "When I was
+  one-and-twenty". English used to count this way too and switched; German didn't. So
+  when you hear a number over 20, wait for the end: the first thing you hear is the
+  units. Build every number to 99 from 0–12 plus three rules (-zehn for the teens, -zig
+  for the tens, units-und-tens), with the four spelling quirks: sechzehn and sechzig drop
+  the s, siebzehn and siebzig drop the -en, and dreißig is spelt with ß. Second, smaller
+  idea: German spells aloud with letter names that trap English speakers (E is "ay", I is
+  "ee", J is "yot", V is "fow", W is "vay", Z is "tset").
+
+notYet:
+  - possessives as a system (mein, dein, Ihr); "Wie ist Ihr Name?" and "deine Nummer" are chunks
+  - er / sie / es, wir, ihr, plural sie
+  - articles and gender as a rule (lesson 4); nouns appear with their article in the word list only
+  - the pronoun man ("one", "you"); "Wie schreibt man das?" is a chunk
+  - the imperative; "Buchstabieren Sie bitte!" is avoided (ask with a chunk instead)
+  - clock times and prices (lessons 4 and 10); numbers above 100 (a later lesson)
+  - yes/no question word order as a rule (lesson 13)
+
+introducesGrammar:
+  - numbers-0-100
+  - spelling-alphabet
+
+chunks:
+  - { de: "Wie ist Ihr Name?", literal: "How is your name?", means: "What's your name? (formal, on forms and the phone)", explainedIn: a1-07 }
+  - { de: "Wie schreibt man das?", literal: "How writes one that?", means: "How do you spell that?" }
+  - { de: "Wie alt bist du?", literal: "How old are you?", means: "How old are you?" }
+  - { de: "Wie ist deine Handynummer?", literal: "How is your handy-number?", means: "What's your mobile number?", explainedIn: a1-07 }
+  - { de: "Wie ist Ihre Handynummer?", literal: "How is your (polite) handy-number?", means: "What's your mobile number? (polite)", explainedIn: a1-07 }
+
+newWordBudget: 26
+
+soundSpotlight: >
+  The letter names that trap English speakers when spelling: A "ah", E "ay", I "ee",
+  J "yot", R (throaty), V "fow", W "vay", Y "üpsilon", Z "tset"; plus Ä, Ö, Ü and ß
+  ("eszett"). The classic mix-up is E and I, which English names the other way round.
+
+cultureNote: >
+  On the phone, Germans spell with a spelling alphabet: traditionally first names (A wie
+  Anton, B wie Berta); since 2022 the official standard (DIN 5009) uses city names (A wie
+  Aachen, B wie Berlin), but you will hear both. Phone numbers are often read in pairs
+  of digits (null-eins-sieben-zwo…), and zwei becomes "zwo" on the phone so it can't be
+  confused with drei. A handwritten 1 has an upstroke, so it can look like an English 7;
+  the 7 has a crossbar. Counting on fingers starts with the thumb (a moment made famous
+  by a scene in Inglourious Basterds: reference only, never quote). The emergency number
+  is 112, the police 110.
+
+traps:
+  - 'einundzwanzig is 21, not 12: units first. Write it as one word.'
+  - 'E and I swap: German E sounds like English "A", German I like English "E".'
+  - 'dreißig, not dreizig; sechzehn, not sechszehn; siebzig, not siebenzig.'
+  - '"Handy" is the German word for a mobile phone. It looks English and isn''t used that way in English.'
+  - 'Age with sein, not haben: "Ich bin 34", never "Ich habe 34 Jahre".'
+
+selfCheckIdeas:
+  - write the digits for spoken numbers (einundzwanzig, siebenundvierzig, dreißig)
+  - say a number in German (16, 60, 77, 99)
+  - spell a name aloud with German letter names (E or I?)
+  - ask a librarian vs a student for their age
+  - which spelling is right (sechzehn / sechszehn)
+  - read out the emergency number
+
+yourTurn:
+  prompt: >
+    You are signing up at a gym in Germany. Give your name and spell your surname, say
+    how old you are, and give your phone number.
+  modelNotes: >
+    Ich heiße … / Mein Name ist … is NOT yet taught: use "Ich heiße …". Spell with German
+    letter names. Ich bin … (age). Meine Nummer is not taught: just the digits, in pairs
+    or one by one. Checklist: E and I; units first above 20; age with sein.

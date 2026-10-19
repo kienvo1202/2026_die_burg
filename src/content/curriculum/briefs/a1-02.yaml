@@ -34,6 +34,7 @@ introducesGrammar:
   - present-tense-endings
   - w-question-wo-woher
   - aus-in-places
+  - sound-ch
 
 chunks:
   - { de: "Woher kommst du?", literal: "Where-from come you?", means: "Where are you from?" }
