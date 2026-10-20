@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------------
-# Universal: keep these whatever the stack
+# Universal
 # ---------------------------------------------------------------------------
 
 # Secrets. Ignored in the very first commit, before anyone creates the file:
@@ -28,52 +28,17 @@ Thumbs.db
 .claude/settings.local.json
 
 # ---------------------------------------------------------------------------
-# Per stack: uncomment the one you use, delete the rest.
-# Left commented on purpose: an unused pattern can silently hide real files
-# (a Node project with a bin/ folder of scripts would lose it to the .NET rule).
+# Node / Astro
 # ---------------------------------------------------------------------------
-
-# --- .NET / C# ---
-# bin/
-# obj/
-# .vs/
-# *.user
-# *.suo
-# TestResults/
-# *.nupkg
-
-# --- Xcode / iOS / Swift ---
-# DerivedData/
-# xcuserdata/
-# *.xcuserstate
-# build/
-# .build/
-# *.ipa
-# *.dSYM.zip
-# *.mobileprovision
-
-# --- Node / JavaScript ---
-# node_modules/
-# dist/
-# coverage/
-
-# --- Python ---
-# __pycache__/
-# *.pyc
-# .venv/
-# .pytest_cache/
-# .mypy_cache/
-# .ruff_cache/
-# *.egg-info/
-
-# --- MetaTrader / MQL ---
-# *.ex4
-# *.ex5
+node_modules/
+dist/
+coverage/
+# Astro's generated types and cache
+.astro/
 
 # ---------------------------------------------------------------------------
-# Project data that must never be published
+# Capacitor (Phase 2). Native projects are committed; their build output is not.
 # ---------------------------------------------------------------------------
-# TEMPLATE: list folders holding private or licensed data, with the reason.
-# runs/          # run logs containing third-party text
-# data/raw/      # customer data
-# backtests/     # broker tick data, licensed
+# ios/App/Pods/
+# android/.gradle/
+# android/app/build/

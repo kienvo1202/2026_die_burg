@@ -3,32 +3,41 @@
 Somewhere to put things so they stop occupying your head. **Capture first, decide
 later**: anything that surfaces mid-task lands here rather than derailing the task.
 
-Phase-level status lives in [ROADMAP.md](ROADMAP.md), not here. This file is tasks only;
-keeping the two at different granularities is what stops them contradicting each other.
+Phase-level status lives in [ROADMAP.md](ROADMAP.md), not here. This file is tasks only.
 
 Format: `- [ ] description` with `[blocked: reason]` where relevant. No priorities, no
-estimates, no points. When something is done it moves to `CHANGELOG.md` and is deleted
-from here (or ticked `[x]` until the phase closes, if seeing progress helps).
-
-A good item says **what** and **why**, and where it came from if that matters:
-
-- [ ] *(example)* **Round order size to the instrument's lot step.** A 0.137-lot order
-      was rejected by the broker on 2026-10-02; we pass the raw computed size
-- [ ] *(example)* Settings screen loses a typed value on Esc `[blocked: decide whether
-      Esc means cancel]`
+estimates. When something is done it moves to `CHANGELOG.md` and is deleted from here
+(or ticked `[x]` until the phase closes).
 
 ---
 
-## Phase {{N}} — {{name}}
+## Phase 0 — The book
 
-- [ ] {{...}}
+- [ ] **Design system**: tokens (two themes), self-hosted fonts, ornaments, decorative
+      and lesson components, `/design` style guide, `docs/DESIGN_SYSTEM.md`
+- [ ] **Design checkpoint**: screenshots of `/design` at 390px and 1280px, both themes,
+      to Kien; adjust until approved
+- [ ] **App shell**: title page, course map, lesson page with section progress and
+      previous/next, `/words`, bottom tab bar on phones, theme toggle
+- [ ] **Content model**: levels A1.1–C2.2, briefs schema, lesson frontmatter schema
+- [ ] **Ledger and checker** with tests, including broken fixtures that must fail
+- [ ] **CI**: Node job (test, check, build); push a deliberate failure once
+- [ ] **Lesson guide** with rubric and No/Yes example pairs
+- [ ] **A1.1 and A1.2 briefs**: titles for all, full briefs for lessons 1–2
+- [ ] **Lessons 1–2**, with a documented German accuracy pass
+- [ ] **write-lesson skill**
+- [ ] Read lessons 1–2 for real on a phone; score against the rubric in `JOURNAL.md`
 
 ## Parked
 
-<!-- TEMPLATE: Things deliberately deferred. Each group links the ADR that parked it and
-names what would reopen it. A deferral that names its reopen condition is a decision;
-one that doesn't is just something nobody got round to. -->
+- **Paid text-to-speech** (ADR 0006). Reopen if browser voices are missing or poor on
+  readers' devices.
 
 ## Someday
 
-<!-- TEMPLATE: Ideas with no phase yet. No commitment implied. -->
+- **Anki export** generated from the ledger: every word with article, plural, example
+- **Placement test** to start at a later level
+- **Review mode**: only the warm-up and self-check items of finished lessons
+- **Capacitor routing check**: does the local server resolve `/course/` to
+  `/course/index.html`? If not, `build.format: 'file'` (PLAN open question)
+- **Goethe exam appendix**: exam formats and strategies, per level

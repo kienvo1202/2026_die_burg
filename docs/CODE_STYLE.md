@@ -6,7 +6,7 @@ object-oriented code. Most of the code is written by an AI assistant; these rule
 what it is held to, and what a review checks.
 
 Language-specific rules and the list of allowed idioms are in `style/`:
-`csharp-dotnet.md`, `swift-ios.md`, `typescript-javascript.md`, `python.md`, `mql.md`.
+`typescript-javascript.md`.
 The illustrated version, with sixteen side-by-side comparisons, is
 `style/examples/code-for-every-reader.html`.
 

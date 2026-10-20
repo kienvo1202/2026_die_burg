@@ -97,6 +97,6 @@ const section = { fromPage: 12, toPage: 30, notes: [] };
 ## Commands
 
 ```bash
-npm test                    # node --test "test/*.test.js": a glob, not one file
-npx tsc --noEmit
+npm test                    # vitest run: discovers every *.test.ts, never one named file
+npm run check               # astro check (TypeScript strict, including .astro files) + lesson checker
 ```

@@ -9,9 +9,8 @@ real time here and buys nothing. What is kept below is the subset that pays for 
 person, and nearly all of it aims at the same target: **arguing with your future self**,
 who will not remember why any of this is the way it is.
 
-<!-- TEMPLATE: If a second person joins, revisit "What this project deliberately does
-not do" at the bottom first. Most of those omissions exist only because there is one
-person. -->
+If a second person joins, revisit "What this project deliberately does not do" at the
+bottom first. Most of those omissions exist only because there is one person.
 
 ---
 
@@ -97,7 +96,7 @@ memory of why. These habits keep it that way.
 
 **After**
 - **Read the diff yourself**, then ask it to read the diff as a reader would:
-  - "Read your diff as someone who knows only the basics of {{LANGUAGE}}. List every
+  - "Read your diff as someone who knows only the basics of TypeScript. List every
     line they'd need to look up."
   - "For each new function, class or interface, list its callers. Inline any with one
     caller unless it's pure and tested."
@@ -121,8 +120,8 @@ git checkout -b fix/order-size-rounding       # branch
 
 # ... work ...
 
-{{TEST_COMMAND}}
-{{TYPECHECK_OR_BUILD}}
+npm test
+npm run check && npm run build
 
 git add -p                                    # stage in reviewable pieces
 git commit                                    # message: see Naming below
@@ -217,7 +216,7 @@ Recorded so the omissions read as decisions rather than oversights.
 | Sprints, standups, retros | Same. The retro function is served by `JOURNAL.md`. |
 | Approval gates on PRs | Nobody else to approve. Self-review is the useful part; a required approval from yourself is theatre. |
 | Coverage targets | Measures which lines ran, not whether they were right. |
-| Release tags / semver | Nothing consumes this as a dependency. Phases are the unit. <!-- TEMPLATE: delete this row for a library or a shipped app --> |
+| Release tags / semver | Nothing consumes this as a dependency. Phases are the unit. Revisit when the apps ship (Phase 2): stores need version numbers. |
 | Issue templates, milestones | `BACKLOG.md` is one file and can be edited in three seconds. |
 
 Revisit any of these the moment a second person joins: most of them exist for that case.

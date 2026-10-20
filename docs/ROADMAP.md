@@ -4,9 +4,7 @@
 is in [CHANGELOG.md](../CHANGELOG.md); why things are built this way is in
 [adr/](adr/README.md). This file exists so there is one place to see where the project is.
 
-No dates. Dated roadmaps on uncertain work turn into commitments you cannot keep, and
-<!-- TEMPLATE: if there IS a real deadline, say so here and date only what it forces. -->
-this project has no deadline, so any date here would be fiction. **Now / Next / Later**
+No dates: there is no deadline, so any date here would be fiction. **Now / Next / Later**
 instead.
 
 `✔` done · `◐` in progress or partially done · `○` not started · `⛔` blocked
@@ -15,68 +13,45 @@ instead.
 
 ## Status
 
-<!-- TEMPLATE: Phase 0 always tests the riskiest assumption, the thing that makes
-everything else pointless if it is false. It is usually not a feature and often has no
-UI. Exit criteria are written BEFORE the work, so closing a phase is a check, not a
-mood. -->
-
 | Phase | Delivers | Exit criteria | Status |
 |---|---|---|---|
-| **0 — {{riskiest assumption}}** | {{the cheapest thing that tests it}} | {{2–4 checkable criteria, written now}} | ○ |
-| **1 — {{core loop}}** | {{smallest end-to-end version a real user could use}} | {{criteria}} | ○ |
-| **2 — {{next}}** | {{...}} | {{...}} | ○ |
-
-*(example)* A trading project's Phase 0 might be *"the signal has an edge after costs"*:
-a backtest script over two years of data, no UI and no broker connection, with exit
-criteria like "positive expectancy after spread and commission on out-of-sample data".
-
-When a phase closes, write one paragraph under the table: which criteria were met, how,
-and the **known limitations carried forward** (each one also in the backlog).
+| **0 — The book** | Design system, app shell (title page, course map, lesson page, dictionary), content model and checker, lessons 1–2 | 1. Kien approves the design from screenshots (phone + desktop, both themes) · 2. Lessons 1–2 each read well in one sitting on phone and desktop, and each has at least one insight Kien finds new · 3. German accuracy pass documented: what was verified and what wasn't (native-speaker check if available) · 4. CI green, and seen red once | ◐ |
+| **1 — A1.1 on the web** | Lessons 3–14 written one per session with `/write-lesson`; the site deployed | All 14 A1.1 lessons pass the checker and the rubric · the site is live on a host Kien chose · Kien reads lessons 3–14 and would recommend them | ○ |
+| **2 — The apps** | iOS and Android apps via Capacitor, native text-to-speech, offline | Both apps run on a real phone, offline, with audio · progress survives an app restart · store submission only after Kien's explicit yes | ○ |
+| **3+ — The rest of the course** | A1.2 → C2.2, level by level, briefs written just before each level | Per level: all lessons pass checker and rubric; the level's checkpoint lesson reads well | ○ |
 
 ---
 
 ## Now
 
-{{One paragraph: what is being worked on and why it is the most important thing.}}
+**Phase 0: the book.** Four PRs, in order:
+
+1. `docs/project-setup`: these docs and the ADRs.
+2. `feat/design-system`: the look (tokens, fonts, ornaments, components, `/design`
+   style guide). Stops for Kien's approval before anything is built on it.
+3. `feat/app-shell`: pages, navigation, content model, ledger, checker, CI.
+4. `content/lessons-01-02`: lesson guide, A1 briefs, lessons 1–2, the write-lesson skill.
 
 ## Next
 
-1. {{...}}
-2. {{...}}
+1. Phase 1: write A1.1 lessons 3–14, one per session.
+2. Choose a host and deploy (needs Kien's yes).
 
 ## Later
 
-{{Later phases and the Someday list in the backlog. Deliberately unordered: sequencing
-them before the current phase has met reality would be guessing.}}
+The apps (Phase 2), then the rest of the course, and the Someday list in the backlog.
+Deliberately unordered: sequencing them before real readers have read real lessons would
+be guessing.
 
 ---
 
 ## Keeping this honest
 
-Three rules, all of which exist because roadmap documents usually rot:
-
 1. **Phases only.** The moment individual tasks appear here, there are two task lists and
    they will disagree within a fortnight.
-2. **Update it when a phase changes state**, roughly every few weeks, not per commit. If
-   it needs updating more often than that, the granularity is wrong.
+2. **Update it when a phase changes state**, not per commit.
 3. **Never mark something done to feel good.** `◐` with a stated reason is more useful
    than `✔` that is not true.
 
-A phase can also end in **change** or **kill**. Writing "Phase 1 showed X; direction
+A phase can also end in **change** or **kill**. Writing "Phase 0 showed X; direction
 changed, see ADR NNNN" is a success of the process, not a failure of the project.
-
-### When the GitHub repo exists
-
-This table can stop being hand-maintained. The industry pattern is one source of truth
-with generated views:
-
-| This file | Becomes |
-|---|---|
-| Phase rows | **Milestones** |
-| Backlog items | **Issues**, assigned to a milestone |
-| Status column | The milestone progress bar: computed, never typed |
-| Now / Next / Later | A **GitHub Projects** board with those three columns |
-
-Closing an issue from a PR body (`Closes #12`) then moves the board and advances the
-milestone automatically: **status becomes a by-product of doing the work** rather than a
-separate chore. This file then keeps only the phase table and the Now/Next/Later prose.
