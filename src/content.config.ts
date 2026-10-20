@@ -75,4 +75,33 @@ const lessons = defineCollection({
   }),
 });
 
-export const collections = { levels, briefs, lessons };
+// The German map (ADR 0008, proposed): the whole language, region by region. Each point
+// names the lesson grammar tags that teach it, so the map lights up from the lessons.
+const mapPoint = z.object({
+  id: z.string(),
+  title: z.string(),
+  level: z.enum(["A1", "A2", "B1", "B2", "C1", "C2"]),
+  summary: z.string(),
+  tags: z.array(z.string()).default([]),
+});
+
+const grammarMap = defineCollection({
+  loader: file("src/content/curriculum/grammar-map.yaml"),
+  schema: z.object({
+    order: z.number().int().positive(),
+    name: z.string(),
+    german: z.string(),
+    place: z.string(),
+    motto: z.string(),
+    topics: z.array(z.object({ title: z.string(), points: z.array(mapPoint) })),
+  }),
+});
+
+// A map point explained in full. The file name is the point's id; only points a lesson
+// has taught have a card yet.
+const mapCards = defineCollection({
+  loader: glob({ pattern: "*.mdx", base: "src/content/map" }),
+  schema: z.object({}),
+});
+
+export const collections = { levels, briefs, lessons, grammarMap, mapCards };

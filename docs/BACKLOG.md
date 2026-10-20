@@ -27,6 +27,34 @@ estimates. When something is done it moves to `CHANGELOG.md` and is deleted from
 - [x] **Lessons 1–2**, with a documented German accuracy pass
 - [x] **write-lesson skill** (plus `scripts/ledger-report.ts`)
 - [ ] Read lessons 1–2 for real on a phone; score against the rubric in `JOURNAL.md`
+- [ ] Read the sample tale (`/tales/rumpelstilzchen`) after lesson 2, and use the map
+      (`/map`) to review lessons 1–2; verdicts in `JOURNAL.md`. Accept or change ADRs 0007
+      and 0008
+
+## After the tale and map samples read well (ADRs 0007, 0008)
+
+- [ ] **Tales in the content model**: `kind: lesson | tale | checkpoint` in `levels.yaml`
+      and `content.config.ts`; tale ids that don't renumber lessons (e.g. `a1-t01`); move
+      the sample out of `src/drafts/`
+- [ ] **Ledger counts tales** in `timesSeen`; a tale budget (≤ 6 new words, no new grammar)
+      in `findProblems`, with tests and broken fixtures
+- [ ] **Tales on the course map**, between lessons
+- [ ] **Map integrity**: `check-lessons.ts` fails on a lesson grammar tag no map point
+      holds, and reports coverage ("N of M points taught"); briefs choose tags from the map
+- [ ] **Sound spotlights get tags**, so the map's Sounds region can light up (ei/ie and ch
+      are taught in lessons 1–2 but stay fogged)
+- [ ] **Repetition warning**: the checker flags a word that hasn't returned within N
+      readings, with spacing that grows over time
+- [ ] **Backbone word list**: find an openly licensed German frequency list (check the
+      license before using it); a `theme` field on words; a coverage report; fill the
+      Treasury region
+- [ ] **Docs**: a "Tales" section and rubric in `LESSON_GUIDE.md` (references when they
+      fit; pop culture referenced, never quoted); the map and tales in `PRODUCT.md`; an
+      amendment to ADR 0002
+- [ ] **Skills**: a tale mode or `write-tale` skill; `write-lesson` writes or extends the
+      map cards for the points a lesson teaches
+- [ ] **An illustrated map overview** in place of the plain region panels, once the
+      structure has proved itself
 
 ## Parked
 

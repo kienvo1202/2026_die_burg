@@ -14,7 +14,7 @@ import "../design/base.css";
 import Tower from "../design/ornaments/Tower.astro";
 import Icon from "../components/ui/Icon.astro";
 import ThemeToggle from "../components/ui/ThemeToggle.astro";
-import { ICON_BOOK, ICON_QUILL } from "../design/ornaments/Icons.ts";
+import { ICON_BOOK, ICON_MAP, ICON_QUILL } from "../design/ornaments/Icons.ts";
 import { SITE_NAME } from "../lib/site.ts";
 import { THEME_KEY } from "../lib/theme.ts";
 
@@ -27,7 +27,16 @@ const pageTitle = title === SITE_NAME ? SITE_NAME : `${title} · ${SITE_NAME}`;
 
 // Which section of the book we are in, for the "current page" marker.
 const path = Astro.url.pathname;
-const section = path === "/" ? "home" : path.startsWith("/words") ? "words" : path.startsWith("/course") || path.startsWith("/lessons") ? "course" : "";
+const section =
+  path === "/"
+    ? "home"
+    : path.startsWith("/words")
+      ? "words"
+      : path.startsWith("/map")
+        ? "map"
+        : path.startsWith("/course") || path.startsWith("/lessons") || path.startsWith("/tales")
+          ? "course"
+          : "";
 const current = (name: string) => (section === name ? "page" : undefined);
 ---
 
@@ -57,6 +66,7 @@ const current = (name: string) => (section === name ? "page" : undefined);
       </a>
       <nav class="top-nav" aria-label="Main">
         <a href="/course" aria-current={current("course")}>Course</a>
+        <a href="/map" aria-current={current("map")}>Map</a>
         <a href="/words" aria-current={current("words")}>Words</a>
       </nav>
       <ThemeToggle />
@@ -79,6 +89,10 @@ const current = (name: string) => (section === name ? "page" : undefined);
       <a href="/course" aria-current={current("course")}>
         <Icon icon={ICON_BOOK} class="tab-icon" />
         <span>Course</span>
+      </a>
+      <a href="/map" aria-current={current("map")}>
+        <Icon icon={ICON_MAP} class="tab-icon" />
+        <span>Map</span>
       </a>
       <a href="/words" aria-current={current("words")}>
         <Icon icon={ICON_QUILL} class="tab-icon" />
@@ -197,7 +211,7 @@ const current = (name: string) => (section === name ? "page" : undefined);
     bottom: 0;
     z-index: 5;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     padding-bottom: env(safe-area-inset-bottom);
     background: var(--color-card);
     border-top: var(--border-gilt);

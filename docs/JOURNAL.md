@@ -110,3 +110,37 @@ Also learned, the hard way: `git revert -q` isn't a valid option. The revert fai
 the `git commit --amend` chained after it reworded the *wrong* commit. Only the rejected
 push saved it from reaching GitHub. **Never chain `--amend` (or anything that rewrites)
 after a command that might have failed: run it, look, then amend.**
+
+---
+
+## 2026-10-19 — Too few lessons? No: too few meetings, and only one order
+
+Kien's worry was that 14 lessons per half-level is too few, and that nobody rereads a
+dialogue more than two or three times. Then a second one: reviewing means rereading
+scattered lessons.
+
+**The count turned out to be the wrong question.** 28 A1 lessons at about 23 words each
+is about 650 words, which is what Goethe's A1 list asks for. What the ledger showed
+instead: before lesson 3, **32 of the 46 known words have been seen exactly once**. A word
+needs something like 10–20 meetings before it sticks. The plan had quietly been counting
+on rereading to supply them, and rereading is the dullest way to get them.
+
+**More lessons would have made it worse**: more words, the same exposure each. The
+answer is more *text* made of *old* words. Hence tales between lessons (ADR 0007),
+starting with Rumpelstilzchen, whose plot is literally "Wie heißt du?".
+
+**The review problem is about order, not volume.** Lessons follow what you want to
+*say*; a reviewer wants what German *is*. Two views of one course, and only one existed.
+Hence the German map (ADR 0008).
+
+The one design rule carried over from ADR 0003: **the map is built from the lessons, not
+written beside them.** The grammar tags lessons already declared were loose strings; the
+map gives each a home, and lights up when a lesson that uses it is finished.
+
+Honest limits, written down before anyone builds on them:
+- "95%+" is realistic for grammar (136 points cover it, A1 to C2) and not for words.
+- Goethe's word lists are copyrighted; a backbone list needs an open source.
+- Sounds taught in lessons 1–2 have no tag, so their map points stay fogged.
+
+Both are hand-made samples first, as PRODUCT.md §4 says. Rewriting the guide, schema and
+skill before anyone has read a tale would be guessing.

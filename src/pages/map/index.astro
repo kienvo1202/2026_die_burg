@@ -1,0 +1,161 @@
+---
+// The German map, overview (ADR 0008, proposed): the whole language as the rooms of a
+// castle. Every region is visible from the start; a small script lights up what this
+// reader has already read, from this device's progress.
+import Base from "../../layouts/Base.astro";
+import Card from "../../components/ui/Card.astro";
+import Say from "../../components/lesson/Say.astro";
+import Tower from "../../design/ornaments/Tower.astro";
+import { loadMap, pointsOf } from "../../lib/grammar-map.ts";
+
+const regions = await loadMap();
+const allPoints = regions.flatMap(pointsOf);
+---
+
+<Base title="Map" description="The whole German language on one map: grammar and backbone words, region by region.">
+  <header class="intro">
+    <Tower class="emblem" />
+    <p class="label">The German map</p>
+    <h1>The castle of German</h1>
+    <p>
+      Lessons teach German in the order you need to <em>say</em> things. This map shows the same
+      German in the order it <em>works</em>: {regions.length} rooms, {allPoints.length} points, from
+      the gate to the high tower. What you have read glows; the rest is fog until a lesson takes you
+      there.
+    </p>
+  </header>
+
+  <ol class="regions">
+    {
+      regions.map((region) => {
+        const points = pointsOf(region);
+        const taught = points.filter((point) => point.taughtIn.length > 0).length;
+        const lessonsPerPoint = points.map((point) => point.taughtIn.map((lesson) => lesson.id));
+        return (
+          <li>
+            <a class="region-link" href={`/map/${region.id}`}>
+              <Card class="region" as="article">
+                <p class="label place">{region.place}</p>
+                <h2 class="name">{region.name}</h2>
+                <p class="german">
+                  <Say de={region.german} />
+                </p>
+                <p class="motto">{region.motto}</p>
+                <p class="count" data-region-count data-points={JSON.stringify(lessonsPerPoint)}>
+                  {points.length} points{taught > 0 && ` · ${taught} taught so far`}
+                </p>
+                <span class="meter" aria-hidden="true">
+                  <span data-region-meter />
+                </span>
+              </Card>
+            </a>
+          </li>
+        );
+      })
+    }
+  </ol>
+</Base>
+
+<script>
+  import { loadProgress } from "../../lib/progress.ts";
+
+  const finished = new Set(loadProgress().finished);
+  for (const count of document.querySelectorAll<HTMLElement>("[data-region-count]")) {
+    const lessonsPerPoint: string[][] = JSON.parse(count.dataset.points ?? "[]");
+    const lit = lessonsPerPoint.filter((lessons) => lessons.some((id) => finished.has(id))).length;
+    if (lit === 0) continue;
+    count.textContent = `${lit} of ${lessonsPerPoint.length} points read`;
+    const meter = count.parentElement?.querySelector<HTMLElement>("[data-region-meter]");
+    if (meter) meter.style.transform = `scaleX(${lit / lessonsPerPoint.length})`;
+    count.closest(".region")?.classList.add("has-light");
+  }
+</script>
+
+<style>
+  .intro {
+    max-width: var(--measure);
+    margin: 0 auto var(--space-6);
+    text-align: center;
+  }
+
+  .intro :global(.emblem) {
+    width: 2.5rem;
+    height: 3rem;
+    color: var(--color-rubric);
+  }
+
+  .regions {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+    gap: var(--space-5);
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+  }
+
+  .region-link {
+    display: block;
+    height: 100%;
+    color: var(--color-ink);
+    text-decoration: none;
+  }
+
+  .region-link :global(.region) {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform var(--duration-quick) var(--ease-page);
+  }
+
+  .region-link:hover :global(.region),
+  .region-link:focus-visible :global(.region) {
+    transform: translateY(-2px);
+  }
+
+  .place {
+    margin: 0;
+    color: var(--color-gold-text);
+  }
+
+  .name {
+    margin: var(--space-1) 0 0;
+  }
+
+  .german {
+    margin: 0 0 var(--space-2);
+    font-size: var(--text-sm);
+  }
+
+  .motto {
+    flex: 1;
+    margin: 0 0 var(--space-3);
+    color: var(--color-ink-soft);
+    font-style: italic;
+    font-size: var(--text-sm);
+  }
+
+  .count {
+    margin: 0 0 var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--color-ink-soft);
+  }
+
+  .meter {
+    display: block;
+    height: 3px;
+    background: var(--color-rule);
+  }
+
+  .meter span {
+    display: block;
+    height: 100%;
+    background: var(--color-gold);
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  .has-light .count {
+    color: var(--color-ink);
+  }
+</style>
