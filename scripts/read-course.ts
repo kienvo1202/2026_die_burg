@@ -6,10 +6,12 @@
 
 import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
+import { fileURLToPath } from "node:url";
 import yaml from "js-yaml";
 import type { BriefLimits, LessonWords, Level } from "../src/lib/ledger.ts";
 
-const CONTENT = new URL("../src/content/", import.meta.url).pathname;
+// fileURLToPath, not URL.pathname: on Windows .pathname gives "/D:/..." and breaks every path.
+const CONTENT = fileURLToPath(new URL("../src/content/", import.meta.url));
 const BRIEFS = join(CONTENT, "curriculum/briefs");
 const LESSONS = join(CONTENT, "lessons");
 
