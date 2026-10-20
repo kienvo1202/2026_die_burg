@@ -43,7 +43,8 @@ language, and explains it over coffee.
    that situation. No "The pen of my aunt is on the table".
 5. **Only what the reader knows, plus this lesson's words.** Every German word in the
    lesson is either in the ledger (earlier lessons), in this lesson's `newWords`, or part
-   of a chunk. Proper names (Hamburg, Diego) are free.
+   of a chunk. Proper names (Hamburg, Diego) are free, and so are numbers built by the
+   rules lesson 3 teaches (*vierunddreißig* from *vier*, *und*, *dreißig*).
 6. **No grammar from the brief's `notYet` list**, except inside a chunk.
 7. **Recycle on purpose.** Bring back 8–12 earlier words, favouring the least-seen ones
    (the ledger report lists them). List them in `recycles`.

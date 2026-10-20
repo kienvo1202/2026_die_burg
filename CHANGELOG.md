@@ -12,6 +12,13 @@ Write each entry for the reader of the course, not for the person who built it.
 
 ## Unreleased
 
+### Added: lessons 3 and 4
+- **Lesson 3, Spell it out.** Spell your name the German way, count to a hundred, give
+  your age and phone number, and find out why German counts like a nursery rhyme.
+- **Lesson 4, At the bakery.** Order rolls and a pretzel, ask what the cake costs, and
+  pay, and meet der, die and das, which English had too.
+- Your dictionary now has 96 words.
+
 ### Added: the first two lessons
 - **Lesson 1, Hallo!** Greet anyone at any time of day, say your name and ask theirs, and
   find out why Germans ask *how* you are called.

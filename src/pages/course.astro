@@ -6,8 +6,10 @@ import Base from "../layouts/Base.astro";
 import Ribbon from "../components/ui/Ribbon.astro";
 import Seal from "../components/ui/Seal.astro";
 import { loadCourse } from "../lib/course.ts";
+import { loadTales, taleAfter } from "../lib/tales.ts";
 
 const { levels, lessons } = await loadCourse();
+const tales = loadTales();
 const lessonsByLevel = new Map(levels.map((level) => [level.id, lessons.filter((lesson) => lesson.level.id === level.id)]));
 ---
 
@@ -35,7 +37,10 @@ const lessonsByLevel = new Map(levels.map((level) => [level.id, lessons.filter((
           <p class="being-written">The lessons for this level are being written.</p>
         ) : (
           <ol class="lessons">
-            {lessonsByLevel.get(level.id)!.map((lesson) => (
+            {lessonsByLevel.get(level.id)!.map((lesson) => {
+              const tale = taleAfter(tales, lesson.id);
+              return (
+              <>
               <li class:list={["lesson", { written: lesson.entry }]} data-lesson={lesson.entry ? lesson.id : undefined}>
                 <span class="mark">
                   <span class="number">{lesson.number}</span>
@@ -60,7 +65,20 @@ const lessonsByLevel = new Map(levels.map((level) => [level.id, lessons.filter((
                   </span>
                 </span>
               </li>
-            ))}
+              {tale && (
+                <li class="lesson tale">
+                  <span class="mark" aria-hidden="true">❦</span>
+                  <span class="text">
+                    <a class="title" href={`/tales/${tale.slug}`}>
+                      {tale.frontmatter.title}
+                    </a>
+                    <span class="can-do">A tale, about {tale.frontmatter.minutes} minutes, told with the German you know so far</span>
+                  </span>
+                </li>
+              )}
+              </>
+              );
+            })}
           </ol>
         )}
       </section>
@@ -203,6 +221,16 @@ const lessonsByLevel = new Map(levels.map((level) => [level.id, lessons.filter((
   }
 
   .soon {
+    font-style: italic;
+  }
+
+  /* A tale sits between lessons: a fleuron instead of a number, the title in italics. */
+  .tale .mark {
+    font-size: var(--text-lg);
+    color: var(--color-gold-text);
+  }
+
+  .tale .title {
     font-style: italic;
   }
 </style>
