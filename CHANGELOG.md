@@ -12,6 +12,15 @@ Write each entry for the reader of the course, not for the person who built it.
 
 ## Unreleased
 
+### Added: lessons 5 and 6
+- **Lesson 5, My room.** Describe a room or a flat at a flatshare viewing, and find out why
+  a German wardrobe is a "he".
+- **Lesson 6, What I like doing.** Say what you like doing with *gern*, English's *yearn*
+  in disguise, and every present-tense form of a regular verb.
+- **A tale after lesson 6:** Frau Holle, the woman who makes it snow.
+- **Tales are on the course page**, between the lessons they follow.
+- Your dictionary now has 145 words.
+
 ### Added: lessons 3 and 4
 - **Lesson 3, Spell it out.** Spell your name the German way, count to a hundred, give
   your age and phone number, and find out why German counts like a nursery rhyme.

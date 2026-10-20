@@ -1,0 +1,84 @@
+# Brief for lesson a1-06. What the lesson must teach, and must not teach yet.
+# Read with docs/LESSON_GUIDE.md.
+
+canDo: Say what you like doing and what you don't, and ask others, alone or in a group.
+
+scene:
+  place: A language café (Sprachcafé) in Vienna
+  situation: >
+    A tandem evening: a Viennese student and a newcomer from India practise each other's
+    languages and swap hobbies (du). Then two friends of the Viennese student arrive
+    together, and the conversation turns to what "you two" and "we" like doing (ihr,
+    wir).
+  characters:
+    - { name: Felix, who: "student from Vienna, early twenties", register: du }
+    - { name: Priya, who: "software developer from Bangalore, new in Vienna, late twenties", register: du }
+    - { name: Anna and Moritz, who: "Felix's friends, a couple, mid-twenties", register: du }
+
+coreInsight: >
+  German has no verb for "to like doing". It does the verb and adds "gern" (gladly):
+  Ich lese gern = I read gladly = I like reading. Nicht gern = I don't like doing it.
+  And gern is an old English word in disguise: it is the same word as English "yearn"
+  (Old English georn, eager). Gern goes straight after the verb. Second point: the rest
+  of the present tense. wir -en, ihr -t, sie (they) -en, and sein as wir sind, ihr
+  seid, sie sind. With lesson 2 and lesson 5 that completes the table: the reader now
+  knows every ending of every regular verb in the present.
+
+notYet:
+  - lieber / am liebsten (comparison, A2); at most a Deeper block
+  - mögen as a system; "Ich mag …" (for things) may appear as a chunk only
+  - vowel-change verbs as a rule; lesen (du liest, er liest) is given as forms, with a promise
+  - modal verbs (lesson 12)
+  - the accusative of der words (einen Film); objects are das/die words, plurals or no article
+  - starting a sentence with a time word (am Wochenende spiele ich); keep the subject first
+  - possessives (lesson 7)
+
+introducesGrammar:
+  - gern-like-doing
+  - present-tense-plural
+  - sein-wir-ihr-sie
+  - sound-r
+
+chunks:
+  - { de: "Was machst du gern?", literal: "What make you gladly?", means: "What do you like doing?" }
+  - { de: "Was macht ihr gern?", literal: "What make you-all gladly?", means: "What do you (two/all) like doing?" }
+  - { de: "Ich auch nicht.", literal: "I also not.", means: "Me neither." }
+  - { de: "Und du?", literal: "And you?", means: "And you?" }
+
+newWordBudget: 26
+
+soundSpotlight: >
+  The German r. At the start of a syllable it is made at the back of the throat, like a
+  soft gargle (reisen, Priya's "r" will differ). At the end of a word, -er sounds like a
+  short "a": wir, hier, wandern, Lehrer. English speakers over-pronounce it.
+
+cultureNote: >
+  Germany and Austria are countries of clubs (Vereine): sports clubs, choirs, hiking
+  clubs, allotment clubs; around 600,000 are registered in Germany alone. Hiking
+  (wandern) is a national pastime in Austria, Switzerland and Germany. A Sprachcafé or
+  Tandem pairs people who want to swap languages, a good way to practise once you know
+  a little.
+
+traps:
+  - 'gern goes after the verb: "Ich lese gern", never "Ich gern lese".'
+  - '"Ich mag lesen" is understood but sounds odd; for activities say "Ich lese gern".'
+  - 'ihr (you, two or more friends) is not Ihr (your, polite) or Sie (you, polite).'
+  - 'sie (they) and Sie (polite you) take the same verb form: sie spielen, Sie spielen. Only the capital tells them apart in writing.'
+  - '"Ich auch!" agrees with a positive; "Ich auch nicht." agrees with a negative.'
+
+selfCheckIdeas:
+  - say you like cooking / don't like dancing
+  - ask a friend, then a couple, what they like doing
+  - give the wir / ihr / sie forms of spielen
+  - wir sind, ihr seid
+  - Ich auch or Ich auch nicht
+  - which English word is the same as gern
+
+yourTurn:
+  prompt: >
+    At a Sprachcafé, tell your tandem partner three things you like doing and one you
+    don't, then ask what they and their friends like doing.
+  modelNotes: >
+    Ich lese gern, ich koche gern und ich wandere gern. Ich tanze nicht gern. Und du?
+    Was macht ihr gern? Checklist: gern right after the verb; nicht gern; ihr form ends
+    in -t.
