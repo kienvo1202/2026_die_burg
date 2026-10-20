@@ -1,0 +1,150 @@
+---
+// The reader's dictionary: every word the written lessons introduce, in the order the
+// reader meets them, grouped by lesson. Filters narrow it to der / die / das words,
+// verbs or phrases.
+import Base from "../layouts/Base.astro";
+import WordList from "../components/lesson/WordList.astro";
+import { loadCourse } from "../lib/course.ts";
+
+const { lessons } = await loadCourse();
+const written = lessons.filter((lesson) => lesson.entry && lesson.entry.data.newWords.length > 0);
+const total = written.reduce((sum, lesson) => sum + lesson.entry!.data.newWords.length, 0);
+
+const filters = [
+  { kind: "all", label: "All" },
+  { kind: "der", label: "der" },
+  { kind: "die", label: "die" },
+  { kind: "das", label: "das" },
+  { kind: "verb", label: "Verbs" },
+  { kind: "phrase", label: "Phrases" },
+];
+---
+
+<Base title="Words" description="Every German word introduced so far in Die Burg, with article, plural and sound.">
+  <header class="intro">
+    <p class="label">Your dictionary</p>
+    <h1>Every word so far</h1>
+    {
+      written.length === 0 ? (
+        <p>No words yet: they appear here as lessons are written.</p>
+      ) : (
+        <p>
+          {total} words from {written.length} {written.length === 1 ? "lesson" : "lessons"}, in the order you meet
+          them. Nouns always come with their article; tap the sound to hear each one.
+        </p>
+      )
+    }
+  </header>
+
+  {
+    written.length > 0 && (
+      <div class="filters" role="group" aria-label="Show">
+        {filters.map((filter) => (
+          <button type="button" data-filter={filter.kind} aria-pressed={filter.kind === "all" ? "true" : "false"}>
+            <span lang={["der", "die", "das"].includes(filter.kind) ? "de" : undefined}>{filter.label}</span>
+          </button>
+        ))}
+      </div>
+    )
+  }
+
+  <div class="groups">
+    {
+      written.map((lesson) => (
+        <section class="group" data-group>
+          <h2 class="group-title">
+            <a href={`/lessons/${lesson.id}`}>
+              <span class="label">Lesson {lesson.number}</span> {lesson.title}
+            </a>
+          </h2>
+          <WordList words={lesson.entry!.data.newWords} title={`Words from lesson ${lesson.number}`} />
+        </section>
+      ))
+    }
+  </div>
+  <p class="no-match" hidden data-no-match>No words of this kind yet.</p>
+</Base>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>("[data-filter]");
+  const groups = document.querySelectorAll<HTMLElement>("[data-group]");
+  const noMatch = document.querySelector<HTMLElement>("[data-no-match]");
+
+  function show(kind: string) {
+    let anyShown = false;
+    for (const group of groups) {
+      let groupShown = false;
+      for (const word of group.querySelectorAll<HTMLElement>("[data-kind]")) {
+        const matches = kind === "all" || word.dataset.kind === kind;
+        word.hidden = !matches;
+        if (matches) groupShown = true;
+      }
+      group.hidden = !groupShown;
+      if (groupShown) anyShown = true;
+    }
+    if (noMatch) noMatch.hidden = anyShown;
+    for (const button of buttons) button.setAttribute("aria-pressed", String(button.dataset.filter === kind));
+  }
+
+  for (const button of buttons) {
+    button.onclick = () => show(button.dataset.filter ?? "all");
+  }
+</script>
+
+<style>
+  .intro,
+  .filters,
+  .groups,
+  .no-match {
+    max-width: 48rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-bottom: var(--space-5);
+  }
+
+  .filters button {
+    min-height: var(--tap-min);
+    padding: 0 var(--space-4);
+    font-family: var(--font-label);
+    letter-spacing: var(--tracking-label);
+    background: transparent;
+    border: 1px solid var(--color-ink-soft);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+  }
+
+  .filters button[aria-pressed="true"] {
+    color: var(--color-on-rubric);
+    background: var(--color-rubric);
+    border-color: var(--color-rubric);
+  }
+
+  .group-title {
+    margin-bottom: 0;
+    font-size: var(--text-lg);
+  }
+
+  .group-title a {
+    color: var(--color-ink);
+    text-decoration: none;
+  }
+
+  .group :global(.wordlist) {
+    margin-top: var(--space-2);
+  }
+
+  .group :global(.wordlist > .label) {
+    display: none; /* the lesson heading above already names the group */
+  }
+
+  .group :global(.word[hidden]),
+  .group[hidden] {
+    display: none;
+  }
+</style>

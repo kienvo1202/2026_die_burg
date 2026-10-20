@@ -14,6 +14,19 @@ export const ICON_MOON = {
   stroke: "",
 };
 
+// An open book: the course.
+export const ICON_BOOK = {
+  fill: "",
+  stroke:
+    "M12 6.2 C9.6 4.6 6.2 4.2 3 4.7 V18.6 C6.2 18.1 9.6 18.5 12 20.1 C14.4 18.5 17.8 18.1 21 18.6 V4.7 C17.8 4.2 14.4 4.6 12 6.2 Z M12 6.2 V20.1",
+};
+
+// A quill: the reader's dictionary of words.
+export const ICON_QUILL = {
+  fill: "M19.8 3.2 C13.5 4.2 8.6 8.8 7.2 15.4 C10.4 14.6 13 13.4 15 11.2 C13.2 11.2 12 11 11 10.4 C13.4 10.2 15.3 9.4 16.6 8.1 C15.4 7.9 14.6 7.6 14 7.1 C16.4 6.6 18.6 5.2 19.8 3.2 Z",
+  stroke: "M4.5 20.5 L9.6 12.4",
+};
+
 export const ICON_SUN = {
   fill: "M12 7.5 A4.5 4.5 0 1 1 11.99 7.5 Z",
   stroke:

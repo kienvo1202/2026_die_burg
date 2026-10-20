@@ -1,37 +1,221 @@
 ---
-// Placeholder title page until the app shell (Phase 0, PR 3) replaces it.
+// The title page: what the book is, where to start (or carry on), and the whole
+// course at a glance.
 import Base from "../layouts/Base.astro";
 import Button from "../components/ui/Button.astro";
-import { SITE_NAME, TAGLINE } from "../lib/site.ts";
+import Card from "../components/ui/Card.astro";
+import Divider from "../components/ui/Divider.astro";
+import Initial from "../components/ui/Initial.astro";
+import Tower from "../design/ornaments/Tower.astro";
+import { loadCourse } from "../lib/course.ts";
+import { SITE_NAME, TAGLINE, TAGLINE_DE } from "../lib/site.ts";
+
+const { levels, lessons } = await loadCourse();
+const writtenLessons = lessons.filter((lesson) => lesson.entry);
+const firstLesson = writtenLessons[0];
+
+// Titles of written lessons, for the "Continue" button's script.
+const titles = Object.fromEntries(writtenLessons.map((lesson) => [lesson.id, lesson.title]));
+
+const steps = [
+  { title: "Meet the scene", text: "Every lesson opens with real people saying real things. Listen, and guess before you peek at the English." },
+  { title: "Find the insight", text: "One idea per lesson that explains why German works the way it does, so you can use it, not just memorise it." },
+  { title: "Say it yourself", text: "Check yourself with answers behind a tap, then try a small task of your own and compare." },
+];
 ---
 
-<Base title={SITE_NAME}>
-  <section class="title-page">
-    <h1 class="name">{SITE_NAME}</h1>
-    <p class="tagline">{TAGLINE}</p>
-    <p>The book is being bound. In the meantime, see how it will look.</p>
-    <Button variant="primary" href="/design">See the design</Button>
+<Base title={SITE_NAME} description={`${SITE_NAME}: ${TAGLINE}. A German course you read, one short lesson at a time.`}>
+  <section class="title-plate">
+    <Tower class="plate-tower" />
+    <h1 class="plate-name">{SITE_NAME}</h1>
+    <p class="plate-tagline">{TAGLINE} · <span lang="de">{TAGLINE_DE}</span></p>
+    {
+      firstLesson ? (
+        <Button
+          variant="primary"
+          href={`/lessons/${firstLesson.id}`}
+          data-continue
+          data-titles={JSON.stringify(titles)}
+        >
+          Begin with lesson {firstLesson.number}
+        </Button>
+      ) : (
+        <Button variant="primary" href="/course">
+          See the course
+        </Button>
+      )
+    }
+  </section>
+
+  <section class="intro">
+    <Initial>
+      Read one short lesson at a sitting, in order, and German builds up page by page. No
+      grammar tables to memorise first: each lesson starts with something you want to say,
+      and the grammar arrives as the answer to “how do I say this?”
+    </Initial>
+  </section>
+
+  <ol class="steps">
+    {
+      steps.map((step, index) => (
+        <li>
+          <Card>
+            <p class="label">{index + 1} · {step.title}</p>
+            <p>{step.text}</p>
+          </Card>
+        </li>
+      ))
+    }
+  </ol>
+
+  <Divider />
+
+  <section aria-labelledby="levels-title">
+    <h2 id="levels-title">The course</h2>
+    <ul class="levels">
+      {
+        levels.map((level) => {
+          const written = level.lessons.filter((lesson) => writtenLessons.some((w) => w.id === lesson.id)).length;
+          return (
+            <li>
+              <a href={`/course#${level.id}`} class="level">
+                <span class="level-name">{level.name}</span>
+                <span class="level-title">{level.title}</span>
+                <span class="level-count">
+                  {level.lessons.length === 0
+                    ? "Being written"
+                    : `${written} of ${level.lessons.length} lessons ready`}
+                </span>
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
   </section>
 </Base>
 
+<script>
+  import { loadProgress } from "../lib/progress.ts";
+
+  // Returning readers carry on where they were: the next unfinished lesson after the
+  // one they opened last (or that one, if they haven't finished it).
+  const button = document.querySelector<HTMLAnchorElement>("[data-continue]");
+  const progress = loadProgress();
+  if (button && progress.last) {
+    const titles: Record<string, string> = JSON.parse(button.dataset.titles ?? "{}");
+    const ids = Object.keys(titles);
+    let target = progress.last;
+    if (progress.finished.includes(target)) {
+      const next = ids.slice(ids.indexOf(target) + 1).find((id) => !progress.finished.includes(id));
+      if (next) target = next;
+    }
+    if (titles[target]) {
+      button.href = `/lessons/${target}`;
+      button.textContent = `Continue: ${titles[target]}`;
+    }
+  }
+</script>
+
 <style>
-  .title-page {
+  .title-plate {
     display: grid;
     justify-items: center;
     gap: var(--space-3);
-    padding: var(--space-8) 0;
+    margin: var(--space-4) auto var(--space-6);
+    padding: var(--space-7) var(--space-4);
+    max-width: 48rem;
     text-align: center;
+    background: var(--color-card);
+    border: var(--border-gilt);
+    box-shadow: var(--shadow-card);
   }
 
-  .name {
+  .plate-tower {
+    width: 2.75rem;
+    height: 3.25rem;
+    color: var(--color-rubric);
+  }
+
+  .plate-name {
     margin: 0;
     font-family: var(--font-display);
+    font-weight: 700;
     font-size: var(--text-display);
+    line-height: 1;
   }
 
-  .tagline {
+  .plate-tagline {
+    margin: 0 0 var(--space-4);
     font-family: var(--font-heading);
     font-style: italic;
+    color: var(--color-ink-soft);
+  }
+
+  .intro {
+    max-width: var(--measure);
+    margin: 0 auto;
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: var(--space-4);
+    max-width: 60rem;
+    margin: var(--space-6) auto 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .steps li,
+  .steps :global(.card) {
+    height: 100%;
+  }
+
+  section[aria-labelledby="levels-title"] {
+    max-width: 60rem;
+    margin: 0 auto;
+  }
+
+  .levels {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+    gap: var(--space-3);
+    padding: 0;
+    list-style: none;
+  }
+
+  .level {
+    display: grid;
+    gap: var(--space-1);
+    min-height: var(--tap-min);
+    padding: var(--space-3) var(--space-4);
+    color: var(--color-ink);
+    text-decoration: none;
+    border: var(--border-hair);
+    border-radius: var(--radius-md);
+  }
+
+  .level:hover {
+    background: var(--color-card);
+  }
+
+  .level-name {
+    /* not the display face: its "1" looks like a capital I ("A1.1" read "AI.I") */
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-variant-numeric: lining-nums;
+    font-size: var(--text-lg);
+    color: var(--color-rubric);
+    line-height: 1;
+  }
+
+  .level-title {
+    font-family: var(--font-heading);
+  }
+
+  .level-count {
+    font-size: var(--text-sm);
     color: var(--color-ink-soft);
   }
 </style>

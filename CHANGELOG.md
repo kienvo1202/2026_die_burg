@@ -12,6 +12,16 @@ Write each entry for the reader of the course, not for the person who built it.
 
 ## Unreleased
 
+### Added: the book's structure
+- A title page with a **Begin / Continue** button that remembers where you were.
+- The **course map**: twelve levels from A1 to C2, every planned lesson, with a wax seal
+  on the lessons you have finished and a ribbon on the one to read next.
+- **Lesson pages** with a reading-progress bar and "turn the page" links; reaching the end
+  of a lesson marks it finished.
+- **Your dictionary** (`/words`): every word met so far, filterable by der / die / das,
+  verbs and phrases.
+- On phones, a tab bar at the bottom (Home, Course, Words).
+
 ### Added: the look of the book
 - A design page (`/design`) shows the colours, type, ornaments and every lesson component:
   parchment and ink by day (Vellum), the same book by candlelight at night. The theme

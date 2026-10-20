@@ -1,0 +1,228 @@
+---
+// One lesson. The lesson file (MDX) supplies the text; this page supplies the frame:
+// the header, a reading-progress bar, the components lessons are written with, and
+// "turn the page" links. Reaching the end marks the lesson finished on this device.
+import { render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import Divider from "../../components/ui/Divider.astro";
+import Initial from "../../components/ui/Initial.astro";
+import Check from "../../components/lesson/Check.astro";
+import Chunk from "../../components/lesson/Chunk.astro";
+import Deeper from "../../components/lesson/Deeper.astro";
+import Dialogue from "../../components/lesson/Dialogue.astro";
+import Insight from "../../components/lesson/Insight.astro";
+import Line from "../../components/lesson/Line.astro";
+import Recap from "../../components/lesson/Recap.astro";
+import Say from "../../components/lesson/Say.astro";
+import WordList from "../../components/lesson/WordList.astro";
+import YourTurn from "../../components/lesson/YourTurn.astro";
+import { loadCourse, type CourseLesson } from "../../lib/course.ts";
+
+export async function getStaticPaths() {
+  const { lessons } = await loadCourse();
+  const written = lessons.filter((lesson) => lesson.entry);
+  return written.map((lesson) => {
+    const index = lessons.indexOf(lesson);
+    return {
+      params: { id: lesson.id },
+      props: {
+        lesson,
+        previous: written[written.indexOf(lesson) - 1],
+        next: lessons[index + 1], // may be planned but not written yet
+      },
+    };
+  });
+}
+
+interface Props {
+  lesson: CourseLesson;
+  previous?: CourseLesson;
+  next?: CourseLesson;
+}
+const { lesson, previous, next } = Astro.props;
+const entry = lesson.entry!;
+const { Content } = await render(entry);
+
+// Lesson files use these without importing them.
+const components = { Check, Chunk, Deeper, Dialogue, Divider, Initial, Insight, Line, Recap, Say, WordList, YourTurn };
+---
+
+<Base title={`${lesson.title}`} description={`Lesson ${lesson.number} (${lesson.level.name}): ${lesson.canDo}.`}>
+  <div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+
+  <article class="lesson" data-lesson-id={lesson.id}>
+    <header class="lesson-head">
+      <p class="label">
+        <a href={`/course#${lesson.level.id}`}>{lesson.level.name} · {lesson.level.title}</a> · Lesson {lesson.number}
+      </p>
+      <h1>{lesson.title}</h1>
+      <p class="can-do"><span class="label">You will be able to</span> {lesson.canDo.charAt(0).toLowerCase() + lesson.canDo.slice(1)}.</p>
+      <p class="minutes">About {entry.data.minutes} minutes</p>
+    </header>
+
+    <Content components={components} />
+
+    <div data-lesson-end></div>
+  </article>
+
+  <nav class="turn-page" aria-label="Lessons">
+    {
+      previous ? (
+        <a class="turn previous" href={`/lessons/${previous.id}`}>
+          <span class="label">← Previous</span>
+          <span class="turn-title">{previous.title}</span>
+        </a>
+      ) : (
+        <span />
+      )
+    }
+    {
+      next?.entry ? (
+        <a class="turn next" href={`/lessons/${next.id}`}>
+          <span class="label">Turn the page →</span>
+          <span class="turn-title">{next.title}</span>
+        </a>
+      ) : next ? (
+        <span class="turn next soon">
+          <span class="label">Next</span>
+          <span class="turn-title">{next.title}</span>
+          <span class="soon-note">coming soon</span>
+        </span>
+      ) : null
+    }
+  </nav>
+</Base>
+
+<script>
+  import { loadProgress, saveProgress, withFinished, withOpened } from "../../lib/progress.ts";
+
+  const article = document.querySelector<HTMLElement>("[data-lesson-id]");
+  const lessonId = article?.dataset.lessonId;
+
+  if (lessonId) {
+    saveProgress(withOpened(loadProgress(), lessonId));
+
+    // Reaching the end of the lesson marks it finished.
+    const end = document.querySelector("[data-lesson-end]");
+    if (end) {
+      const observer = new IntersectionObserver((entries) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return;
+        saveProgress(withFinished(loadProgress(), lessonId));
+        observer.disconnect();
+      });
+      observer.observe(end);
+    }
+  }
+
+  // The thin gold bar at the top follows how far through the lesson the reader is.
+  const bar = document.querySelector<HTMLElement>("[data-reading-progress]");
+  function updateBar() {
+    if (!bar || !article) return;
+    const box = article.getBoundingClientRect();
+    const travelled = window.innerHeight - box.top;
+    const fraction = Math.min(1, Math.max(0, travelled / box.height));
+    bar.style.transform = `scaleX(${fraction})`;
+  }
+  updateBar();
+  window.addEventListener("scroll", updateBar, { passive: true });
+  window.addEventListener("resize", updateBar);
+</script>
+
+<style>
+  .reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    height: 3px;
+    pointer-events: none;
+  }
+
+  .reading-progress span {
+    display: block;
+    height: 100%;
+    background: var(--color-gold);
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  .lesson {
+    max-width: var(--measure);
+    margin: 0 auto;
+  }
+
+  .lesson-head {
+    margin-bottom: var(--space-6);
+    padding-bottom: var(--space-4);
+    border-bottom: var(--border-gilt);
+  }
+
+  .lesson-head .label a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .lesson-head h1 {
+    margin-top: var(--space-2);
+  }
+
+  .can-do {
+    margin-bottom: var(--space-1);
+  }
+
+  .minutes {
+    margin: 0;
+    font-size: var(--text-sm);
+    color: var(--color-ink-soft);
+  }
+
+  /* Section headings written in the lesson's Markdown (## The scene) */
+  .lesson :global(h2) {
+    margin-top: var(--space-7);
+  }
+
+  .turn-page {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+    max-width: var(--measure);
+    margin: var(--space-7) auto 0;
+  }
+
+  .turn {
+    display: grid;
+    gap: var(--space-1);
+    min-height: var(--tap-min);
+    padding: var(--space-3) var(--space-4);
+    color: var(--color-ink);
+    text-decoration: none;
+    border: var(--border-hair);
+    border-radius: var(--radius-md);
+  }
+
+  a.turn:hover {
+    background: var(--color-card);
+  }
+
+  .next {
+    grid-column: 2;
+    text-align: right;
+  }
+
+  .turn-title {
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    line-height: var(--leading-tight);
+  }
+
+  .soon {
+    color: var(--color-ink-soft);
+    border-style: dashed;
+  }
+
+  .soon-note {
+    font-size: var(--text-sm);
+    font-style: italic;
+  }
+</style>

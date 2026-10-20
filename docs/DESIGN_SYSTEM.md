@@ -122,6 +122,8 @@ The paper grain is an SVG noise filter in a token (`--paper-grain`), not an imag
   `src/design/token-usage.test.ts` fails the build otherwise.
 - **The display face is for display only**: the brand, level titles and drop caps. Never
   running text. (Fraktur was tried first and rejected for readability; see ADR 0005.)
+- **No digits in the display face.** Cinzel's "1" is a capital "I", so "A1.1" reads
+  "AI.I". Level names and numbers use `--font-body` with `lining-nums`.
 - **Touch targets ≥ `--tap-min`.** Nothing works only on hover.
 - **Every German string is marked `lang="de"`** (the lesson components do it for you).
 - **All audio goes through `speak()`** in `src/lib/speech.ts` (ADR 0006).

@@ -1,0 +1,107 @@
+# The table of contents: every level, and every lesson planned in it, in order.
+# This is the single list of which lessons exist. A lesson file or brief whose id is
+# not listed here fails `npm run check`.
+#
+# Lesson ids: <cefr>-<number>, numbered through the whole CEFR level (A1 runs 1–28).
+# Titles and can-dos here are working titles; a lesson's own frontmatter has the final ones.
+# Levels from A2.1 on get their lesson list just before they are written (ADR 0002).
+
+- id: a1-1
+  name: A1.1
+  title: First conversations
+  canDo: Introduce yourself, order food, shop and make simple plans.
+  lessons:
+    - { id: a1-01, number: 1, title: "Hallo!", canDo: "Greet someone and say your name" }
+    - { id: a1-02, number: 2, title: "Where are you from?", canDo: "Say where you're from and which languages you speak" }
+    - { id: a1-03, number: 3, title: "Spell it out", canDo: "Spell your name and give numbers" }
+    - { id: a1-04, number: 4, title: "At the bakery", canDo: "Order at a bakery" }
+    - { id: a1-05, number: 5, title: "My room", canDo: "Describe your room" }
+    - { id: a1-06, number: 6, title: "What I like doing", canDo: "Talk about your hobbies" }
+    - { id: a1-07, number: 7, title: "Family photos", canDo: "Introduce your family" }
+    - { id: a1-08, number: 8, title: "No milk!", canDo: "Say what's missing" }
+    - { id: a1-09, number: 9, title: "A table for two", canDo: "Order a meal" }
+    - { id: a1-10, number: 10, title: "Half past two", canDo: "Make an appointment" }
+    - { id: a1-11, number: 11, title: "Does it fit?", canDo: "Shop for clothes" }
+    - { id: a1-12, number: 12, title: "Can, want, must", canDo: "Say what you can, want or must do" }
+    - { id: a1-13, number: 13, title: "Which way?", canDo: "Find your way in town" }
+    - { id: a1-14, number: 14, title: "Checkpoint: a Saturday in Leipzig", canDo: "Read a longer story that uses everything so far" }
+
+- id: a1-2
+  name: A1.2
+  title: Everyday life
+  canDo: Get through a normal day and say what you did at the weekend.
+  lessons:
+    - { id: a1-15, number: 15, title: "A baker's day", canDo: "Describe your day" }
+    - { id: a1-16, number: 16, title: "Tickets, please", canDo: "Use buses and trains" }
+    - { id: a1-17, number: 17, title: "Mir ist kalt", canDo: "Say how you feel" }
+    - { id: a1-18, number: 18, title: "At the doctor's", canDo: "See a doctor" }
+    - { id: a1-19, number: 19, title: "How was your weekend?", canDo: "Talk about your weekend" }
+    - { id: a1-20, number: 20, title: "A trip to Salzburg", canDo: "Tell the story of a trip" }
+    - { id: a1-21, number: 21, title: "Happy birthday", canDo: "Celebrate a birthday and give dates" }
+    - { id: a1-22, number: 22, title: "Flat hunting", canDo: "Find a flat" }
+    - { id: a1-23, number: 23, title: "Can you help me?", canDo: "Ask for a favour" }
+    - { id: a1-24, number: 24, title: "Sorry, I can't", canDo: "Text and reschedule" }
+    - { id: a1-25, number: 25, title: "What do you do?", canDo: "Talk about your job" }
+    - { id: a1-26, number: 26, title: "Are you coming?", canDo: "Invite someone and reply to an invitation" }
+    - { id: a1-27, number: 27, title: "At the market", canDo: "Buy groceries" }
+    - { id: a1-28, number: 28, title: "Checkpoint: a week in Zürich", canDo: "Read a longer story that uses everything so far" }
+
+- id: a2-1
+  name: A2.1
+  title: Reasons and memories
+  canDo: Give reasons and opinions, share memories and set up a home.
+  lessons: []
+
+- id: a2-2
+  name: A2.2
+  title: Getting things done
+  canDo: Describe things precisely, deal with services and apply for a job.
+  lessons: []
+
+- id: b1-1
+  name: B1.1
+  title: Telling stories
+  canDo: Tell stories, say what you would do, and explain how things work.
+  lessons: []
+
+- id: b1-2
+  name: B1.2
+  title: Making your case
+  canDo: Argue, express regret, complain politely and follow a discussion.
+  lessons: []
+
+- id: b2-1
+  name: B2.1
+  title: News and paperwork
+  canDo: Read the news, official letters and science writing, and speculate.
+  lessons: []
+
+- id: b2-2
+  name: B2.2
+  title: Tone and register
+  canDo: Read arguments and literature, and control your tone and register.
+  lessons: []
+
+- id: c1-1
+  name: C1.1
+  title: Nuance
+  canDo: Express fine shades of meaning and catch what is only implied.
+  lessons: []
+
+- id: c1-2
+  name: C1.2
+  title: Fluency
+  canDo: Speak and write fluently and precisely about complex subjects.
+  lessons: []
+
+- id: c2-1
+  name: C2.1
+  title: Mastery
+  canDo: Understand virtually everything you read or hear, including style and allusion.
+  lessons: []
+
+- id: c2-2
+  name: C2.2
+  title: At home in German
+  canDo: Express yourself spontaneously and precisely in any situation.
+  lessons: []
