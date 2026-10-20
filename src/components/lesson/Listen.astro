@@ -9,12 +9,10 @@ interface Props {
   text: string;
 }
 const { text } = Astro.props;
----
 
-<button type="button" class="listen" data-say={text}>
-  <Icon icon={ICON_LISTEN} />
-  <span class="visually-hidden">Listen: <span lang="de">{text}</span></span>
-</button>
+// The button comes last in this file, with no newline after it: anything after it would
+// render as a space before the punctuation that follows a listen button in prose.
+---
 
 <script>
   import { speak } from "../../lib/speech.ts";
@@ -32,13 +30,16 @@ const { text } = Astro.props;
 </script>
 
 <style>
+  /* The button is only as wide as its icon, so punctuation after it sits close, as
+     after a word. An invisible ::after extends the tap area to at least --tap-min. */
   .listen {
+    position: relative;
     display: inline-grid;
     place-items: center;
-    vertical-align: middle;
-    width: var(--tap-min);
-    height: var(--tap-min);
-    margin: calc(var(--space-3) * -1) 0; /* keep the line height steady inside prose */
+    vertical-align: -0.2em;
+    width: 1.5em;
+    height: 1.5em;
+    margin: 0 0.1em 0 0.25em;
     padding: 0;
     color: var(--color-gold-text);
     background: transparent;
@@ -47,7 +48,22 @@ const { text } = Astro.props;
     cursor: pointer;
   }
 
+  .listen::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: var(--tap-min);
+    height: var(--tap-min);
+    transform: translate(-50%, -50%);
+  }
+
   .listen:hover {
     color: var(--color-rubric);
   }
 </style>
+
+<button type="button" class="listen" data-say={text}>
+  <Icon icon={ICON_LISTEN} />
+  <span class="visually-hidden">Listen: <span lang="de">{text}</span></span>
+</button>

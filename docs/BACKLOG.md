@@ -21,11 +21,11 @@ estimates. When something is done it moves to `CHANGELOG.md` and is deleted from
 - [x] **Content model**: levels A1.1–C2.2, briefs schema, lesson frontmatter schema
 - [x] **Ledger and checker** with tests, including broken fixtures that must fail
 - [x] **CI**: Node job (test, check, build)
-- [ ] **CI seen red once**: push a deliberate failure on a branch, see it fail, remove it
-- [ ] **Lesson guide** with rubric and No/Yes example pairs
-- [ ] **A1.1 and A1.2 briefs**: titles for all, full briefs for lessons 1–2
-- [ ] **Lessons 1–2**, with a documented German accuracy pass
-- [ ] **write-lesson skill**
+- [x] **CI seen red once**: a failing test on `feat/app-shell` turned the `site` job red; reverted
+- [x] **Lesson guide** with rubric and No/Yes example pairs
+- [x] **A1.1 and A1.2 briefs**: titles for all, full briefs for lessons 1–2
+- [x] **Lessons 1–2**, with a documented German accuracy pass
+- [x] **write-lesson skill** (plus `scripts/ledger-report.ts`)
 - [ ] Read lessons 1–2 for real on a phone; score against the rubric in `JOURNAL.md`
 
 ## Parked

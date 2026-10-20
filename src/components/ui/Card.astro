@@ -24,7 +24,13 @@ const { as: Tag = "div", class: className } = Astro.props;
     border: var(--border-hair);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-card);
-    padding: var(--space-6) var(--space-5);
+    padding: var(--space-5) var(--space-4);
+  }
+
+  @media (min-width: 40rem) {
+    .card {
+      padding: var(--space-6) var(--space-5);
+    }
   }
 
   .card > :global(:last-child) {

@@ -160,3 +160,34 @@ button {
     }
   }
 }
+
+/* Small tables inside lessons (e.g. a verb's forms side by side). On a narrow phone a
+   wide table scrolls sideways inside itself instead of widening the page. */
+table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  margin: var(--space-4) 0 var(--space-5);
+  font-size: var(--text-sm);
+}
+
+td .say {
+  white-space: nowrap;
+}
+
+th,
+td {
+  padding: var(--space-2) var(--space-3) var(--space-2) 0;
+  text-align: left;
+  vertical-align: baseline;
+  border-bottom: var(--border-hair);
+}
+
+th {
+  font-family: var(--font-label);
+  font-weight: 400;
+  font-size: var(--text-sm);
+  letter-spacing: var(--tracking-label);
+  color: var(--color-accent);
+}

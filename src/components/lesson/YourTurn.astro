@@ -1,16 +1,19 @@
 ---
 // "Your turn": a small task to say or write something yourself, then compare with a
 // model answer and a short checklist (there is no tutor to correct you).
-//   <YourTurn checklist={["Did the verb come second?"]}>
+//   <YourTurn model="Hallo! Ich heiße Sam." checklist={["Did the verb come second?"]}>
 //     Introduce yourself…
-//     <Fragment slot="model">Hallo! Ich heiße Sam.</Fragment>
 //   </YourTurn>
+// The model answer is a prop rather than a named slot: props work the same in .astro
+// and .mdx files, named slots don't.
 import Card from "../ui/Card.astro";
+import Listen from "./Listen.astro";
 
 interface Props {
-  checklist: string[];
+  model: string; // German, plain text
+  checklist: string[]; // may contain <span lang="de">…</span>
 }
-const { checklist } = Astro.props;
+const { model, checklist } = Astro.props;
 ---
 
 <Card as="section" class="your-turn">
@@ -18,7 +21,7 @@ const { checklist } = Astro.props;
   <div class="prompt"><slot /></div>
   <details class="model">
     <summary class="label">See a model answer</summary>
-    <div class="model-text"><slot name="model" /></div>
+    <p class="model-text"><span lang="de">{model}</span><Listen text={model} /></p>
   </details>
   <p class="label checklist-title">Check yourself</p>
   <ul class="checklist">
