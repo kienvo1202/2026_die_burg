@@ -1,0 +1,135 @@
+---
+// The frame every page sits in: fonts, tokens, theme, and the brand header.
+import "@fontsource-variable/eb-garamond";
+import "@fontsource-variable/eb-garamond/wght-italic.css";
+import "@fontsource/im-fell-english";
+import "@fontsource/im-fell-english/400-italic.css";
+import "@fontsource/im-fell-english-sc";
+import "@fontsource/cinzel-decorative/400.css";
+import "@fontsource/cinzel-decorative/700.css";
+import "../design/tokens.css";
+import "../design/base.css";
+import Tower from "../design/ornaments/Tower.astro";
+import ThemeToggle from "../components/ui/ThemeToggle.astro";
+import { SITE_NAME } from "../lib/site.ts";
+import { THEME_KEY } from "../lib/theme.ts";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = "A German course you read, one lesson at a time." } = Astro.props;
+const pageTitle = title === SITE_NAME ? SITE_NAME : `${title} · ${SITE_NAME}`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content={description} />
+    <title>{pageTitle}</title>
+    <!-- Apply a saved theme before first paint, so the page never flashes the wrong one. -->
+    <script is:inline define:vars={{ themeKey: THEME_KEY }}>
+      try {
+        const saved = localStorage.getItem(themeKey);
+        if (saved === "light" || saved === "dark") document.documentElement.dataset.theme = saved;
+      } catch {
+        // Storage blocked: follow the system theme.
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to the text</a>
+    <header class="masthead">
+      <a class="brand" href="/" aria-label={`${SITE_NAME}: home`}>
+        <Tower class="brand-mark" />
+        <span class="brand-name">{SITE_NAME}</span>
+      </a>
+      <slot name="nav" />
+      <ThemeToggle />
+    </header>
+    <main id="main" class="page-turn">
+      <slot />
+    </main>
+    <p class="voice-note" role="status" hidden data-voice-note>
+      Your device has no German voice installed, so listen buttons may sound wrong or stay
+      silent. The text works the same.
+    </p>
+  </body>
+</html>
+
+<style>
+  body {
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom)
+      env(safe-area-inset-left);
+  }
+
+  .skip-link {
+    position: absolute;
+    left: var(--space-4);
+    top: -100%;
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-card);
+    z-index: 10;
+  }
+
+  .skip-link:focus {
+    top: var(--space-2);
+  }
+
+  .masthead {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: var(--space-3) var(--space-4);
+    border-bottom: var(--border-hair);
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-right: auto;
+    min-height: var(--tap-min);
+    color: var(--color-ink);
+    text-decoration: none;
+  }
+
+  .brand-mark {
+    width: 1.5rem;
+    height: 1.75rem;
+    color: var(--color-rubric);
+  }
+
+  .brand-name {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+
+  main {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: var(--space-5) var(--space-4) var(--space-8);
+  }
+
+  .voice-note {
+    position: fixed;
+    left: var(--space-4);
+    right: var(--space-4);
+    bottom: calc(var(--space-4) + env(safe-area-inset-bottom));
+    max-width: 32rem;
+    margin: 0 auto;
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--text-sm);
+    background: var(--color-card);
+    border: var(--border-hair);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+  }
+</style>

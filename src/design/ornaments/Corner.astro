@@ -1,0 +1,16 @@
+---
+// A corner flourish, drawn for the top-left corner. Card.astro mirrors it with CSS
+// for the other three corners.
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<svg class={className} viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+  <g fill="none" stroke="currentColor" stroke-linecap="round">
+    <path d="M2 30 V10 Q2 2 10 2 H30" stroke-width="1.5" />
+    <path d="M7 23 V13 Q7 7 13 7 H23" stroke-width="0.9" />
+  </g>
+  <circle cx="11.5" cy="11.5" r="1.7" fill="currentColor" />
+</svg>

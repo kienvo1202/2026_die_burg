@@ -1,0 +1,63 @@
+---
+// "Your turn": a small task to say or write something yourself, then compare with a
+// model answer and a short checklist (there is no tutor to correct you).
+//   <YourTurn checklist={["Did the verb come second?"]}>
+//     Introduce yourself…
+//     <Fragment slot="model">Hallo! Ich heiße Sam.</Fragment>
+//   </YourTurn>
+import Card from "../ui/Card.astro";
+
+interface Props {
+  checklist: string[];
+}
+const { checklist } = Astro.props;
+---
+
+<Card as="section" class="your-turn">
+  <p class="label kicker">Your turn</p>
+  <div class="prompt"><slot /></div>
+  <details class="model">
+    <summary class="label">See a model answer</summary>
+    <div class="model-text"><slot name="model" /></div>
+  </details>
+  <p class="label checklist-title">Check yourself</p>
+  <ul class="checklist">
+    {checklist.map((item) => <li set:html={item} />)}
+  </ul>
+</Card>
+
+<style>
+  .your-turn {
+    margin: var(--space-6) 0;
+  }
+
+  .kicker {
+    margin: 0 0 var(--space-2);
+  }
+
+  .model summary {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-min);
+    cursor: pointer;
+  }
+
+  .model-text {
+    padding: var(--space-3) var(--space-4);
+    margin-bottom: var(--space-3);
+    border-left: 3px solid var(--color-gold);
+  }
+
+  .checklist-title {
+    margin: var(--space-4) 0 var(--space-2);
+  }
+
+  .checklist {
+    padding-left: var(--space-5);
+  }
+
+  .checklist li::marker {
+    content: "☐  ";
+    color: var(--color-gold-text);
+  }
+</style>

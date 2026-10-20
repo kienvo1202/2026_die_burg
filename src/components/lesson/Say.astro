@@ -1,0 +1,25 @@
+---
+// A German phrase inside English prose: the German, a listen button, and
+// (optionally) its meaning in a quieter voice.
+//   <Say de="Guten Morgen!" en="Good morning!" />
+import Listen from "./Listen.astro";
+
+interface Props {
+  de: string;
+  en?: string;
+}
+const { de, en } = Astro.props;
+---
+
+<span class="say"><span lang="de" class="de">{de}</span><Listen text={de} />{en && <span class="en">({en})</span>}</span>
+
+<style>
+  .de {
+    color: var(--color-ink);
+  }
+
+  .en {
+    color: var(--color-ink-soft);
+    font-style: italic;
+  }
+</style>

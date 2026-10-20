@@ -1,0 +1,31 @@
+---
+// The lesson's one big idea, framed in gilt. One per lesson; it is what the reader
+// should still remember next month.
+import Card from "../ui/Card.astro";
+
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+---
+
+<Card as="aside" class="insight">
+  <p class="label kicker">The insight</p>
+  <h3 class="title">{title}</h3>
+  <slot />
+</Card>
+
+<style>
+  .insight {
+    margin: var(--space-6) 0;
+    border: var(--border-gilt);
+  }
+
+  .kicker {
+    margin: 0;
+  }
+
+  .title {
+    margin-top: var(--space-1);
+  }
+</style>

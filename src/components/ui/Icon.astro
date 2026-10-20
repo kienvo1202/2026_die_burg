@@ -1,0 +1,21 @@
+---
+// Renders one of the icons in src/design/ornaments/Icons.ts at the current text colour.
+interface Props {
+  icon: { fill: string; stroke: string };
+  class?: string;
+}
+const { icon, class: className } = Astro.props;
+---
+
+<svg class:list={["icon", className]} viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  <path d={icon.fill} fill="currentColor"></path>
+  <path d={icon.stroke} fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
+</svg>
+
+<style>
+  .icon {
+    width: 1.15em;
+    height: 1.15em;
+    flex: none;
+  }
+</style>

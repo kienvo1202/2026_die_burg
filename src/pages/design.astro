@@ -1,0 +1,406 @@
+---
+// The living style guide: every token and component, as readers will see them.
+// If a component isn't shown here, it isn't part of the design system yet.
+import Base from "../layouts/Base.astro";
+import Button from "../components/ui/Button.astro";
+import Card from "../components/ui/Card.astro";
+import Divider from "../components/ui/Divider.astro";
+import Initial from "../components/ui/Initial.astro";
+import Ribbon from "../components/ui/Ribbon.astro";
+import Seal from "../components/ui/Seal.astro";
+import Chunk from "../components/lesson/Chunk.astro";
+import Check from "../components/lesson/Check.astro";
+import Deeper from "../components/lesson/Deeper.astro";
+import Dialogue from "../components/lesson/Dialogue.astro";
+import Insight from "../components/lesson/Insight.astro";
+import Line from "../components/lesson/Line.astro";
+import Recap from "../components/lesson/Recap.astro";
+import Say from "../components/lesson/Say.astro";
+import WordList from "../components/lesson/WordList.astro";
+import YourTurn from "../components/lesson/YourTurn.astro";
+import Tower from "../design/ornaments/Tower.astro";
+import { SITE_NAME, TAGLINE, TAGLINE_DE } from "../lib/site.ts";
+import type { Word } from "../lib/words.ts";
+
+const colours = [
+  { token: "page", use: "The parchment" },
+  { token: "card", use: "Cards and callouts" },
+  { token: "ink", use: "Body text" },
+  { token: "ink-soft", use: "Translations, captions" },
+  { token: "rubric", use: "Headings in red, primary action" },
+  { token: "lapis", use: "Links; der" },
+  { token: "verdigris", use: "das" },
+  { token: "gold", use: "Ornament only" },
+  { token: "gold-text", use: "Gold that can be read" },
+  { token: "rule", use: "Hairlines" },
+];
+
+const sampleWords: Word[] = [
+  { de: "Morgen", en: "morning", pos: "noun", article: "der", plural: "-" },
+  { de: "Nacht", en: "night", pos: "noun", article: "die", plural: "¨-e" },
+  { de: "Hostel", en: "hostel", pos: "noun", article: "das", plural: "-s" },
+  { de: "heißen", en: "to be called", pos: "verb", forms: "heißt, hieß, hat geheißen" },
+  { de: "Freut mich!", en: "Nice to meet you!", pos: "phrase" },
+];
+---
+
+<Base title="Design system" description="The colours, type, ornaments and components of Die Burg.">
+  <article class="guide">
+    <header class="intro">
+      <p class="label">The design system</p>
+      <h1>How the book looks, and why</h1>
+      <Initial>
+        Every page of {SITE_NAME} is set like a page from an illuminated storybook: parchment,
+        iron-gall ink, red rubrics and a little gold. The ornament frames the text and never sits
+        behind it, because the reading comes first. Everything below is built from one file of
+        tokens, so the website and the apps can never drift apart.
+      </Initial>
+    </header>
+
+    <section aria-labelledby="brand">
+      <h2 id="brand">The name</h2>
+      <div class="brand-plate">
+        <Tower class="plate-tower" />
+        <p class="plate-name">{SITE_NAME}</p>
+        <p class="plate-tagline">{TAGLINE} · <span lang="de">{TAGLINE_DE}</span></p>
+      </div>
+    </section>
+
+    <Divider />
+
+    <section aria-labelledby="colour">
+      <h2 id="colour">Colour</h2>
+      <p>
+        Two themes, one set of names. <em>Vellum</em> is the day page; <em>Candlelight</em> is the
+        same book read at night. Switch with the button at the top. Every colour used for text
+        stays above 4.5:1 contrast on both page and card, checked by a test.
+      </p>
+      <ul class="swatches">
+        {
+          colours.map((colour) => (
+            <li class="swatch">
+              <span class="chip" style={`background: var(--color-${colour.token})`} />
+              <span class="swatch-name">--color-{colour.token}</span>
+              <span class="swatch-value" data-token={`--color-${colour.token}`} />
+              <span class="swatch-use">{colour.use}</span>
+            </li>
+          ))
+        }
+      </ul>
+      <h3>Gender colours</h3>
+      <p>
+        Every noun is learned with its article. The article is always printed, and its colour
+        repeats it for the eye: <span class="gender der" lang="de">der</span> lapis,
+        <span class="gender die" lang="de">die</span> rubric, <span class="gender das" lang="de"
+          >das</span
+        > verdigris.
+      </p>
+    </section>
+
+    <Divider />
+
+    <section aria-labelledby="type">
+      <h2 id="type">Type</h2>
+      <div class="specimens">
+        <div class="specimen">
+          <p class="label">Display · Cinzel Decorative</p>
+          <p class="spec-display">Märchen</p>
+          <p class="note">Carved Roman capitals with swashes, like a manuscript initial. Brand, level titles and initials only; never running text.</p>
+        </div>
+        <div class="specimen">
+          <p class="label">Headings · IM Fell English</p>
+          <p class="spec-heading">Once upon a time, in a castle</p>
+          <p class="note">The feel of early printing; slightly uneven, like real type.</p>
+        </div>
+        <div class="specimen">
+          <p class="label">Body · EB Garamond</p>
+          <p>
+            German sits in the same face as English, a little heavier, so it stands out without
+            shouting: <Say de="Es war einmal…" en="Once upon a time…" />
+          </p>
+          <p class="note">Old-style figures (1234567890), generous size, 65 characters a line.</p>
+        </div>
+        <div class="specimen">
+          <p class="label">Labels · IM Fell English SC</p>
+          <p class="label spec-label">Speaker names · section names · captions</p>
+        </div>
+      </div>
+    </section>
+
+    <Divider />
+
+    <section aria-labelledby="ornaments">
+      <h2 id="ornaments">Ornaments and marks</h2>
+      <div class="marks">
+        <figure>
+          <Seal size="lg" />
+          <figcaption>Wax seal: a lesson finished</figcaption>
+        </figure>
+        <figure>
+          <Ribbon />
+          <figcaption>Ribbon: where you are</figcaption>
+        </figure>
+        <figure>
+          <Seal size="sm" />
+          <figcaption>Seal, small (course map)</figcaption>
+        </figure>
+      </div>
+      <p>The fleuron below divides sections; the gilt corners frame every card.</p>
+    </section>
+
+    <Divider />
+
+    <section aria-labelledby="controls">
+      <h2 id="controls">Buttons and cards</h2>
+      <div class="buttons">
+        <Button variant="primary" href="#controls">Continue reading</Button>
+        <Button>Show the English</Button>
+      </div>
+      <Card>
+        <p class="label">A card</p>
+        <p>Vellum, a hairline border and gilt corners. The base of insights, tasks and course tiles.</p>
+      </Card>
+    </section>
+
+    <Divider />
+
+    <section aria-labelledby="lesson" class="reading">
+      <h2 id="lesson">Lesson components</h2>
+      <p>
+        Every lesson is built from these pieces, in a fixed order. The samples come from lesson 1.
+      </p>
+
+      <h3>Say: German inside English</h3>
+      <p>
+        In the morning you say <Say de="Guten Morgen!" en="Good morning!" />, and in the north of
+        Germany people say <Say de="Moin!" en="Hi!" /> at any hour.
+      </p>
+
+      <h3>Dialogue: the scene</h3>
+      <Dialogue title="Check-in" setting="A hostel in Hamburg, late afternoon">
+        <Line who="Jonas" de="Moin! Ich bin Jonas." en="Hi! I'm Jonas." />
+        <Line who="Aylin" de="Hallo, Jonas! Ich heiße Aylin." en="Hello, Jonas! My name is Aylin." />
+        <Line who="Jonas" de="Freut mich!" en="Nice to meet you!" />
+        <Line who="Aylin" de="Mich auch." en="Me too." />
+      </Dialogue>
+
+      <h3>Chunk: a phrase learned whole</h3>
+      <Chunk de="Wie geht's?" literal="How goes it?" means="How are you?" />
+
+      <h3>Insight: the one idea</h3>
+      <Insight title="German is English's cousin">
+        <p>
+          English and German grew from the same West Germanic root, so thousands of words are
+          still recognisable once you know where to look:
+          <span lang="de">Morgen</span> and <em>morning</em>, <span lang="de">Name</span> and
+          <em>name</em>, <span lang="de">Haus</span> and <em>house</em>.
+        </p>
+      </Insight>
+
+      <h3>Word list</h3>
+      <WordList words={sampleWords} />
+
+      <h3>Check: answer behind a tap</h3>
+      <Check q="It's 9 a.m. and you walk into a bakery in Munich. What do you say?">
+        <p>
+          <Say de="Guten Morgen!" />, or, as many people there would, <Say de="Grüß Gott!" />
+        </p>
+      </Check>
+
+      <h3>Go deeper</h3>
+      <Deeper title="Why “Moin” works at midnight">
+        <p>
+          <span lang="de">Moin</span> looks like <span lang="de">Morgen</span>, but it is usually
+          traced to Low German <span lang="de">moi</span>, “nice, good” (compare Dutch
+          <em>mooi</em>). It was never tied to the morning, which is why Hamburg says it all day.
+        </p>
+      </Deeper>
+
+      <h3>Your turn</h3>
+      <YourTurn
+        checklist={[
+          "Did you say who you are with <span lang='de'>ich bin</span> or <span lang='de'>ich heiße</span>?",
+          "Did you answer a greeting with a greeting?",
+        ]}
+      >
+        <p>A new colleague says <Say de="Hallo! Ich bin Lea." /> Greet Lea and say your name.</p>
+        <Fragment slot="model"><p lang="de">Hallo, Lea! Ich heiße Sam. Freut mich!</p></Fragment>
+      </YourTurn>
+
+      <h3>Recap</h3>
+      <Recap canDo={["greet someone at any time of day", "say your name two ways"]} />
+    </section>
+  </article>
+</Base>
+
+<script>
+  // Show each swatch's actual value in the current theme (so this page never holds
+  // a second copy of the colours that could drift from tokens.css).
+  function showValues() {
+    const styles = getComputedStyle(document.documentElement);
+    for (const element of document.querySelectorAll<HTMLElement>("[data-token]")) {
+      element.textContent = styles.getPropertyValue(element.dataset.token ?? "").trim();
+    }
+  }
+  showValues();
+  new MutationObserver(showValues).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["data-theme"],
+  });
+</script>
+
+<style>
+  .guide {
+    max-width: 60rem;
+    margin: 0 auto;
+  }
+
+  .intro,
+  .reading {
+    max-width: var(--measure);
+  }
+
+  .brand-plate {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-2);
+    padding: var(--space-6) var(--space-4);
+    text-align: center;
+    border: var(--border-gilt);
+    background: var(--color-card);
+  }
+
+  .plate-tower {
+    width: 2.5rem;
+    height: 3rem;
+    color: var(--color-rubric);
+  }
+
+  .plate-name {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--text-display);
+    line-height: 1;
+  }
+
+  .plate-tagline {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-style: italic;
+    color: var(--color-ink-soft);
+  }
+
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+    gap: var(--space-4);
+    padding: 0;
+    list-style: none;
+  }
+
+  .swatch {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    grid-template-rows: auto auto auto;
+    column-gap: var(--space-3);
+    align-items: center;
+  }
+
+  .chip {
+    grid-row: 1 / 4;
+    width: 3rem;
+    height: 3rem;
+    border: var(--border-hair);
+    border-radius: var(--radius-sm);
+  }
+
+  .swatch-name {
+    font-family: var(--font-label);
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-label);
+  }
+
+  .swatch-value,
+  .swatch-use {
+    font-size: var(--text-xs);
+    color: var(--color-ink-soft);
+  }
+
+  .gender {
+    padding: 0 0.3em;
+    border-bottom: 3px solid;
+  }
+
+  .der {
+    color: var(--gender-der);
+  }
+
+  .die {
+    color: var(--gender-die);
+  }
+
+  .das {
+    color: var(--gender-das);
+  }
+
+  .specimens {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: var(--space-5);
+  }
+
+  .specimen {
+    padding-top: var(--space-3);
+    border-top: var(--border-hair);
+  }
+
+  .spec-display {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    line-height: 1.1;
+    color: var(--color-rubric);
+  }
+
+  .spec-heading {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    line-height: var(--leading-tight);
+  }
+
+  .spec-label {
+    font-size: var(--text-base);
+  }
+
+  .note {
+    font-size: var(--text-sm);
+    color: var(--color-ink-soft);
+  }
+
+  .marks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-6);
+    align-items: end;
+  }
+
+  .marks figure {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-2);
+    margin: 0;
+  }
+
+  .marks figcaption {
+    font-size: var(--text-sm);
+    color: var(--color-ink-soft);
+  }
+
+  .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-bottom: var(--space-5);
+  }
+</style>

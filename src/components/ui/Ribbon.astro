@@ -1,0 +1,40 @@
+---
+// A silk bookmark ribbon: marks the lesson the reader is on.
+interface Props {
+  label?: string;
+}
+const { label = "You are here" } = Astro.props;
+---
+
+<span class="ribbon" role="img" aria-label={label}>
+  <svg viewBox="0 0 20 48" aria-hidden="true" focusable="false">
+    <path class="silk" d="M0 0 H20 V46 L10 38 L0 46 Z"></path>
+    <path class="stitch" d="M3 0 V40 M17 0 V40"></path>
+  </svg>
+</span>
+
+<style>
+  .ribbon {
+    display: inline-block;
+    width: 1.1rem;
+    height: 2.6rem;
+    flex: none;
+    filter: drop-shadow(0 1px 1px var(--color-shadow));
+  }
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .silk {
+    fill: var(--color-rubric);
+  }
+
+  .stitch {
+    fill: none;
+    stroke: var(--color-gold);
+    stroke-width: 0.8;
+    stroke-dasharray: 2 1.5;
+  }
+</style>

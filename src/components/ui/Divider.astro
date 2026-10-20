@@ -1,0 +1,22 @@
+---
+// The section divider: a gilt fleuron between hairlines.
+import Fleuron from "../../design/ornaments/Fleuron.astro";
+---
+
+<div class="divider" role="separator">
+  <Fleuron class="fleuron" />
+</div>
+
+<style>
+  .divider {
+    display: flex;
+    justify-content: center;
+    margin: var(--space-7) auto;
+    color: var(--color-gold);
+  }
+
+  .fleuron {
+    width: min(100%, 16rem);
+    height: auto;
+  }
+</style>

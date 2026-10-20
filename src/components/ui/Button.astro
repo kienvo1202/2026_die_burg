@@ -1,0 +1,69 @@
+---
+// A button, or a link that looks like one (when href is given).
+// "primary" is the one main action on a page; "plain" is everything else.
+interface Props {
+  href?: string;
+  variant?: "primary" | "plain";
+  type?: "button" | "submit";
+  class?: string;
+  [attribute: string]: unknown;
+}
+const { href, variant = "plain", type = "button", class: className, ...rest } = Astro.props;
+---
+
+{
+  href ? (
+    <a href={href} class:list={["button", variant, className]} {...rest}>
+      <slot />
+    </a>
+  ) : (
+    <button type={type} class:list={["button", variant, className]} {...rest}>
+      <slot />
+    </button>
+  )
+}
+
+<style>
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    min-height: var(--tap-min);
+    padding: var(--space-2) var(--space-5);
+    font-family: var(--font-label);
+    font-size: var(--text-base);
+    letter-spacing: var(--tracking-label);
+    line-height: 1;
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition:
+      background-color var(--duration-quick) ease,
+      transform var(--duration-quick) ease;
+  }
+
+  .primary {
+    color: var(--color-on-rubric);
+    background: var(--color-rubric);
+    border: 1px solid var(--color-rubric);
+    /* a thin gilt line inside the edge, like a rubricated initial's frame */
+    box-shadow:
+      inset 0 0 0 2px var(--color-rubric),
+      inset 0 0 0 3px var(--color-gold);
+  }
+
+  .plain {
+    color: var(--color-ink);
+    background: transparent;
+    border: 1px solid var(--color-ink-soft);
+  }
+
+  .plain:hover {
+    background: var(--color-card);
+  }
+
+  .button:active {
+    transform: translateY(1px);
+  }
+</style>

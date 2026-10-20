@@ -1,0 +1,117 @@
+---
+// The lesson's new words. Nouns show their article in its gender colour AND as text
+// (colour is never the only signal), plus the plural. Each word can be heard.
+import Listen from "./Listen.astro";
+import type { Word } from "../../lib/words.ts";
+import { spokenForm, pluralLabel } from "../../lib/words.ts";
+
+interface Props {
+  words: Word[];
+  title?: string;
+}
+const { words, title = "New words" } = Astro.props;
+---
+
+<section class="wordlist" aria-label={title}>
+  <p class="label">{title}</p>
+  <ul>
+    {
+      words.map((word) => (
+        <li class:list={["word", word.article]}>
+          <span class="de" lang="de">
+            {word.article && <span class="article">{word.article}</span>}
+            <span class="lemma">{word.de}</span>
+            {word.plural !== undefined && <span class="plural">{pluralLabel(word)}</span>}
+            {word.forms && <span class="forms">{word.forms}</span>}
+          </span>
+          <Listen text={spokenForm(word)} />
+          <span class="en">{word.en}</span>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  .wordlist {
+    margin: var(--space-6) 0;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: var(--border-hair);
+  }
+
+  .word {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "de listen"
+      "en listen";
+    align-items: center;
+    column-gap: var(--space-2);
+    padding: var(--space-2) 0 var(--space-2) var(--space-3);
+    border-bottom: var(--border-hair);
+    border-left: 4px solid transparent;
+  }
+
+  .de {
+    grid-area: de;
+  }
+
+  .word :global(.listen) {
+    grid-area: listen;
+  }
+
+  .en {
+    grid-area: en;
+    color: var(--color-ink-soft);
+    font-style: italic;
+    font-size: var(--text-sm);
+  }
+
+  .der {
+    border-left-color: var(--gender-der);
+  }
+
+  .die {
+    border-left-color: var(--gender-die);
+  }
+
+  .das {
+    border-left-color: var(--gender-das);
+  }
+
+  .article {
+    margin-right: 0.3em;
+  }
+
+  .der .article {
+    color: var(--gender-der);
+  }
+
+  .die .article {
+    color: var(--gender-die);
+  }
+
+  .das .article {
+    color: var(--gender-das);
+  }
+
+  .plural,
+  .forms {
+    margin-left: 0.5em;
+    font-weight: 400;
+    color: var(--color-ink-soft);
+    font-size: var(--text-sm);
+  }
+
+  @media (min-width: 40rem) {
+    .word {
+      grid-template-columns: minmax(14rem, 1fr) auto minmax(10rem, 1fr);
+      grid-template-areas: "de listen en";
+    }
+  }
+</style>
