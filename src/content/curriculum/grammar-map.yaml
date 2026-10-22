@@ -35,7 +35,7 @@
         - { id: r-sounds, title: "The German r", level: A1, summary: "Made at the back of the throat in most of Germany; at the end of a word, -er sounds like a short 'a' (aber, Lehrer).", tags: [sound-r] }
         - { id: sp-st, title: "sp and st", level: A1, summary: "At the start of a word or word part, s before p or t sounds like 'sh': Sport, Stadt, verstehen.", tags: [] }
         - { id: final-devoicing, title: Hard endings, level: A1, summary: "b, d, g at the end of a syllable sound like p, t, k: Tag sounds like 'tahk'. Final -ig is said like ich in standard German (König, zwanzig).", tags: [sound-final-devoicing] }
-        - { id: vowel-length, title: Long and short vowels, level: A1, summary: "A double consonant after a vowel makes it short (Bett); h or a doubled vowel makes it long (Sohn, Boot).", tags: [] }
+        - { id: vowel-length, title: Long and short vowels, level: A1, summary: "A double consonant after a vowel makes it short (Bett); h or a doubled vowel makes it long (Sohn, Boot).", tags: [sound-vowel-length] }
         - { id: word-stress, title: Word stress, level: A1, summary: "Stress usually falls on the first syllable of the stem. be-, ver-, ent- and the other inseparable prefixes are unstressed (miss- sometimes is stressed: missverstehen).", tags: [] }
 
 - id: questions
@@ -97,7 +97,7 @@
       points:
         - { id: present-endings, title: The ending tells you who, level: A1, summary: "Stem plus an ending for each person: ich wohn-e, du wohn-st, er wohn-t, wir wohn-en, ihr wohn-t, sie/Sie wohn-en. Stems in -t or -d add an e: du arbeitest, er findet.", tags: [present-tense-endings, present-er-sie-es, present-tense-plural] }
         - { id: sein, title: "sein", level: A1, summary: "to be, irregular as in English: ich bin, du bist, er ist, wir sind, ihr seid, sie/Sie sind.", tags: [sein-ich-du-sie, sein-wir-ihr-sie] }
-        - { id: haben, title: "haben", level: A1, summary: "to have: ich habe, du hast, er hat; the other verb behind the past tense.", tags: [] }
+        - { id: haben, title: "haben", level: A1, summary: "to have: ich habe, du hast, er hat; the other verb behind the past tense.", tags: [haben-present] }
         - { id: s-stems, title: "du heißt, not heißst", level: A1, summary: "When the stem already ends in an s-sound (s, ß, z, x), the du-ending is just -t: du heißt, du tanzt.", tags: [heissen-ich-du-sie] }
         - { id: vowel-change, title: Verbs that change their vowel, level: A1, summary: "Some strong verbs change e → i/ie or a → ä for du and er/sie/es: du sprichst, er sieht, du fährst.", tags: [] }
         - { id: wissen-kennen, title: "wissen or kennen", level: A1, summary: "Two verbs for 'know': wissen for facts (ich weiß), kennen for people and places.", tags: [] }
@@ -178,9 +178,9 @@
     - title: Articles
       points:
         - { id: definite-indefinite, title: "der or ein", level: A1, summary: "the and a. ein has no plural: ein Buch, Bücher.", tags: [articles-der-ein] }
-        - { id: kein, title: "kein", level: A1, summary: "'no' or 'not a' before a noun: Ich habe kein Auto. nicht denies everything else.", tags: [] }
+        - { id: kein, title: "kein", level: A1, summary: "'no' or 'not a' before a noun: Ich habe kein Auto. nicht denies everything else.", tags: [kein-nicht] }
         - { id: no-article, title: No article, level: A2, summary: "Jobs, nationalities and uncountable things often go without: Ich bin Lehrerin. Ich trinke Kaffee.", tags: [] }
-        - { id: possessives, title: "mein, dein, sein, ihr, unser, euer, Ihr", level: A1, summary: "my, your, his, her… They take the same endings as ein, but unlike ein they have a plural: meine Bücher.", tags: [] }
+        - { id: possessives, title: "mein, dein, sein, ihr, unser, euer, Ihr", level: A1, summary: "my, your, his, her… They take the same endings as ein, but unlike ein they have a plural: meine Bücher.", tags: [possessives-nominative] }
     - title: Special nouns
       points:
         - { id: name-s, title: "Annas Buch", level: A1, summary: "A name owns something with a plain -s, normally without an apostrophe (Annas Buch). Names ending in an s-sound take only an apostrophe: Hans' Buch.", tags: [] }
@@ -197,9 +197,9 @@
   topics:
     - title: The four cases
       points:
-        - { id: why-cases, title: Why German has cases, level: A1, summary: "The article's ending often shows who does what to whom, so German can move words around without losing the meaning. Where the forms look alike, word order decides.", tags: [] }
+        - { id: why-cases, title: Why German has cases, level: A1, summary: "The article's ending often shows who does what to whom, so German can move words around without losing the meaning. Where the forms look alike, word order decides.", tags: [accusative-articles] }
         - { id: nominative, title: Nominative, level: A1, summary: "The subject, and the noun that completes sein, werden or bleiben: Das ist mein Bruder.", tags: [] }
-        - { id: accusative, title: Accusative, level: A1, summary: "The direct object. Of the articles, only the masculine changes: der → den, ein → einen.", tags: [] }
+        - { id: accusative, title: Accusative, level: A1, summary: "The direct object. Of the articles, only the masculine changes: der → den, ein → einen.", tags: [accusative-articles] }
         - { id: dative, title: Dative, level: A2, summary: "The receiver, and after many prepositions: dem, der, dem; plural den, with -n on the noun.", tags: [] }
         - { id: genitive, title: Genitive, level: B1, summary: "Whose: des Mannes, der Frau. Common in writing; speech often uses von instead.", tags: [] }
         - { id: article-table, title: All the articles at a glance, level: B1, summary: "The whole table of der, ein and kein in four cases, and the pattern that makes it learnable.", tags: [] }
@@ -277,7 +277,7 @@
   topics:
     - title: Saying no
       points:
-        - { id: nicht-kein, title: "nicht or kein", level: A1, summary: "kein before a noun with ein or no article; nicht for everything else.", tags: [] }
+        - { id: nicht-kein, title: "nicht or kein", level: A1, summary: "kein before a noun with ein or no article; nicht for everything else.", tags: [kein-nicht] }
     - title: Numbers and time
       points:
         - { id: numbers, title: Numbers, level: A1, summary: "Units before tens, as in 'four-and-twenty blackbirds': 21 is einundzwanzig.", tags: [numbers-0-100] }

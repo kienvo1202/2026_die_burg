@@ -12,6 +12,14 @@ Write each entry for the reader of the course, not for the person who built it.
 
 ## Unreleased
 
+### Added: lessons 7 and 8
+- **Lesson 7, Family photos.** Introduce your family with *mein*, *dein*, *sein* and
+  *ihr*, English's old *mine* and *thine*, and finally learn what lesson 3's *Ihr Name* was.
+- **Lesson 8, No milk!** Say what's missing with *kein*, write a shopping list, and find out
+  why you order *einen Kaffee*: *den* is the *him* of the article.
+- **A tale after lesson 8:** Der süße Brei, the pot that wouldn't stop cooking.
+- Your dictionary now has 189 words.
+
 ### Added: lessons 5 and 6
 - **Lesson 5, My room.** Describe a room or a flat at a flatshare viewing, and find out why
   a German wardrobe is a "he".

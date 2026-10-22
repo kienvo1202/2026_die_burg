@@ -1,0 +1,81 @@
+# Brief for lesson a1-07. What the lesson must teach, and must not teach yet.
+# Read with docs/LESSON_GUIDE.md.
+
+canDo: Introduce your family from a photo, say who is who and how old they are, and ask about someone else's.
+
+scene:
+  place: A kitchen table in Hamburg, Sunday afternoon
+  situation: >
+    Two new friends (du) look at family photos on a phone over coffee. One shows her
+    parents, her brother and his children; the other asks questions and shows his own.
+    Then the grandmother phones and, being polite to the guest, uses Sie: "Und Ihre
+    Familie?"
+  characters:
+    - { name: Jana, who: "late twenties, from Hamburg", register: du }
+    - { name: Kofi, who: "early thirties, from Accra, new in Hamburg", register: du }
+    - { name: Oma Gerda, who: "Jana's grandmother, eighties, on speaker", register: Sie }
+
+coreInsight: >
+  "My" and "your" are mein and dein, and English once said them the same way: "mine"
+  and "thine" (as in "thy kingdom come"). Possessives take the same endings as ein:
+  mein Bruder, meine Schwester, mein Kind, and meine for plurals. That finally explains
+  lesson 3's chunks: Ihr Name (der Name, polite your), Ihre Handynummer (die Nummer),
+  deine Handynummer (du). The trap for English speakers: sein means his, ihr means her,
+  and the word is chosen by the OWNER while the ending is chosen by the THING: seine
+  Schwester (his sister), ihr Bruder (her brother). Second point: haben, the second
+  irregular verb (ich habe, du hast, er hat, wir haben, ihr habt, sie haben), for
+  "Ich habe zwei Brüder".
+
+notYet:
+  - the accusative (einen Bruder, meinen Vater); with haben use die/das words, plurals and numbers (lesson 8)
+  - unser and euer beyond a mention in a table (introduce, but keep scenes to mein, dein, sein, ihr, Ihr)
+  - the genitive (des Vaters); "Annas Bruder" with -s for names is allowed
+  - kein (lesson 8)
+  - yes/no questions with the verb first as a rule (lesson 13); use "…, oder?"
+  - dates and birthdays (lesson 21)
+
+introducesGrammar:
+  - possessives-nominative
+  - haben-present
+
+chunks:
+  - { de: "Wer ist das?", literal: "Who is that?", means: "Who's that?" }
+  - { de: "Wie alt ist er?", literal: "How old is he?", means: "How old is he?" }
+  - { de: "Das sind meine Eltern.", literal: "That are my parents.", means: "These are my parents." }
+  - { de: "Hast du Geschwister?", literal: "Have you siblings?", means: "Do you have brothers or sisters?", explainedIn: a1-13 }
+
+newWordBudget: 26
+
+soundSpotlight: >
+  Unstressed endings. A final -e is a short "uh", never silent (meine, Tante, habe).
+  A final -en shrinks in everyday speech to a syllabic n: haben sounds like "HAH-bn".
+
+cultureNote: >
+  Families are small: most German families have one or two children, and many people
+  have no siblings. Oma and Opa are the everyday words for grandma and grandpa. Germans
+  rarely show family photos to people they have just met at work; with friends at home,
+  it is normal. In Hamburg and the north, Sunday afternoon is Kaffee und Kuchen time.
+
+traps:
+  - 'sein is his, ihr is her: chosen by the owner. Mary and her brother is "Maria und ihr Bruder", never "sein Bruder".'
+  - 'The ending follows the thing owned: meine Schwester, mein Bruder, meine Eltern.'
+  - 'ihr (her), ihr (you, friends) and Ihr (polite your): the sentence decides.'
+  - '"Das sind" for plurals: Das sind meine Eltern, not "Das ist meine Eltern".'
+  - 'Eltern (parents) has no singular in everyday German; one parent is "ein Elternteil" or just Mutter/Vater.'
+
+selfCheckIdeas:
+  - mein or meine (Bruder, Schwester, Eltern, Kind)
+  - his sister / her brother in German
+  - ask who someone in a photo is, and how old she is
+  - haben forms (ich habe, du hast, er hat)
+  - explain lesson 3's "Wie ist Ihr Name?"
+  - Das ist or Das sind, for one person or several
+
+yourTurn:
+  prompt: >
+    Show a friend a photo of your family (real or invented): say who three people are,
+    how old one of them is, and one thing each likes doing.
+  modelNotes: >
+    Das ist meine Mutter. Sie ist sechzig, und sie liest gern. Das ist mein Bruder Tom.
+    Er spielt gern Fußball. Das sind meine Großeltern. Checklist: mein/meine by the
+    person's article; sein/ihr by the owner; Das sind for plurals; gern from lesson 6.
