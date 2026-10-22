@@ -278,3 +278,49 @@ Not verified:
 - the exact number of German clubs ("around 600,000" is the commonly cited figure);
 - the share of students living in flatshares;
 - how common kitchenless flats are by region.
+
+---
+
+## 2026-10-22 — Lessons 7 and 8, and two promises kept
+
+Briefs first again (Kien approved both unchanged), stacked on PR #8, which Kien hasn't
+merged yet.
+
+Both lessons had promises to keep from earlier lessons:
+- **Lesson 3** said lesson 7 would explain *Ihr Name* and *Ihre Handynummer*. It does:
+  possessives take *ein*'s endings, and *der Name* / *die Handynummer* decide the ending.
+- **Lesson 4** said a later lesson would explain *einen Kaffee*. Lesson 8 does, through the
+  accusative, and closes a loop back to lesson 4's Old English *se*, whose accusative
+  *þone* is the twin of *den*.
+
+Keeping a list of these promises (`explainedIn` in the briefs, and "a later lesson" in
+the prose) turned out to be the most useful thing to search for before writing a brief.
+
+**What the reviews caught:**
+- "the two verbs every language leans on most" (many languages have no *have*);
+- *seine Frau* used for "his wife" with *Frau* glossed only as "woman";
+- *meine Freundin* overstated as "girlfriend" (a woman saying it often means a friend);
+- "*þone*, the ancestor of *den*" (a cousin, not an ancestor), caught in my own pass.
+
+Rubric, my scores before Kien's read (1–5):
+
+| | Hook | Insight | Usability | Accuracy | Load | Recycling | Self-check |
+|---|---|---|---|---|---|---|---|
+| Lesson 7 | 4 | 5 | 5 | 4 | 4 | 5 | 5 |
+| Lesson 8 | 4 | 5 | 5 | 4 | 4 | 5 | 5 |
+
+Load is 4:
+- lesson 7 has 23 words plus possessives and *haben*;
+- lesson 8 has 21 words plus the accusative and *kein*.
+
+Accuracy stays at 4 until a native speaker reads them.
+
+Lesson 8's review caught:
+- a culture claim that had gone stale: "plastic bags cost money". Light plastic bags have
+  been banned in Germany since 2022 and in Austria since 2020;
+- the scene breaking the lesson's own rule: *Kaffee, nicht Tee* became *Kaffee, keinen
+  Tee*;
+- "only by adding an *n* sound" (*der → den* adds nothing).
+
+**Culture notes date.** Anything about prices, bans or opening hours needs checking each
+time, not copying from the source plan.

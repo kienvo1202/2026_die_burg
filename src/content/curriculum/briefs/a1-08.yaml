@@ -1,0 +1,78 @@
+# Brief for lesson a1-08. What the lesson must teach, and must not teach yet.
+# Read with docs/LESSON_GUIDE.md.
+
+canDo: Say what you have and what is missing, write a shopping list, and ask a flatmate to get something.
+
+scene:
+  place: A flatshare kitchen in Cologne, Saturday morning
+  situation: >
+    Two flatmates (du) check the fridge before shopping. The milk is gone, there is no
+    cheese and only one egg; they write a list. Then at the supermarket one of them
+    phones the other because the shop has no oat milk: what now?
+  characters:
+    - { name: Emre, who: "flatmate, mid-twenties, from Cologne", register: du }
+    - { name: Julia, who: "flatmate, early twenties, from Graz in Austria", register: du }
+
+coreInsight: >
+  Lesson 4 promised it: when you order or have something, ein becomes einen, but only
+  for der words. This is the accusative, the form a noun takes when it is the thing
+  you have, want or need. Only der words show it: der → den, ein → einen, kein →
+  keinen. die and das words, and all plurals, stay exactly the same. English does the
+  same thing, just in fewer places: he → him, she → her, we → us, who → whom. German's
+  "den" is the "him" of the article. Second point: kein is "no / not a" before a noun
+  (Wir haben keine Milch, keinen Käse, kein Brot), nicht for everything else.
+
+notYet:
+  - accusative pronouns beyond a glimpse (ihn); mich/dich in chunks only
+  - the dative (mit der Milch) except inside a chunk
+  - accusative prepositions (für, ohne) as a rule; "ohne" may appear in a chunk only
+  - modal verbs (lesson 12); "Kannst du … kaufen?" only as a chunk
+  - adjective endings before nouns
+  - yes/no question word order as a rule (lesson 13)
+
+introducesGrammar:
+  - accusative-articles
+  - kein-nicht
+  - sound-vowel-length
+
+chunks:
+  - { de: "Wir brauchen …", literal: "We need …", means: "We need …" }
+  - { de: "Gibt es …?", literal: "Gives it …?", means: "Is there …? / Do they have …?", explainedIn: a1-13 }
+  - { de: "Kannst du … kaufen?", literal: "Can you … buy?", means: "Can you buy …?", explainedIn: a1-12 }
+  - { de: "Kein Problem!", literal: "No problem!", means: "No problem!" }
+
+newWordBudget: 26
+
+soundSpotlight: >
+  The long and short vowels, which change meaning: Käse (long ä), Milch (short i),
+  Ei (ei = "eye"), Butter (short u). A double consonant after a vowel makes it short
+  (Butter, Wasser); h or a doubled vowel makes it long (Kaffee, Tee).
+
+cultureNote: >
+  Supermarkets close on Sundays in Germany and Austria (Sunday trading laws); shop on
+  Saturday. Bring your own bag: plastic bags cost money. Bottles carry a deposit (Pfand,
+  usually 25 cents for a plastic bottle), returned at a machine in the shop. Oat milk
+  (Hafermilch) is everywhere in German cities. Flatshares often keep a shared shopping
+  list on the fridge or in an app.
+
+traps:
+  - 'Only der words change: einen Käse, but eine Milch, ein Ei, zwei Eier.'
+  - 'kein for nouns, nicht for the rest: "Ich habe keine Milch", not "Ich habe nicht Milch".'
+  - 'brauchen takes the accusative: Wir brauchen einen Käse… but people often say just "Käse" with no article for food in general.'
+  - '"Ich bin hungrig" is understood, but Germans say "Ich habe Hunger" (I have hunger): a chunk.'
+
+selfCheckIdeas:
+  - der/den, ein/einen for der words
+  - kein/keine/keinen with Käse, Milch, Brot, Eier
+  - kein or nicht
+  - order a coffee correctly now (einen Kaffee)
+  - which English words still have this ending (him, them, whom)
+  - write a three-item shopping list in sentences
+
+yourTurn:
+  prompt: >
+    Your flatmate is at the supermarket and calls. Tell them three things you need and
+    two things you don't need because you still have them.
+  modelNotes: >
+    Wir brauchen einen Käse, eine Milch und Brot. Wir brauchen keinen Kaffee und keine
+    Eier. Checklist: einen/keinen for der words only; kein, not nicht, before nouns.
