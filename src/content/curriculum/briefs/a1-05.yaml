@@ -1,0 +1,87 @@
+# Brief for lesson a1-05. What the lesson must teach, and must not teach yet.
+# Read with docs/LESSON_GUIDE.md.
+
+canDo: Describe a room or a flat, what is in it and what it is like, and ask about one.
+
+scene:
+  place: A shared flat (WG) in Freiburg
+  situation: >
+    A "WG-Casting": a newcomer views a free room in a student flatshare. A flatmate shows
+    him round (room, kitchen, bathroom), and they talk about what each thing is like.
+    Then, on the phone that evening, he describes the room to a friend, who asks
+    questions.
+  characters:
+    - { name: Lena, who: "flatmate, mid-twenties, studies in Freiburg", register: du }
+    - { name: Tom, who: "new in Freiburg, from Manchester, mid-twenties", register: du }
+    - { name: Sara, who: "Tom's friend on the phone", register: du }
+
+coreInsight: >
+  German says "he", "she" or "it" by the WORD's gender, not by what the thing is: Der
+  Tisch? Er ist neu (the table: "he" is new). Die Lampe? Sie ist alt. Das Bett? Es ist
+  groß. English did exactly this a thousand years ago: Old English called the sun "she"
+  (seo sunne) and the moon "he" (se mona), and German still does: die Sonne / sie, der
+  Mond / er. So er / sie / es follow der / die / das, which makes them easy once the
+  article is learned with the noun (lesson 4). Second point: the er/sie/es form of a
+  verb ends in -t (er wohnt, sie kommt, es kostet), and sein becomes ist. Adjectives
+  after sein never change: Das Zimmer ist klein, Die Küche ist klein.
+
+notYet:
+  - adjective endings before a noun (ein kleines Zimmer); adjectives only after sein
+  - the accusative (Ich habe einen Tisch; es gibt einen …); describe with sein instead
+  - possessives (mein Zimmer); say "das Zimmer" (lesson 7)
+  - plural patterns as a system (plurals in the word list only)
+  - wir, ihr and plural sie (lesson 6)
+  - prepositions of place with the dative (im Zimmer, auf dem Tisch)
+  - kein (lesson 8); say "nicht" only inside a chunk if at all
+  - numbers above 100 beyond the pattern "vier + hundert" for a rent
+
+introducesGrammar:
+  - er-sie-es-pronouns
+  - present-er-sie-es
+  - adjectives-after-sein
+  - sound-final-devoicing
+
+chunks:
+  - { de: "Wie ist das Zimmer?", literal: "How is the room?", means: "What's the room like?" }
+  - { de: "Wie hoch ist die Miete?", literal: "How high is the rent?", means: "How much is the rent?" }
+  - { de: "Das gefällt mir!", literal: "That pleases me!", means: "I like it!" }
+  - { de: "Komm rein!", literal: "Come in(-here)!", means: "Come in!" }
+
+newWordBudget: 26
+
+soundSpotlight: >
+  Hard endings: b, d, g at the end of a word or syllable sound like p, t, k. Das Bad
+  sounds like "baht", der Tag like "tahk". Compare the plural Bäder, where the d is soft
+  again.
+
+cultureNote: >
+  WGs (Wohngemeinschaften, flatshares) are the normal way students and many young
+  workers live, and choosing a new flatmate is a "WG-Casting" where the flatmates choose
+  you. Rents are quoted cold (Kaltmiete) or warm (Warmmiete, with heating and service
+  charges); ask which. Unfurnished flats often come without a kitchen: tenants bring
+  their own and take it when they move. Germans air rooms by opening windows wide for a
+  few minutes several times a day (Stoßlüften), even in winter.
+
+traps:
+  - 'The pronoun follows the article: der Tisch is er, not es. Only das words take es.'
+  - '"billig" means cheap but can sound low-quality; "günstig" is the polite word for a good price.'
+  - '"gemütlich" has no exact English match: cosy, comfortable and welcoming at once.'
+  - 'Adjectives after sein never change: Das Zimmer ist klein, Die Küche ist klein.'
+  - 'The er-form of sein is ist, not "seit" or "sind".'
+
+selfCheckIdeas:
+  - er, sie or es for der Tisch, die Lampe, das Fenster
+  - answer "Wie ist die Küche?" with an adjective
+  - give the er-form (er wohnt, sie kommt, es kostet)
+  - ask how high the rent is
+  - billig or günstig
+  - which English word shows Old English gender for the sun
+
+yourTurn:
+  prompt: >
+    Describe your own room to a friend on the phone: three things in it, and what each
+    is like, using er, sie or es for each.
+  modelNotes: >
+    Das Zimmer ist klein, aber gemütlich (aber is new: avoid, or use "und"). Das Bett?
+    Es ist neu. Der Schrank? Er ist alt. Die Lampe? Sie ist schön. Checklist: er / sie /
+    es match der / die / das; ist after er/sie/es; adjectives unchanged.

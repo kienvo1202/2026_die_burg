@@ -43,6 +43,13 @@ estimates. When something is done it moves to `CHANGELOG.md` and is deleted from
       holds, and reports coverage ("N of M points taught"); briefs choose tags from the map
 - [x] **Sound spotlights get tags**, so the map's Sounds region can light up (ei/ie and ch
       are taught in lessons 1–2 but stay fogged)
+- [ ] **Declared-but-unused warning**: the checker flags a `newWords` entry the lesson
+      never uses (lemma or an inflected form). Lessons 3, 5 and 6 each had one or more,
+      found by a throwaway script
+- [ ] **Word keys can't tell *sie* from *Sie***: the key is the lower-cased lemma, so *sie*
+      (she, they) collides with *Sie* (polite you). Lessons 5 and 6 work round it with
+      combined entries (`er · sie · es`, `wir · ihr · sie`); a key that includes the
+      meaning or a sense number would fix it
 - [ ] **Repetition warning**: the checker flags a word that hasn't returned within N
       readings, with spacing that grows over time
 - [ ] **Backbone word list**: find an openly licensed German frequency list (check the

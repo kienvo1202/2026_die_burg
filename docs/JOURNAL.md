@@ -221,3 +221,60 @@ The Bremen tale and the ten cards had their own independent pass:
   - the soft *-chen*.
 
   These moved to "still in the fog". A card says what lessons taught, nothing more.
+
+---
+
+## 2026-10-20 — The stack merged; lessons 5 and 6; Frau Holle
+
+**Merging seven stacked PRs without force-pushing.** Squash-merging the bottom PR leaves
+the next one's branch full of commits main no longer has, so a plain retarget would show
+(and conflict on) everything below it. Instead, for each PR in turn:
+
+1. merge main into its branch with `git merge -s ours`, which records main as a parent
+   but keeps the branch's files exactly;
+2. retarget the PR to main, so its diff is now only its own change;
+3. squash-merge it;
+4. check that main's tree is byte-identical to the PR's tested head.
+
+All seven went through, and main reads one commit per PR. The template's deliberate
+"placeholder" CI failure on #1 meant main was red for exactly one commit.
+
+**Lessons 5 and 6**, from briefs Kien approved unchanged:
+- **Lesson 5:** a German wardrobe is a "he"; pronouns follow the article. Old English did
+  the same, with the sun as "she" and the moon as "he".
+- **Lesson 6:** *gern* is a cousin of *yearn*, and the present tense is now complete.
+
+**What the reviews caught, again a claim true of the page but false of the lesson:**
+- "gern goes straight after the verb", in a lesson that says *Ich lese auch gern*;
+- "*wir*, *sie*, *Sie* use the dictionary form", directly under a table with *sind*;
+- "only the capital tells *sie* and *Sie* apart", when both are capitalised at the start
+  of a sentence, as in the lesson's own dialogue.
+
+Also caught: *zwei Bücher zusammen* is not how Germans say "two books at once". And Tom
+asked what a room was *like* before he had seen it.
+
+**My own pass found a new class of slip**: words declared in `newWords` but never used,
+seven in lesson 6 alone. A throwaway script found them across lessons 3–6; it belongs in
+the checker (backlog). It also showed that the ledger can't tell *sie* from *Sie*
+(backlog).
+
+**And a shell trap:** a regex passed through `node -e '…'` lost its backslashes and became
+an empty character class that never matches. Scripts with regexes go in a file.
+
+Rubric, my scores before Kien's read (1–5):
+
+| | Hook | Insight | Usability | Accuracy | Load | Recycling | Self-check |
+|---|---|---|---|---|---|---|---|
+| Lesson 5 | 4 | 5 | 5 | 4 | 4 | 5 | 5 |
+| Lesson 6 | 4 | 5 | 5 | 4 | 4 | 5 | 5 |
+
+Load is 4 for both:
+- lesson 5 has 26 words and two grammar points;
+- lesson 6 completes the verb table on top of *gern*.
+
+Accuracy stays at 4 until a native speaker reads them.
+
+Not verified:
+- the exact number of German clubs ("around 600,000" is the commonly cited figure);
+- the share of students living in flatshares;
+- how common kitchenless flats are by region.

@@ -32,9 +32,9 @@
         - { id: w-v-s, title: "w, v and s", level: A1, summary: "w sounds like English v, v usually like f, and s before a vowel like z in most of Germany.", tags: [sound-w-s] }
         - { id: diphthongs, title: "ei, eu, au", level: A1, summary: "ei sounds like 'eye', eu and äu like 'oy' (Deutsch, Häuser), au like 'ow' (Haus).", tags: [] }
         - { id: z-j, title: "z and j", level: A1, summary: "z sounds like 'ts' (Zeit), j like English y (ja).", tags: [] }
-        - { id: r-sounds, title: "The German r", level: A1, summary: "Made at the back of the throat in most of Germany; at the end of a word, -er sounds like a short 'a' (aber, Lehrer).", tags: [] }
+        - { id: r-sounds, title: "The German r", level: A1, summary: "Made at the back of the throat in most of Germany; at the end of a word, -er sounds like a short 'a' (aber, Lehrer).", tags: [sound-r] }
         - { id: sp-st, title: "sp and st", level: A1, summary: "At the start of a word or word part, s before p or t sounds like 'sh': Sport, Stadt, verstehen.", tags: [] }
-        - { id: final-devoicing, title: Hard endings, level: A1, summary: "b, d, g at the end of a syllable sound like p, t, k: Tag sounds like 'tahk'. Final -ig is said like ich in standard German (König, zwanzig).", tags: [] }
+        - { id: final-devoicing, title: Hard endings, level: A1, summary: "b, d, g at the end of a syllable sound like p, t, k: Tag sounds like 'tahk'. Final -ig is said like ich in standard German (König, zwanzig).", tags: [sound-final-devoicing] }
         - { id: vowel-length, title: Long and short vowels, level: A1, summary: "A double consonant after a vowel makes it short (Bett); h or a doubled vowel makes it long (Sohn, Boot).", tags: [] }
         - { id: word-stress, title: Word stress, level: A1, summary: "Stress usually falls on the first syllable of the stem. be-, ver-, ent- and the other inseparable prefixes are unstressed (miss- sometimes is stressed: missverstehen).", tags: [] }
 
@@ -95,8 +95,8 @@
   topics:
     - title: The present tense
       points:
-        - { id: present-endings, title: The ending tells you who, level: A1, summary: "Stem plus an ending for each person: ich wohn-e, du wohn-st, er wohn-t, wir wohn-en, ihr wohn-t, sie/Sie wohn-en. Stems in -t or -d add an e: du arbeitest, er findet.", tags: [present-tense-endings] }
-        - { id: sein, title: "sein", level: A1, summary: "to be, irregular as in English: ich bin, du bist, er ist, wir sind, ihr seid, sie/Sie sind.", tags: [sein-ich-du-sie] }
+        - { id: present-endings, title: The ending tells you who, level: A1, summary: "Stem plus an ending for each person: ich wohn-e, du wohn-st, er wohn-t, wir wohn-en, ihr wohn-t, sie/Sie wohn-en. Stems in -t or -d add an e: du arbeitest, er findet.", tags: [present-tense-endings, present-er-sie-es, present-tense-plural] }
+        - { id: sein, title: "sein", level: A1, summary: "to be, irregular as in English: ich bin, du bist, er ist, wir sind, ihr seid, sie/Sie sind.", tags: [sein-ich-du-sie, sein-wir-ihr-sie] }
         - { id: haben, title: "haben", level: A1, summary: "to have: ich habe, du hast, er hat; the other verb behind the past tense.", tags: [] }
         - { id: s-stems, title: "du heißt, not heißst", level: A1, summary: "When the stem already ends in an s-sound (s, ß, z, x), the du-ending is just -t: du heißt, du tanzt.", tags: [heissen-ich-du-sie] }
         - { id: vowel-change, title: Verbs that change their vowel, level: A1, summary: "Some strong verbs change e → i/ie or a → ä for du and er/sie/es: du sprichst, er sieht, du fährst.", tags: [] }
@@ -213,7 +213,7 @@
   topics:
     - title: Personal pronouns
       points:
-        - { id: personal-pronouns, title: "ich, du, er, sie, es, wir, ihr, sie, Sie", level: A1, summary: "Nine pronouns; er, sie and es follow the noun's gender, so a table can be er.", tags: [] }
+        - { id: personal-pronouns, title: "ich, du, er, sie, es, wir, ihr, sie, Sie", level: A1, summary: "Nine pronouns; er, sie and es follow the noun's gender, so a table can be er.", tags: [er-sie-es-pronouns, present-tense-plural] }
         - { id: du-sie, title: "du or Sie", level: A1, summary: "du for friends, family, children and people your age; Sie for strangers and at work, until du is offered.", tags: [sein-ich-du-sie, present-tense-endings] }
         - { id: pronoun-cases, title: "mich, mir, ihn, ihm", level: A2, summary: "Pronouns change with case: Ich sehe ihn. Ich helfe ihm.", tags: [] }
     - title: Other pronouns
@@ -233,14 +233,14 @@
   topics:
     - title: Adjectives
       points:
-        - { id: predicative, title: After sein, no ending, level: A1, summary: "Das Haus ist alt. After the noun, an adjective never changes.", tags: [] }
+        - { id: predicative, title: After sein, no ending, level: A1, summary: "Das Haus ist alt. After the noun, an adjective never changes.", tags: [adjectives-after-sein] }
         - { id: adverbs, title: Adjectives as adverbs, level: A1, summary: "German has no -ly: Er singt gut.", tags: [] }
         - { id: adjective-endings, title: Endings before a noun, level: A2, summary: "If the article already shows case and gender, the adjective takes a plain -e or -en; if not, the adjective shows it itself.", tags: [] }
         - { id: adjective-tables, title: The three adjective tables, level: B1, summary: "After der, after ein, and with no article: the full tables and the shortcut that covers most of them.", tags: [] }
     - title: Comparing
       points:
         - { id: comparison, title: "alt, älter, am ältesten", level: A2, summary: "-er and am -sten, often with an umlaut; als for 'than', so … wie for 'as … as'.", tags: [] }
-        - { id: gern, title: "gern, lieber, am liebsten", level: A1, summary: "Add gern to any verb to say you like doing it: Ich lese gern.", tags: [] }
+        - { id: gern, title: "gern, lieber, am liebsten", level: A1, summary: "Add gern to any verb to say you like doing it: Ich lese gern.", tags: [gern-like-doing] }
 
 - id: prepositions
   order: 9
