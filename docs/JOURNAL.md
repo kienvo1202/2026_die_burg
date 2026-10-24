@@ -374,3 +374,47 @@ Rubric, my scores before Kien's read (1–5):
 - **Load is 4:** lesson 9 has 22 words plus the vowel change and *möchte*; lesson 10 has
   26 words (seven of them weekdays) plus the clock and verb second.
 - **Accuracy stays at 4** until a native speaker reads them.
+
+## 2026-10-24 — Lessons 11 and 12; the Frog King
+
+The second pair, written straight after the first and stacked on it (Kien's choice, see
+the entry above).
+
+**Promises kept:**
+- Lesson 8's glimpse of *ihn* is now a rule in lesson 11: the *-n* of *den* comes back in
+  *ihn*.
+- Lesson 8's chunk *Kannst du … kaufen?* and lesson 9's *er möchte* (no *-t*) are
+  explained by lesson 12's modals: *er kann*, like English *he can*.
+
+**What the reviews caught.** No wrong articles or verb forms this time; the errors were
+rules stated more widely than they hold:
+- **"The modal stands second, as every verb does":** not in questions (*Kommst du mit?*
+  is in the same lesson). Now "in every statement", in the lesson and on two map cards.
+- **natürlich "stresses the end":** it stresses the middle. And it isn't a loanword
+  either, but *Natur* plus *-lich*.
+- **"The rarer fourth way (au → äu)":** *o → ö* exists too (*stößt*). Lesson 9's own
+  correction had to be corrected.
+- **"After *in*, a colour becomes a noun":** only with no noun after it (*in Schwarz*,
+  but *in roten Schuhen*).
+- **"Swiss people speak Swiss German":** only German-speaking Swiss.
+- **Social sense:** ordering with *ich will* at a hut is blunt, in the lesson that warns
+  *ich will* sounds oddly determined. Now *ich nehme*.
+- **A one-off item in a second-hand shop** that came in two sizes and two colours. Now
+  "a jacket" in each.
+
+**Layout, found only at phone width:**
+- two map cards (modals and the present-endings card from the first round) were wider
+  than the card. Narrowed by dropping columns the text already explains;
+- a regex meant for the table also stripped pronouns from the prose below it. A diff
+  read caught it before commit.
+
+Rubric, my scores before Kien's read (1–5):
+
+| | Hook | Insight | Usability | Accuracy | Load | Recycling | Self-check |
+|---|---|---|---|---|---|---|---|
+| Lesson 11 | 4 | 5 | 5 | 4 | 4 | 5 | 5 |
+| Lesson 12 | 4 | 5 | 5 | 4 | 5 | 5 | 5 |
+
+- **Load:** lesson 11 has 23 words, eight of them colours; lesson 12 has only 17, because
+  the modals and the frame are the work.
+- **Accuracy stays at 4** until a native speaker reads them.
