@@ -1,0 +1,344 @@
+---
+title: "A table for two"
+canDo: "Order a meal and a drink in a restaurant, ask a friend what they're having, and pay, with a tip"
+minutes: 20
+newWords:
+  - { de: "was", en: "what", pos: other }
+  - { de: "nehmen", en: "to take; to have (when ordering)", pos: verb, forms: "ich nehme · du nimmst · er nimmt · wir nehmen" }
+  - { de: "essen", en: "to eat", pos: verb, forms: "ich esse · du isst · er isst · wir essen" }
+  - { de: "möchten", en: "would like", pos: verb, forms: "ich möchte · du möchtest · er möchte · wir möchten" }
+  - { de: "bekommen", en: "to get; to have (when ordering)", pos: verb, forms: "ich bekomme · du bekommst · er bekommt · wir bekommen" }
+  - { de: "fahren", en: "to go (by car, bike, train), to drive", pos: verb, forms: "ich fahre · du fährst · er fährt · wir fahren" }
+  - { de: "Entschuldigung!", en: "Excuse me! / Sorry!", pos: phrase }
+  - { de: "Hunger", en: "hunger (Ich habe Hunger: I'm hungry)", pos: noun, article: der, plural: "" }
+  - { de: "Durst", en: "thirst (Ich habe Durst: I'm thirsty)", pos: noun, article: der, plural: "" }
+  - { de: "Kellner", en: "waiter (die Kellnerin: waitress)", pos: noun, article: der, plural: "-" }
+  - { de: "Rechnung", en: "bill, check", pos: noun, article: die, plural: "-en" }
+  - { de: "Trinkgeld", en: "tip (for service)", pos: noun, article: das, plural: "-er" }
+  - { de: "Suppe", en: "soup", pos: noun, article: die, plural: "-n" }
+  - { de: "Salat", en: "salad", pos: noun, article: der, plural: "-e" }
+  - { de: "Schnitzel", en: "schnitzel (a thin, breaded cutlet)", pos: noun, article: das, plural: "-" }
+  - { de: "Knödel", en: "dumpling (southern Germany and Austria)", pos: noun, article: der, plural: "-" }
+  - { de: "Fleisch", en: "meat", pos: noun, article: das, plural: "" }
+  - { de: "Fisch", en: "fish", pos: noun, article: der, plural: "-e" }
+  - { de: "Bier", en: "beer", pos: noun, article: das, plural: "-e" }
+  - { de: "Wein", en: "wine", pos: noun, article: der, plural: "-e" }
+  - { de: "vegetarisch", en: "vegetarian", pos: adjective }
+  - { de: "Prost!", en: "Cheers!", pos: phrase }
+recycles:
+  - "die karte"
+  - "das wasser"
+  - "groß"
+  - "klein"
+  - "lecker"
+  - "kein · keine · keinen"
+  - "den · einen"
+  - "danke schön!"
+  - "ich auch!"
+  - "grüß gott!"
+  - "zusammen"
+  - "der euro"
+grammar:
+  - vowel-change-verbs
+  - moechte-ordering
+  - sound-z-j
+  - accusative-articles
+  - kein-nicht
+  - haben-present
+  - present-tense-endings
+  - present-er-sie-es
+  - er-sie-es-pronouns
+  - adjectives-after-sein
+  - numbers-0-100
+  - present-tense-plural
+  - sein-wir-ihr-sie
+  - gern-like-doing
+  - noun-gender
+---
+
+<Initial>
+
+Eating out is where your German gets tested in real time: a menu, a waiter, a bill. This
+lesson takes you through dinner in a Munich inn, from asking for a seat to tipping the way
+Germans do. And it finally explains why lesson 2 said *du sprichst*, not *du sprechst*.
+
+</Initial>
+
+## Warm-up
+
+<Check q="Say <i>We have no cheese.</i>">
+
+<Say de="Wir haben keinen Käse." />
+
+</Check>
+
+<Check q="Say that you like cooking.">
+
+<Say de="Ich koche gern." />
+
+</Check>
+
+<Check q="Ask a friend whether they speak English.">
+
+<Say de="Sprichst du Englisch?" /> Notice the *i*: not *sprechst*. Today you find out why.
+
+</Check>
+
+## The scene
+
+<Dialogue title="A table, please" setting="A Wirtshaus in Munich, seven in the evening. Mei is from Singapore and new in Munich; Lukas is her colleague.">
+  <Line who="Lukas" de="Entschuldigung, ist hier noch frei?" en="Excuse me, is this table free?" />
+  <Line who="Herr Huber" de="Grüß Gott! Ja, bitte. Hier ist die Karte." en="Good evening! Yes, please. Here's the menu." />
+  <Line who="Mei" de="Ich habe Hunger!" en="I'm hungry!" />
+  <Line who="Lukas" de="Ich auch. Und Durst! Was nimmst du?" en="Me too. And thirsty! What are you having?" />
+  <Line who="Mei" de="Hm. Ich esse kein Fleisch und keinen Fisch." en="Hmm. I don't eat meat or fish." />
+  <Line who="Lukas" de="Dann die Knödel! Sie sind vegetarisch und sehr lecker. Ich nehme das Schnitzel." en="Then the dumplings! They're vegetarian and really good. I'm having the schnitzel." />
+  <Line who="Herr Huber" de="Was bekommen Sie?" en="What can I get you?" />
+  <Line who="Mei" de="Er nimmt das Schnitzel und ein Bier." en="He's having the schnitzel and a beer." />
+  <Line who="Herr Huber" de="Groß oder klein?" en="Large or small?" />
+  <Line who="Lukas" de="Groß, bitte!" en="Large, please!" />
+  <Line who="Mei" de="Und ich möchte die Knödel und einen Salat. Und ein Wasser, bitte." en="And I'd like the dumplings and a salad. And a water, please." />
+  <Line who="Herr Huber" de="Gern." en="Certainly." />
+</Dialogue>
+
+<Dialogue title="The bill" setting="The same table, an hour later">
+  <Line who="Lukas" de="Zahlen, bitte!" en="Could we pay, please?" />
+  <Line who="Herr Huber" de="Zusammen oder getrennt?" en="Together or separately?" />
+  <Line who="Mei" de="Getrennt, bitte." en="Separately, please." />
+  <Line who="Herr Huber" de="Das Schnitzel und das Bier: einundzwanzig Euro vierzig." en="The schnitzel and the beer: twenty-one euros forty." />
+  <Line who="Lukas" de="Dreiundzwanzig, bitte." en="Make it twenty-three, please." />
+  <Line who="Herr Huber" de="Danke schön! Und die Knödel, der Salat und das Wasser: siebzehn Euro sechzig." en="Thank you! And the dumplings, the salad and the water: seventeen euros sixty." />
+  <Line who="Mei" de="Neunzehn, bitte." en="Nineteen, please." />
+  <Line who="Herr Huber" de="Danke schön! Auf Wiedersehen!" en="Thank you! Goodbye!" />
+</Dialogue>
+
+Listen to one verb change shape: Lukas says <Say de="ich nehme" />, asks
+<Say de="Was nimmst du?" />, and Mei orders for him: <Say de="Er nimmt das Schnitzel." />
+*nehme*, *nimmst*, *nimmt*. And notice how they tip: nobody leaves coins on the table.
+They say the total they want to pay.
+
+## Phrases to keep
+
+<Chunk de="Ist hier noch frei?" literal="Is here still free?" means="Is this seat (table) free?" />
+
+<Chunk de="Guten Appetit!" literal="Good appetite!" means="Enjoy your meal!" />
+
+<Chunk de="Zahlen, bitte!" literal="Pay, please!" means="Could we have the bill, please?" />
+
+<Chunk de="Zusammen oder getrennt?" literal="Together or separated?" means="One bill or separate?" />
+
+<Chunk de="Stimmt so." literal="(It) is-right so." means="Keep the change." />
+
+*Ist hier noch frei?* puts the verb first, like every yes-or-no question. Lesson 13 shows
+how to build them yourself.
+
+## The insight
+
+<Insight title="The lost i in du nimmst">
+
+You have met this pattern four times without its name: <Say de="du sprichst" /> in lesson
+2, <Say de="sie spricht" /> in lesson 5, <Say de="er liest" /> in lesson 6, and tonight's
+<Say de="du nimmst" />. Here it is whole.
+
+Some verbs change their vowel, but **only for *du* and *er · sie · es***:
+
+| | du | er · sie · es |
+|---|---|---|
+| <span lang="de">*nehmen*</span> | <Say de="du nimmst" /> | <Say de="er nimmt" /> |
+| <span lang="de">*essen*</span> | <Say de="du isst" /> | <Say de="er isst" /> |
+| <span lang="de">*sprechen*</span> | <Say de="du sprichst" /> | <Say de="er spricht" /> |
+| <span lang="de">*lesen*</span> | <Say de="du liest" /> | <Say de="er liest" /> |
+| <span lang="de">*fahren*</span> | <Say de="du fährst" /> | <Say de="er fährt" /> |
+
+The endings are the ones you know. Only the vowel moves, nearly always in one of three ways:
+*e* becomes *i*, *e* becomes *ie*, *a* becomes *ä*. In these verbs, *ich*, *wir*, *ihr*
+and *sie* (they) keep the vowel of the infinitive, always: <Say de="ich nehme" />, <Say de="wir nehmen" />.
+
+**Why just those two?** Go back a couple of thousand years, to the language German and
+English both grew out of. Then, the *du* and *er* endings had an *i* sound in them. Say
+*i* and your tongue moves up and forward; over generations, the vowel before it moved to
+meet it. The *i* later wore away, but it left its mark on the vowel. The plural forms
+never had that *i*, so their vowels stayed where they were. (*ich* had a similar ending
+for a while, and medieval German said *ich nime*; then it fell back in line with *wir*.)
+
+English has the same marks, in a different place. **foot → feet, mouse → mice, goose →
+geese**: those plurals once ended in an *i* sound too, which pulled the vowel in a similar
+way and then disappeared. *du nimmst* and *feet* are scars of the same old habit: a vowel
+leaning towards an *i* that came after it.
+
+So you don't need to memorise chaos. A verb either changes or it doesn't, and if it
+does, only *du* and *er · sie · es* change. The word list shows those forms for every
+verb, so you'll always know.
+
+</Insight>
+
+<Deeper title="Three ways to order">
+
+All three work, and all three take the accusative from lesson 8, so *der* words become
+*den* or *einen*:
+
+- <Say de="Ich nehme den Salat." />: "I'll take", the most common.
+- <Say de="Ich möchte einen Salat." />: "I'd like", a touch more polite.
+- <Say de="Ich hätte gern einen Salat." />: lesson 4's bakery phrase, fine everywhere.
+
+Waiters often ask <Say de="Was bekommen Sie?" /> ("what do you get?"), and you can answer
+<Say de="Ich bekomme einen Salat." /> too.
+
+*möchten* has one odd habit: no *-t* for *er*. <Say de="ich möchte" />,
+<Say de="du möchtest" />, <Say de="er möchte" />. Lesson 12 shows why it behaves like that.
+
+</Deeper>
+
+<Deeper title="nehmen in English">
+
+English once had this verb too: Old English *niman*, to take. It survives in hiding.
+**numb** first meant "taken", seized by cold or shock, and **nimble** first meant quick to
+take. *Nim*, meaning to pinch or steal, hung on in English slang for centuries.
+
+</Deeper>
+
+## Sound: z and j
+
+**z is always "ts"**, even at the start of a word: <Say de="zahlen" />,
+<Say de="zusammen" />, <Say de="zwanzig" />. The same goes for *tz*: <Say de="jetzt" />.
+An English *z* as in *zoo* sounds like an *s* to German ears, so make the *t* in "ts"
+clear.
+
+**j is English y:** <Say de="ja" />, <Say de="jetzt" />.
+
+## New words
+
+<WordList words={frontmatter.newWords} />
+
+## How people really say it
+
+**Seat yourself.** In a Wirtshaus or café you usually find your own table.
+<Say de="Ist hier noch frei?" /> asks whether a table or seat is free: ask
+<Say de="der Kellner" /> (the waiter), or the people already sitting there, because sharing
+a long table is normal. A table with a *Stammtisch*
+sign is kept for regulars: don't sit there.
+
+**die Karte is the menu.** In lesson 4 it was the card you pay with; in a restaurant it is
+also the menu. Same word, both jobs.
+
+**Water costs money.** *Wasser* on a menu means bottled water, still or sparkling, and tap
+water isn't brought automatically. Some places will bring it if you ask; some won't.
+
+**Not every Knödel is vegetarian.** Lukas means the bread dumplings on this menu, but
+*Leberknödel* (liver) and *Speckknödel* (bacon) are just as Bavarian. Ask before you order.
+
+**Beer sizes.** In Munich you'll also hear *eine Halbe* (half a litre) and, in beer gardens,
+*eine Maß*: a whole litre.
+
+**Paying.** Call <Say de="Zahlen, bitte!" /> or ask for <Say de="die Rechnung" />. The
+waiter asks <Say de="Zusammen oder getrennt?" />, and paying separately is completely
+normal, among friends and colleagues alike.
+
+**The tip (<Say de="das Trinkgeld" />) is spoken, not left.** Around 5 to 10 percent is usual. Say the total you want to
+pay as you hand over the money (the bill is 18.40, you say <Say de="Zwanzig, bitte." />),
+or <Say de="Stimmt so." /> if the change is the tip.
+
+**Prost!** Before the first sip, glasses touch and everyone says <Say de="Prost!" />,
+looking each other in the eye.
+
+## Watch out
+
+**Only du and er · sie · es change.** <Say de="wir nehmen" />, <Say de="ihr nehmt" />,
+<Say de="sie nehmen" />: no change.
+
+**nehmen drops its h and doubles its m too.** <Say de="du nimmst" />,
+<Say de="er nimmt" />.
+
+**er isst and er ist sound the same.** One means "he eats", the other "he is". Context
+tells them apart, and *du isst* is never "du esst".
+
+**bekommen is not "become".** <Say de="Ich bekomme einen Salat." /> means "I'll have a
+salad", not that you are turning into one.
+
+## Check yourself
+
+<Check q="nehmen: give the du form.">
+
+<Say de="du nimmst" />
+
+</Check>
+
+<Check q="essen: give the er form. Which other word sounds just like it?">
+
+<Say de="er isst" />, which sounds like <Say de="er ist" /> (he is).
+
+</Check>
+
+<Check q="And the wir form of nehmen?">
+
+<Say de="wir nehmen" />: *wir* never changes.
+
+</Check>
+
+<Check q="Ask a friend what they're having.">
+
+<Say de="Was nimmst du?" />
+
+</Check>
+
+<Check q="Order the soup and a coffee.">
+
+<Say de="Ich nehme die Suppe und einen Kaffee." /> (*einen*: *der Kaffee* is a *der* word.)
+
+</Check>
+
+<Check q="Say that you're hungry. Then that you're thirsty.">
+
+<Say de="Ich habe Hunger." /> <Say de="Ich habe Durst." />
+
+</Check>
+
+<Check q="Your friend would like a wine. Tell the waiter.">
+
+<Say de="Er möchte einen Wein." /> or, for a woman friend, <Say de="Sie möchte einen Wein." />
+
+</Check>
+
+<Check q="The waiter asks <span lang='de'>Zusammen oder getrennt?</span> You're paying separately.">
+
+<Say de="Getrennt, bitte." />
+
+</Check>
+
+<Check q="Your bill is 18.40. How do you tip?">
+
+Say the total you want to pay: <Say de="Zwanzig, bitte." /> Or hand over twenty and say
+<Say de="Stimmt so." />
+
+</Check>
+
+<Check q="Which English plurals show the same vowel change as <span lang='de'>du nimmst</span>?">
+
+*feet*, *mice*, *geese*: a lost *i* pulled the vowel in the same way.
+
+</Check>
+
+## Your turn
+
+<YourTurn
+  model="Was nimmst du? … Ich nehme die Suppe und einen Salat. Und ein Wasser, bitte. … Zahlen, bitte! … Getrennt, bitte. … Fünfzehn, bitte."
+  checklist={[
+    "Did you say <span lang='de'>nimmst</span> to your friend, and <span lang='de'>nehme</span> for yourself?",
+    "Did <span lang='de'>einen</span> or <span lang='de'>den</span> appear only with der words?",
+    "Did you say the total, tip included, rather than leave coins?",
+  ]}
+>
+
+You're in a Wirtshaus with a friend. Ask what they're having, order a drink and a dish for
+yourself, then pay separately, with a tip. Say it out loud, then compare.
+
+</YourTurn>
+
+<Recap
+  canDo={[
+    "order a meal and a drink: <span lang='de'>Ich nehme das Schnitzel. Ich möchte ein Wasser.</span>",
+    "ask a friend <span lang='de'>Was nimmst du?</span>, and know why it's <span lang='de'>nimmst</span>",
+    "spot the verbs that change their vowel, only for du and er · sie · es",
+    "pay separately and tip the German way: <span lang='de'>Zwanzig, bitte.</span>",
+  ]}
+/>

@@ -1,0 +1,87 @@
+# Brief for lesson a1-11. What the lesson must teach, and must not teach yet.
+# Read with docs/LESSON_GUIDE.md.
+
+canDo: Shop for clothes, say what fits and what doesn't, ask for another size or colour, and pay.
+
+scene:
+  place: A second-hand clothes shop in Basel
+  situation: >
+    A student needs a winter jacket before her first Swiss winter. A friend from Basel
+    comes along (du); the shop assistant (Sie) speaks Standard German to her. The first
+    jacket is too big, the second fits but she wants it in black; she also tries
+    trousers. She pays in francs.
+  characters:
+    - { name: Noor, who: "student from Amman, new in Basel, early twenties", register: du }
+    - { name: Luca, who: "her friend, from Basel, early twenties", register: du }
+    - { name: Frau Meier, who: "the shop assistant, sixties", register: Sie }
+
+coreInsight: >
+  A pronoun for a thing follows its article (lesson 5), and now as the thing you take or
+  try on, too: der Pullover → Ich nehme ihn; die Jacke → Ich nehme sie; das Hemd → Ich
+  nehme es; die Schuhe → Ich nehme sie. Only the der word changes, exactly as in lesson
+  8: den Pullover → ihn, and the -n of den comes back in ihn. English had the same
+  endings once: Old English said hine for "him" as an object and him for "to him",
+  where German still has ihn and ihm. English kept only him. (The words are cousins
+  with matching endings, not the same word.) Second point: describing clothes with what
+  the reader already has. Adjectives after sein (Die Jacke ist zu groß, Der Pullover ist
+  blau), "zu" for too, and colours after "in", where they are nouns with a capital
+  (Gibt es die Jacke auch in Schwarz?).
+
+notYet:
+  - mich, dich, uns, euch as a system; dative pronouns (mir, dir, Ihnen) only inside chunks
+  - adjective endings before nouns (die blaue Jacke, ein warmer Mantel); colours after sein or after "in" only
+  - dieser and welcher as a system; "Welche Größe haben Sie?" is a chunk
+  - modal verbs (lesson 12); "Kann ich … anprobieren?" is a chunk
+  - separable verbs as a rule (lesson 15)
+  - comparison (größer, kleiner); say "zu groß", "zu klein"
+  - yes/no question word order as a rule (lesson 13)
+
+introducesGrammar:
+  - accusative-pronouns-3rd
+  - sound-diphthongs
+
+chunks:
+  - { de: "Kann ich … anprobieren?", literal: "Can I … on-try?", means: "Can I try … on?", explainedIn: a1-12 }
+  - { de: "Welche Größe haben Sie?", literal: "Which size have you?", means: "What size are you?" }
+  - { de: "Wie gefällt dir …?", literal: "How pleases (to) you …?", means: "How do you like …?" }
+  - { de: "Das steht dir!", literal: "That stands (to) you!", means: "That suits you!" }
+  - { de: "Bar oder mit Karte?", literal: "Cash or with card?", means: "Cash or card?" }
+
+newWordBudget: 26
+
+soundSpotlight: >
+  The three vowel pairs that glide: au is "ow" (blau, grau, braun, kaufen), eu and äu
+  are "oy" (teuer, heute), and ei is "eye" (weiß, from lesson 1). Three colours in a row
+  practise au.
+
+cultureNote: >
+  Switzerland writes without ß: Grösse, not Größe, and weiss for weiß. Prices are in
+  Swiss francs (CHF, der Franken), 100 Rappen to the franc. Swiss people speak Swiss
+  German dialect among themselves and switch to Standard German (Hochdeutsch) for
+  people who don't speak it; Grüezi is the polite hello. Clothes sizes are European
+  (38, 40) or S, M, L. Second-hand and vintage shops (Brockenhaus in Switzerland) are
+  popular and cheap.
+
+traps:
+  - 'The pronoun follows the article: der Mantel → ihn, not es.'
+  - 'die Hose is one pair of trousers; die Hosen are several pairs.'
+  - '"Das steht dir" is about looks; "passen" is about size: Die Jacke passt (it fits).'
+  - 'Colours after sein never change (Die Jacke ist blau); after "in" they are nouns with a capital (in Blau).'
+  - 'ihn is "him" or "it" for a der word; sie can mean "her", "it" (die word) or "them".'
+
+selfCheckIdeas:
+  - replace the noun with ihn, sie or es (den Pullover, die Jacke, das Hemd, die Schuhe)
+  - say a jacket is too big
+  - ask for the jacket in another colour
+  - passen or stehen
+  - how Switzerland writes Größe
+  - cash or card
+
+yourTurn:
+  prompt: >
+    In a shop, you try on a jacket and it is too small. Ask for another size and another
+    colour, say what you think, and buy it.
+  modelNotes: >
+    Kann ich die Jacke anprobieren? Sie ist zu klein. Gibt es die Jacke auch in Größe
+    40? Und in Schwarz? Sie passt! Gut, ich nehme sie. Checklist: ihn, sie, es by the
+    article; adjectives unchanged after sein; a capital for the colour after "in".

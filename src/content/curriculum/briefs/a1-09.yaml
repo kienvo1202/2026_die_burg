@@ -1,0 +1,92 @@
+# Brief for lesson a1-09. What the lesson must teach, and must not teach yet.
+# Read with docs/LESSON_GUIDE.md.
+
+canDo: Order a meal and a drink in a restaurant, ask a friend what they are having, and pay, with a tip.
+
+scene:
+  place: A Wirtshaus (traditional inn) in Munich, a weekday evening
+  situation: >
+    Two colleagues (du) go for dinner after work. They read the menu and ask each other
+    what they are having; the waiter (Sie) takes the order and brings the drinks. At the
+    end they ask for the bill, pay separately, and each says what to pay with the tip
+    included.
+  characters:
+    - { name: Lukas, who: "works in Munich, born there, early thirties", register: du }
+    - { name: Mei, who: "his colleague from Singapore, new in Munich, late twenties", register: du }
+    - { name: Herr Huber, who: "the waiter, fifties", register: Sie }
+
+coreInsight: >
+  Some verbs change their vowel for du and er/sie/es, and only there: ich nehme, du
+  nimmst, er nimmt; ich esse, du isst, er isst; ich lese, du liest, er liest. The reader
+  has met the pattern three times without its name (du sprichst in lesson 2, sie spricht
+  in lesson 5, er liest in lesson 6); this lesson keeps those promises. It is a pattern,
+  not chaos: long ago the du and er endings had an i sound in them, and it pulled the
+  vowel towards itself (e becomes i or ie; a becomes ä, as in fahren, du fährst, given as
+  a preview). An i in a lost ending did the same to English foot → feet and mouse → mice.
+  Only du and er/sie/es ever had that i, so wir, ihr and sie keep the plain vowel.
+  Second point: ordering. "Ich nehme …" (I'll have …) with lesson 8's accusative (Ich
+  nehme den Salat, einen Tee), and "Ich möchte …" (I'd like …), the polite way to ask for
+  something: ich möchte, du möchtest, er möchte, with no -t for er (lesson 12 says why).
+
+notYet:
+  - modal verbs as a system (lesson 12); möchte only with a noun (Ich möchte ein Wasser), never with a second verb
+  - the dative with an article (mit dem Salat); "mit" before a bare noun on a menu (Schnitzel mit Salat) is allowed
+  - comparison (lieber, am liebsten)
+  - adjective endings before nouns (ein großes Bier); describe with sein or ask "Groß oder klein?"
+  - yes/no question word order as a rule (lesson 13); "Ist hier noch frei?" is a chunk
+  - the imperative (Nimm …!)
+  - a full list of vowel-change verbs; only the verbs the scene needs, plus fahren as a preview
+  - the past
+
+introducesGrammar:
+  - vowel-change-verbs
+  - moechte-ordering
+  - sound-z-j
+
+chunks:
+  - { de: "Ist hier noch frei?", literal: "Is here still free?", means: "Is this seat free?", explainedIn: a1-13 }
+  - { de: "Guten Appetit!", literal: "Good appetite!", means: "Enjoy your meal!" }
+  - { de: "Zahlen, bitte!", literal: "Pay, please!", means: "Could we have the bill, please?" }
+  - { de: "Zusammen oder getrennt?", literal: "Together or separated?", means: "One bill or separate?" }
+  - { de: "Stimmt so.", literal: "Is-right so.", means: "Keep the change." }
+
+newWordBudget: 26
+
+soundSpotlight: >
+  z is always "ts", at the start of a word too: zahlen, zusammen, zwei, Pizza (and tz
+  in jetzt, Platz). English speakers say "z" as in zoo, which Germans hear as an s. And
+  j is English y: ja, jetzt.
+
+cultureNote: >
+  In a Wirtshaus or café you often seat yourself; "Ist hier noch frei?" is how you ask
+  to share a table. A table marked Stammtisch is kept for regulars. "Wasser" on a menu
+  means bottled water (still or sparkling), and tap water is not automatically served.
+  To pay, call "Zahlen, bitte!"; the waiter asks "Zusammen oder getrennt?", and paying
+  separately is completely normal. The tip, usually around 5 to 10 percent, is not left
+  on the table: you say the total you want to pay (the bill is 18.40, you say
+  "Zwanzig") or "Stimmt so" when handing over the money.
+
+traps:
+  - 'The vowel changes only for du and er/sie/es: wir nehmen, ihr nehmt, sie nehmen.'
+  - 'nehmen doubles its m as well: du nimmst, er nimmt.'
+  - 'essen has one form for du and er: du isst, er isst (not "du esst").'
+  - '"Ich bekomme …" (I get …) is a normal way to order and has nothing to do with "become".'
+  - 'Leaving coins on the table is not the custom; say the total, tip included, when you pay.'
+
+selfCheckIdeas:
+  - du and er forms of nehmen, essen, lesen, sprechen
+  - order a soup and a coffee correctly (einen for der words)
+  - answer "Was nimmst du?"
+  - möchte for ich, du, er
+  - the bill is 18.40; what do you say to tip?
+  - which English plural shows the same vowel change
+
+yourTurn:
+  prompt: >
+    You are in a Wirtshaus with a friend. Ask what they are having, order a drink and a
+    dish for yourself, then pay separately, with a tip.
+  modelNotes: >
+    Was nimmst du? Ich nehme den Salat und ein Wasser. Zahlen, bitte! Getrennt. The
+    bill is 13.60; I say "Fünfzehn, bitte" (or "Stimmt so"). Checklist: nimmst and nimmt
+    for du and er; den and einen for der words; the tip said aloud, not left on the
+    table.

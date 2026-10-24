@@ -324,3 +324,53 @@ Lesson 8's review caught:
 
 **Culture notes date.** Anything about prices, bans or opening hours needs checking each
 time, not copying from the source plan.
+
+## 2026-10-24 — Briefs four at a time; lessons 9 and 10; the wolf
+
+**Batch size.** Kien asked whether writing five lessons in one go costs quality. The
+answer, recorded because it decided the shape of this round:
+- **The writing doesn't suffer:** everything a lesson needs is in files (guide, brief,
+  ledger), and the skill re-reads them each time.
+- **Two things do:**
+  - the assistant's context fills up and gets summarised, which loses detail;
+  - more importantly, lesson N+1 builds on lesson N before Kien has read it, so one change
+    after his read can ripple forward.
+- **So:** briefs are reviewed in batches (cheap, short and fairly independent: 9–12
+  approved together), and lessons are written in pairs. Kien chose to have both pairs (9–10
+  and 11–12) written in one session as two stacked PRs, accepting the rework risk.
+
+**Promises kept:**
+- **The vowel change.** Lesson 9 explains *du sprichst* (lesson 2), *sie spricht* (lesson
+  5) and *er liest* (lesson 6).
+- **Verb second.** Lesson 10 brings in *Am Dienstag arbeite ich*, held back since lesson
+  6's brief.
+
+**What the reviews caught:**
+- **My own history claims, twice.** "The other forms never had that *i*" is false for
+  *ich*: medieval German said *ich nime*. And "only three ways" left out *au → äu*
+  (*läuft*). A true story told too neatly is still wrong; both are now hedged in the
+  text.
+- **The setting.** A salon phoned on a Monday morning, when many German salons
+  traditionally close (and many close early on Saturdays). The scene moved to a Tuesday,
+  with the slot on a Friday.
+- **Rules true of the examples but not of German:**
+  - the clock card said German "counts towards the coming hour" beside *Viertel nach*,
+    which counts from it. Only *halb* looks ahead;
+  - "*ich, wir, ihr, sie* never change" sat under a table headed *er · sie · es*, where
+    *sie* does change. Now "*sie* (they)".
+- **Grimm details:** the mother *sends the youngest home* for the scissors; the
+  washbowl, not "bowls", lies broken; it's the kids who shout *Der Wolf ist tot!*.
+- **A layout bug the review couldn't see:** the five-column vowel table was 440px wide
+  inside a 337px card at phone width, and the card hid the overflow, so it was silently
+  cut off. It's now three columns. Only the phone-width check found it.
+
+Rubric, my scores before Kien's read (1–5):
+
+| | Hook | Insight | Usability | Accuracy | Load | Recycling | Self-check |
+|---|---|---|---|---|---|---|---|
+| Lesson 9 | 4 | 5 | 5 | 4 | 4 | 5 | 5 |
+| Lesson 10 | 5 | 5 | 5 | 4 | 4 | 5 | 5 |
+
+- **Load is 4:** lesson 9 has 22 words plus the vowel change and *möchte*; lesson 10 has
+  26 words (seven of them weekdays) plus the clock and verb second.
+- **Accuracy stays at 4** until a native speaker reads them.

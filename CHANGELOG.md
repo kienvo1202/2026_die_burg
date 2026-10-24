@@ -12,6 +12,17 @@ Write each entry for the reader of the course, not for the person who built it.
 
 ## Unreleased
 
+### Added: lessons 9 and 10
+- **Lesson 9, A table for two.** Order dinner in a Munich inn, pay separately and tip the
+  German way, and find out why it is *du nimmst*: the same lost *i* that turned *foot* into
+  *feet*.
+- **Lesson 10, Half past two.** Tell the time, book a hairdresser and find a free hour with
+  a friend. *halb drei* is 2:30, not 3:30, and the verb always comes second.
+- **A tale after lesson 10:** Der Wolf und die sieben jungen Geißlein, where the youngest
+  kid hides in the clock.
+- **The map:** seven more points light up, each with a card.
+- Your dictionary now has 237 words.
+
 ### Added: lessons 7 and 8
 - **Lesson 7, Family photos.** Introduce your family with *mein*, *dein*, *sein* and
   *ihr*, English's old *mine* and *thine*, and finally learn what lesson 3's *Ihr Name* was.

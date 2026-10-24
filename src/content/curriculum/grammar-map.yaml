@@ -31,9 +31,9 @@
         - { id: ch-sounds, title: The two ch sounds, level: A1, summary: "Throaty after a, o, u, au (auch); a soft hiss after other vowels and consonants (ich, natürlich). The diminutive -chen is always soft, chs is usually ks (sechs, Fuchs), and borrowed words vary (Chef, Chor).", tags: [sound-ch] }
         - { id: w-v-s, title: "w, v and s", level: A1, summary: "w sounds like English v, v usually like f, and s before a vowel like z in most of Germany.", tags: [sound-w-s] }
         - { id: diphthongs, title: "ei, eu, au", level: A1, summary: "ei sounds like 'eye', eu and äu like 'oy' (Deutsch, Häuser), au like 'ow' (Haus).", tags: [] }
-        - { id: z-j, title: "z and j", level: A1, summary: "z sounds like 'ts' (Zeit), j like English y (ja).", tags: [] }
+        - { id: z-j, title: "z and j", level: A1, summary: "z sounds like 'ts' (Zeit), j like English y (ja).", tags: [sound-z-j] }
         - { id: r-sounds, title: "The German r", level: A1, summary: "Made at the back of the throat in most of Germany; at the end of a word, -er sounds like a short 'a' (aber, Lehrer).", tags: [sound-r] }
-        - { id: sp-st, title: "sp and st", level: A1, summary: "At the start of a word or word part, s before p or t sounds like 'sh': Sport, Stadt, verstehen.", tags: [] }
+        - { id: sp-st, title: "sp and st", level: A1, summary: "At the start of a word or word part, s before p or t sounds like 'sh': Sport, Stadt, verstehen.", tags: [sound-sp-st] }
         - { id: final-devoicing, title: Hard endings, level: A1, summary: "b, d, g at the end of a syllable sound like p, t, k: Tag sounds like 'tahk'. Final -ig is said like ich in standard German (König, zwanzig).", tags: [sound-final-devoicing] }
         - { id: vowel-length, title: Long and short vowels, level: A1, summary: "A double consonant after a vowel makes it short (Bett); h or a doubled vowel makes it long (Sohn, Boot).", tags: [sound-vowel-length] }
         - { id: word-stress, title: Word stress, level: A1, summary: "Stress usually falls on the first syllable of the stem. be-, ver-, ent- and the other inseparable prefixes are unstressed (miss- sometimes is stressed: missverstehen).", tags: [] }
@@ -66,7 +66,7 @@
   topics:
     - title: Where the verb goes
       points:
-        - { id: verb-second, title: The verb comes second, level: A1, summary: "In a statement the conjugated verb is always the second element. Start with anything else and the subject moves behind the verb: Heute komme ich.", tags: [] }
+        - { id: verb-second, title: The verb comes second, level: A1, summary: "In a statement the conjugated verb is always the second element. Start with anything else and the subject moves behind the verb: Heute komme ich.", tags: [verb-second-time] }
         - { id: verb-bracket, title: The verb bracket, level: A1, summary: "When a verb has two parts, they frame the sentence: Ich kann … schwimmen, Ich rufe … an, Ich habe … gemacht. One structure for modals, separable verbs and the past.", tags: [] }
         - { id: verb-final, title: "Verb at the end: weil, dass, wenn, ob", level: A2, summary: "After these words the conjugated verb goes to the end of its clause: …, weil ich müde bin.", tags: [] }
         - { id: clause-first, title: Starting with a clause, level: A2, summary: "A whole clause can take first place, so the main verb follows straight after the comma: Wenn es regnet, bleibe ich zu Hause.", tags: [] }
@@ -99,12 +99,12 @@
         - { id: sein, title: "sein", level: A1, summary: "to be, irregular as in English: ich bin, du bist, er ist, wir sind, ihr seid, sie/Sie sind.", tags: [sein-ich-du-sie, sein-wir-ihr-sie] }
         - { id: haben, title: "haben", level: A1, summary: "to have: ich habe, du hast, er hat; the other verb behind the past tense.", tags: [haben-present] }
         - { id: s-stems, title: "du heißt, not heißst", level: A1, summary: "When the stem already ends in an s-sound (s, ß, z, x), the du-ending is just -t: du heißt, du tanzt.", tags: [heissen-ich-du-sie] }
-        - { id: vowel-change, title: Verbs that change their vowel, level: A1, summary: "Some strong verbs change e → i/ie or a → ä for du and er/sie/es: du sprichst, er sieht, du fährst.", tags: [] }
+        - { id: vowel-change, title: Verbs that change their vowel, level: A1, summary: "Some strong verbs change e → i/ie or a → ä for du and er/sie/es: du sprichst, er sieht, du fährst.", tags: [vowel-change-verbs] }
         - { id: wissen-kennen, title: "wissen or kennen", level: A1, summary: "Two verbs for 'know': wissen for facts (ich weiß), kennen for people and places.", tags: [] }
     - title: Modal verbs
       points:
         - { id: modals, title: "können, müssen, wollen, dürfen, sollen, mögen", level: A1, summary: "The modal stands second, the other verb waits at the end. ich and er/sie/es share one form, with no ending: ich kann, er kann.", tags: [] }
-        - { id: moechte, title: "möchte", level: A1, summary: "'would like', the polite way to ask for things: Ich möchte einen Kaffee.", tags: [] }
+        - { id: moechte, title: "möchte", level: A1, summary: "'would like', the polite way to ask for things: Ich möchte einen Kaffee.", tags: [moechte-ordering] }
     - title: Verbs with prefixes
       points:
         - { id: separable, title: Separable verbs, level: A1, summary: "The prefix breaks off and goes to the end: anrufen → Ich rufe dich an.", tags: [] }
@@ -263,7 +263,7 @@
         - { id: formal-prepositions, title: Formal prepositions, level: C1, summary: "aufgrund, bezüglich, infolge, mithilfe: the prepositions of official German.", tags: [] }
     - title: Time
       points:
-        - { id: time-prepositions, title: "am, um, im", level: A1, summary: "am Montag, um acht Uhr, im Mai.", tags: [] }
+        - { id: time-prepositions, title: "am, um, im", level: A1, summary: "am Montag, um acht Uhr, im Mai.", tags: [am-um-time] }
         - { id: seit, title: "seit with the present tense", level: A2, summary: "Something still going on takes the present: Ich wohne seit drei Jahren hier (I have lived here for three years).", tags: [] }
         - { id: vor-ago, title: "vor for 'ago'", level: A2, summary: "vor comes first and takes the dative: vor drei Jahren (three years ago).", tags: [] }
         - { id: time-accusative, title: Time without a preposition, level: A2, summary: "Many time phrases use the accusative alone: nächste Woche, jeden Tag.", tags: [] }
@@ -281,7 +281,7 @@
     - title: Numbers and time
       points:
         - { id: numbers, title: Numbers, level: A1, summary: "Units before tens, as in 'four-and-twenty blackbirds': 21 is einundzwanzig.", tags: [numbers-0-100] }
-        - { id: clock, title: Telling the time, level: A1, summary: "halb drei is 2:30: half (on the way) to three.", tags: [] }
+        - { id: clock, title: Telling the time, level: A1, summary: "halb drei is 2:30: half (on the way) to three.", tags: [clock-times] }
         - { id: dates, title: Dates and ordinals, level: A2, summary: "am dritten Mai; written der 3. Mai, with a full stop.", tags: [] }
     - title: Tone
       points:
