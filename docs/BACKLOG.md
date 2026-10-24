@@ -63,6 +63,43 @@ estimates. When something is done it moves to `CHANGELOG.md` and is deleted from
 - [ ] **An illustrated map overview** in place of the plain region panels, once the
       structure has proved itself
 
+## Reading devices (proposed 2026-10-24, not yet chosen)
+
+Tools that keep the course a book you read through: each works like something a printed
+book has (a footnote, a bookmark, someone reading aloud, a phrasebook at the back).
+Ordered by value for the cost. Each names its reader need (PRODUCT.md §1) and how to test
+it by hand first (§4–5). Kien's own read of lessons 1–8 decides the order of 4–6.
+
+- [ ] **1. Tap a word, see its gloss.** *Retention, Understanding; lessons and tales.*
+      Tap any German word: a footnote card with article, plural, meaning, Listen, and
+      "first met in lesson N". The data is already in the ledger. Test on one tale first,
+      where words appear out of their lesson's context
+- [ ] **2. Read the scene aloud.** *Sound; lessons and tales.* One button plays a whole
+      dialogue line by line, highlighting the line being spoken, with a slower speed. A
+      queue around `speak()`, so the Android swap stays in one place. Test on lesson 7
+- [ ] **3. Der/die/das marks.** *Understanding, Retention; word lists, `/words`, glosses.*
+      A small steady mark per gender on every noun, through tokens, and never colour
+      alone (a letter-shaped mark too, for colour-blind readers). Test on `/words` alone
+- [ ] **4. A short reread** (was Someday "Review mode"). *Retention; a new page.* Five
+      minutes of words and checks from finished lessons, older ones returning less often.
+      Tales alone won't bring every word back. Test with a hand-made page for lessons 1–4
+      before writing any spacing logic
+- [ ] **5. Your phrasebook.** *Use; a new page.* The chunks and can-do lines of finished
+      lessons, grouped by situation (café, flat, shop): the page a reader opens abroad.
+      Test by generating it once from lessons 1–8
+- [ ] **6. Margin marks.** *Retention, personal; any German word or line.* Mark it
+      "unsure"; marks collect in `/words` as the reader's own review list, on this device
+      only (like `progress.ts`). Test together with 1
+- [ ] **7. "This lesson lit up…"** *Orientation; the lesson's end.* List the map points
+      the lesson lit, linked, so lessons and map point at each other. Cheap
+- [ ] **8. Record and compare.** *Sound, Use; "Your turn".* Record yourself saying a line,
+      play it beside the model voice. The browser records without a server, but it needs
+      microphone permission, and a plugin in the apps. Later
+
+Deliberately left out, as they pull away from a read-through course: streaks, points,
+hearts, timed drills, an AI chat partner (paid, and a different product), an in-app
+flashcard deck (the Anki export under Someday does that job).
+
 ## Parked
 
 - **Paid text-to-speech** (ADR 0006). Reopen if browser voices are missing or poor on
@@ -72,7 +109,6 @@ estimates. When something is done it moves to `CHANGELOG.md` and is deleted from
 
 - **Anki export** generated from the ledger: every word with article, plural, example
 - **Placement test** to start at a later level
-- **Review mode**: only the warm-up and self-check items of finished lessons
 - **Capacitor routing check**: does the local server resolve `/course/` to
   `/course/index.html`? If not, `build.format: 'file'` (PLAN open question)
 - **Goethe exam appendix**: exam formats and strategies, per level
