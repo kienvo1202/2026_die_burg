@@ -1,0 +1,87 @@
+# Brief for lesson a1-10. What the lesson must teach, and must not teach yet.
+# Read with docs/LESSON_GUIDE.md.
+
+canDo: Tell the time, make an appointment on the phone, and find a day and time that suit a friend.
+
+scene:
+  place: A hair salon and an office in Frankfurt
+  situation: >
+    A newcomer phones a hair salon (Sie) to book an appointment; the first times on offer
+    don't suit her, and they settle on another day. Then a colleague (du) asks when she
+    is free for a coffee this week, and they compare their weeks day by day until one
+    time works.
+  characters:
+    - { name: Ana, who: "from São Paulo, works at a bank in Frankfurt, early thirties", register: du }
+    - { name: Frau Schmitt, who: "receptionist at the salon, forties", register: Sie }
+    - { name: Jonas, who: "Ana's colleague, late twenties", register: du }
+
+coreInsight: >
+  halb drei is 2:30: "half (of the way) to three". German counts towards the coming
+  hour, where English counts from the hour just gone. The trap for British readers is
+  sharp: in British English "half three" means 3:30, so hearing "halb drei" as "half
+  three" makes you an hour late. Viertel nach drei is 3:15, Viertel vor drei 2:45.
+  Timetables, opening hours and appointments use the 24-hour clock, said in full:
+  14:30 is "vierzehn Uhr dreißig". Second point: the verb is always second. Put a time
+  first and the subject moves behind the verb: Ich habe um drei Zeit → Um drei habe ich
+  Zeit; Am Montag arbeite ich. English keeps only leftovers of this ("Here comes the
+  bus"). With it, am for days and um for clock times: am Montag, um drei Uhr.
+
+notYet:
+  - separable verbs (anrufen, anfangen) (lesson 15)
+  - modal verbs (lesson 12); "Ich kann um drei" is avoided
+  - dates and ordinals (am dritten Mai) (lesson 21)
+  - months and seasons with im
+  - yes/no question word order as a rule (lesson 13); "Hast du am … Zeit?" and "Geht das?" are chunks
+  - the dative (mit dir, bei mir), except inside a chunk
+  - regional quarter times (viertel drei, dreiviertel drei) beyond a Deeper block
+  - the past
+
+introducesGrammar:
+  - clock-times
+  - verb-second-time
+  - am-um-time
+  - sound-sp-st
+
+chunks:
+  - { de: "Wie spät ist es?", literal: "How late is it?", means: "What time is it?" }
+  - { de: "Hast du am … Zeit?", literal: "Have you on-the … time?", means: "Are you free on …?", explainedIn: a1-13 }
+  - { de: "Geht das?", literal: "Goes that?", means: "Does that work for you?", explainedIn: a1-13 }
+  - { de: "Bis dann!", literal: "Until then!", means: "See you then!" }
+
+newWordBudget: 26
+
+soundSpotlight: >
+  sp and st at the start of a word sound like "shp" and "sht": spät, Stunde, Sport.
+  In the middle or at the end of a word they sound as in English: Fenster, ist.
+
+cultureNote: >
+  Being on time matters: if you will be even five minutes late for an appointment, send
+  a message. Germans book a Termin (appointment) for almost everything, from the
+  hairdresser to the city office (Bürgeramt), where the next free slot can be weeks
+  away. Opening hours are written in the 24-hour clock (Mo–Fr 9–18 Uhr), and most
+  businesses close on Sundays.
+
+traps:
+  - 'halb drei is 2:30, not 3:30; British "half three" means 3:30.'
+  - 'am for days, um for clock times: am Montag, um drei Uhr.'
+  - 'After a time word the verb still comes second: "Am Montag arbeite ich", never "Am Montag ich arbeite".'
+  - 'die Uhr is the clock (and "drei Uhr" is three o’clock); die Stunde is an hour of time: drei Stunden.'
+  - 'Every day of the week is a der word: der Montag, am Montag.'
+
+selfCheckIdeas:
+  - say 2:30, 3:15, 4:45 and 14:30 aloud
+  - put "am Freitag" first in "Ich habe am Freitag Zeit"
+  - am or um
+  - ask what time it is
+  - which time a British "half three" is, and which German time it is not
+  - book a hairdresser for Tuesday at half past two
+
+yourTurn:
+  prompt: >
+    Phone a hairdresser (Sie) to book an appointment. Your first choice doesn't work;
+    agree another day and time, then repeat it back.
+  modelNotes: >
+    Guten Tag, ich möchte einen Termin. Am Dienstag um halb drei? Am Dienstag arbeite
+    ich. Geht das am Mittwoch? Am Mittwoch um vier Uhr. Gut, am Mittwoch um vier. Bis
+    dann! Checklist: am with days, um with times; the verb second after a time word;
+    halb means half to the next hour.

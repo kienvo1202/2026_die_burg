@@ -1,0 +1,90 @@
+# Brief for lesson a1-12. What the lesson must teach, and must not teach yet.
+# Read with docs/LESSON_GUIDE.md.
+
+canDo: Say what you can, want and must do, make plans with friends, and say no politely.
+
+scene:
+  place: A group chat, then a mountain hut above Innsbruck
+  situation: >
+    On Thursday three friends (du) plan Saturday in a group chat: one wants to hike up
+    to a hut, one must work in the morning, one can't walk far but wants to swim. They
+    find a plan that suits everyone. On Saturday, at the hut, a short exchange with the
+    host (Sie) about what they can still order.
+  characters:
+    - { name: Sophie, who: "from Innsbruck, mid-twenties", register: du }
+    - { name: Mateo, who: "from Buenos Aires, new in Innsbruck, late twenties", register: du }
+    - { name: Lisa, who: "Sophie's friend, mid-twenties", register: du }
+    - { name: Frau Gruber, who: "runs the mountain hut, fifties", register: Sie }
+
+coreInsight: >
+  können, wollen and müssen are English can, will and must, and two habits show the
+  family. First, no ending for ich and er/sie/es: ich kann, er kann, just as English
+  says "he can", never "he cans". Most of these verbs were once past tenses put to work
+  as presents, and old past tenses had no ending there (wollen joined the pattern
+  later). Second, the other verb goes to the very end, unchanged: Ich kann gut kochen.
+  Wir müssen am Samstag arbeiten. The modal stands second and the infinitive closes the
+  sentence, a frame German uses again for the past and for separable verbs. This also
+  explains lesson 8's chunk "Kannst du … kaufen?" and lesson 9's möchte, which works the
+  same way (Ich möchte wandern). The traps: ich will means "I want", not "I will" (Old
+  English willan meant "want" too; English moved it to the future, German did not), and
+  ich muss nicht means "I don't have to", not "I mustn't".
+
+notYet:
+  - dürfen, sollen, mögen as modals (A1.2); "darf nicht" only as the answer to the muss-nicht trap
+  - separable verbs in the frame (Ich muss früh aufstehen) (lesson 15); "Kommst du mit?" is a chunk
+  - yes/no question word order as a rule (lesson 13); questions use a question word, or the known chunks
+  - the past (Perfekt, and modals in the past)
+  - the dative (mit dir, zu mir), except inside a chunk
+  - weil and dass (A2); reasons go in a second sentence
+  - adjective endings before nouns
+
+introducesGrammar:
+  - modal-verbs
+  - verb-bracket-modals
+  - sound-word-stress
+
+chunks:
+  - { de: "Kommst du mit?", literal: "Come you along?", means: "Are you coming (with us)?" }
+  - { de: "Leider nicht.", literal: "Regrettably not.", means: "Unfortunately not." }
+  - { de: "Schade!", literal: "Pity!", means: "What a shame!" }
+  - { de: "Wie wär's mit …?", literal: "How would-it-be with …?", means: "How about …?" }
+
+newWordBudget: 26
+
+soundSpotlight: >
+  German stresses the first syllable of most words: WANdern, SCHWIMmen, ARbeiten,
+  KOchen. Words borrowed from French or Latin often stress the end instead: ProBLEM,
+  naTÜRlich. Kaffee shows a regional split: KAFfee in most of Germany, KafFEE in Austria.
+
+cultureNote: >
+  In the Alps, hikers greet everyone they pass (Servus, Grüß Gott, Griaß di) and are
+  often on du terms on the mountain, even with strangers. Mountain huts (Hütten), many
+  run by Alpine clubs, serve simple hot food and let hikers stay the night. Plans for a
+  weekend are usually made a few days ahead; among friends a spontaneous "Kommst du
+  mit?" is fine. In Innsbruck the mountains start at the edge of town, and a funicular
+  and cable cars (the Nordkettenbahnen) go up from near the centre.
+
+traps:
+  - 'ich will means I want, not I will.'
+  - 'ich muss nicht means I don’t have to; "you mustn’t" is du darfst nicht (a later lesson).'
+  - 'No -t for ich and er/sie/es: er kann, er will, er muss; never "er kannt".'
+  - 'The second verb goes to the end, unchanged: "Ich kann gut kochen", not "Ich kann kochen gut".'
+  - 'The umlaut comes only in the plural and infinitive: ich kann but wir können; ich muss but wir müssen.'
+
+selfCheckIdeas:
+  - ich, du and er forms of können, wollen, müssen
+  - put the second verb at the end
+  - want or will
+  - what "Ich muss nicht arbeiten" means
+  - turn "Ich wandere" into "I want to hike"
+  - one thing you can do, one you must do this weekend
+  - why English says "he can", not "he cans"
+
+yourTurn:
+  prompt: >
+    A friend invites you to go hiking on Saturday. Say what you must do, what you can't
+    do, what you want to do instead, and suggest a day and time.
+  modelNotes: >
+    Am Samstag muss ich arbeiten. Am Sonntag kann ich! Ich kann nicht gut wandern, aber
+    ich will schwimmen. Um drei? Checklist: the modal second, the other verb at the end;
+    no -t for ich and er; the verb second after "Am Samstag" (lesson 10).
