@@ -12,6 +12,16 @@ Write each entry for the reader of the course, not for the person who built it.
 
 ## Unreleased
 
+### Added: lessons 11 and 12
+- **Lesson 11, Does it fit?** Shop for a winter jacket in Basel, in francs, and say "I'll
+  take it" for any thing: *ihn*, *sie*, *es*. The *-n* of *den* comes back in *ihn*.
+- **Lesson 12, Can, want, must.** Plan a weekend in the mountains above Innsbruck with
+  *können*, *wollen* and *müssen*. Find out why it's *er kann*, never *er kannt* (English
+  says *he can*, not *he cans*), and why *ich will* means "I want".
+- **A tale after lesson 12:** Der Froschkönig, the frog who holds a princess to her word.
+- **The map:** five more points light up, each with a card.
+- Your dictionary now has 277 words.
+
 ### Added: lessons 9 and 10
 - **Lesson 9, A table for two.** Order dinner in a Munich inn, pay separately and tip the
   German way, and find out why it is *du nimmst*: the same lost *i* that turned *foot* into
